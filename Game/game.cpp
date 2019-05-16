@@ -39,6 +39,49 @@ void Game::addShape(Bezier1D * curve, int parent, unsigned int mode)
 
 }
 
+void Game::createSnake(int num_of_joints)
+{
+	Bezier1D * body = new Bezier1D(BODY);
+	Bezier1D * edge = new Bezier1D(EDGE);
+	addShape(body, -1, QUADS);
+	int body_index = shapes.size() - 1;
+	shapes[shapes.size() - 1]->Hide();
+
+	addShape(edge, -1, QUADS);
+	int edge_index = shapes.size() - 1;
+
+	
+	
+
+	BoundingBox* bodybox = shapes[body_index]->mesh->bvh.box;
+	BoundingBox* edgebox = shapes[edge_index]->mesh->bvh.box;
+	pickedShape = edge_index;
+	shapeTransformation(xGlobalTranslate, edgebox->static_center.x - bodybox->size.x);
+	shapeTransformation(yGlobalTranslate, edgebox->static_center.y);
+	shapeTransformation(zGlobalTranslate, edgebox->static_center.z);
+	for (int i = 0; i < num_of_joints; i++) {
+		//addShapeCopy(body_index, edge_index + i - 1, QUADS);
+		addShapeCopy(body_index,- 1, QUADS);
+		pickedShape = shapes.size() - 1;
+		shapeTransformation(xGlobalTranslate, bodybox->static_center.x + bodybox->size.x	 );
+		shapeTransformation(yGlobalTranslate, bodybox->static_center.y 	);
+		shapeTransformation(zGlobalTranslate, bodybox->static_center.z 	);
+		chainParents[pickedShape] = pickedShape-1;
+	}
+
+
+	addShapeCopy(edge_index, - 1, QUADS);
+	pickedShape = shapes.size() - 1;
+	shapeTransformation(zLocalRotate, 180);
+	shapeTransformation(xGlobalTranslate, edgebox->static_center.x +  bodybox->size.x);
+	shapeTransformation(xLocalTranslate,  -2*bodybox->size.x);
+	shapeTransformation(yGlobalTranslate, edgebox->static_center.y);
+	shapeTransformation(zGlobalTranslate, edgebox->static_center.z);
+	chainParents[pickedShape] = pickedShape - 1;
+
+
+}
+
 void Game::CreateBoundingBoxes(BVH * box_tree, int parent, int level)
 {
 	this->addShapeCopy(BOUNDING_BOX_INDEX, -1, LINE_LOOP);
@@ -78,8 +121,7 @@ void Game::Init()
 {
 	std::vector<TransStruct> data;
 	addShape(Axis,-1,LINES);
-	Bezier1D * body = new Bezier1D(BODY);
-	addShape(body, -1, QUADS);
+	createSnake(3);
 
 	//translate all scene away from camera
 	myTranslate(glm::vec3(0, 0, -10), 0);

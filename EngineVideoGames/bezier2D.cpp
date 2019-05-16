@@ -113,13 +113,8 @@ IndexedModel Bezier2D::GetSurface(const int resT, const int resS)
 Vertex Bezier2D::GetVertex(int segmentT, int segmentS, float t, float s)
 {
 	glm::mat4 segment_coordT = this->b.segments[segmentT];
-	//glm::vec3 rotate_axis = glm::vec3(this->b.segments[b.num_of_segments - 1][3] - this->b.segments[0][0]);
 
-	glm::vec3 rotate_axis = glm::vec3(1, 0, 0);
-
-
-	glm::mat4 rotateMat = glm::rotate(360.0f* s, rotate_axis);;
-
+	glm::mat4 rotateMat = glm::rotate(360.0f* s, this->axis);
 
 
 	glm::vec3 pos = glm::vec3(rotateMat * glm::vec4(*b.GetVertex(segmentT, t).GetPos(), 1));

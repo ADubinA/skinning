@@ -24,19 +24,19 @@ Bezier1D::Bezier1D(int mode)
 	if (mode == BODY)
 	{
 		segments.push_back(glm::mat4(
-			glm::vec4(0.0f, 1.0f, 0.0f, 0.0f),
-			glm::vec4(0.25f,1.0f, 0.0f, 0.0f),
-			glm::vec4(0.75f,1.0f, 0.0f, 0.0f),
-			glm::vec4(1.0f, 1.0f, 0.0f, 0.0f)
+			glm::vec4(0.0f, 0.25f, 0.0f, 0.0f),
+			glm::vec4(0.25f,0.25f, 0.0f, 0.0f),
+			glm::vec4(0.75f,0.25f, 0.0f, 0.0f),
+			glm::vec4(1.0f, 0.25f, 0.0f, 0.0f)
 		));
 	}
 	else if (mode == EDGE)
 	{
 		segments.push_back(glm::mat4(
 			glm::vec4(0.0f, 0.0f, 0.0f, 0.0f),
-			glm::vec4(0.25f, 1.0f, 0.0f, 0.0f),
-			glm::vec4(0.75f, 1.0f, 0.0f, 0.0f),
-			glm::vec4(1.0f, 1.0f, 0.0f, 0.0f)
+			glm::vec4(0.25f, 0.25f, 0.0f, 0.0f),
+			glm::vec4(0.75f, 0.25f, 0.0f, 0.0f),
+			glm::vec4(1.0f, 0.25f, 0.0f, 0.0f)
 		));
 	}
 }

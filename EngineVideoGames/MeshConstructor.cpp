@@ -82,7 +82,7 @@ MeshConstructor::MeshConstructor(Bezier1D *curve,bool isSurface,unsigned int res
 {
 	if(isSurface)
 	{
-		Bezier2D surface(curve,glm::vec3(0,0,1),4);
+		Bezier2D surface(curve,glm::vec3(1,0,0),4);
 		InitMesh(surface.GetSurface(resT,resS));		
 	}
 	else
