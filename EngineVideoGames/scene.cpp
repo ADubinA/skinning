@@ -113,7 +113,8 @@ using namespace glm;
 	void Scene::Draw(int shaderIndx,int cameraIndx,bool debugMode)
 	{
 		glm::mat4 Normal = makeTrans();
-		glm::mat4 MVP = cameras[0]->GetViewProjection() * Normal;
+		glm::mat4 MV =   Normal;
+		glm::mat4 P = cameras[0]->GetViewProjection() ;
 		
 		int p = pickedShape;
 //		shaders[shaderIndx]->Bind();
@@ -128,18 +129,13 @@ using namespace glm;
 					Normal1 =  shapes[chainParents[j]]->makeTrans() * Normal1;
 				}
 			
-				mat4 MVP1 = MVP * Normal1; 
+				mat4 MV1 = MV * Normal1; 
 				Normal1 = Normal * Normal1;
 
-				MVP1 = MVP1 * shapes[i]->makeTransScale(mat4(1));
+				MV1 = MV1 * shapes[i]->makeTransScale(mat4(1));
 				Normal1 = Normal1 * shapes[i]->makeTrans();
-			    if(i>=1)
-				{
-				//	printMat(shapes[i]->makeTrans());
-				//	printMat(Normal1);
-				//	printMat(MVP1);
-				}
-				Update(MVP1,Normal1,shaders[shaderIndx]);
+
+				Update(MV1,P,Normal1 ,glm::vec3(0),shaders[shaderIndx]);
 
 				if(shaderIndx == 1)
 					shapes[i]->Draw(*shaders[shaderIndx]);

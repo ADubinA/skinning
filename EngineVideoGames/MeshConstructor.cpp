@@ -222,7 +222,7 @@ void MeshConstructor::InitLine(IndexedModel &model){
 		vao.AddBuffer(*vbs.back(),i,3,GL_FLOAT);
 	}
 	
-	ib = new IndexBuffer((unsigned int*)model.GetData(4),indicesNum);
+	ib = new IndexBuffer((unsigned int*)model.GetData(5),indicesNum);
 	
 	vao.Unbind();
 	is2D = false;
@@ -236,13 +236,15 @@ void MeshConstructor::InitMesh( IndexedModel &model){
 	
 	vao.Bind();
 
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		vbs.push_back(new VertexBuffer(model.GetData(i),verticesNum*sizeof(model.positions[0])));	
 		vao.AddBuffer(*vbs.back(),i,3,GL_FLOAT);
 	}
-	vbs.push_back(new VertexBuffer(model.GetData(3),verticesNum*sizeof(model.texCoords[0])));
+	vbs.push_back(new VertexBuffer(model.GetData(4),verticesNum*sizeof(model.texCoords[0])));
 	vao.AddBuffer(*vbs.back(),vbs.size()-1,2,GL_FLOAT);
+
+
 	
 	ib = new IndexBuffer((unsigned int*)model.GetData(4),indicesNum);
 	

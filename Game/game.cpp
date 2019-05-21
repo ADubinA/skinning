@@ -154,16 +154,18 @@ void Game::Init()
 	
 }
 
-void Game::Update(const glm::mat4 &MVP,const glm::mat4 &Normal,Shader *s)
+void Game::Update(const glm::mat4 &MV, const glm::mat4 &P, const glm::mat4 &Normal, glm::vec3 joint_indecies, Shader *s)
 {
 	int r = ((pickedShape+1) & 0x000000FF) >>  0;
 	int g = ((pickedShape+1) & 0x0000FF00) >>  8;
 	int b = ((pickedShape+1) & 0x00FF0000) >> 16;
 	s->Bind();
-	s->SetUniformMat4f("MVP", MVP);
+	s->SetUniformMat4f("MV", MV);
+	s->SetUniformMat4f("P", P);
 	s->SetUniformMat4f("Normal", Normal);
 	s->SetUniform4f("lightDirection", 0.0f , 0.0f, -1.0f, 1.0f);
 	s->SetUniform4f("lightColor",r/255.0f, g/255.0f, b/255.0f,1.0f);	
+	s->SetUniform3i("jointIndices", joint_indecies.x, joint_indecies.y, joint_indecies.z);
 	collisionDetection();
 }
 

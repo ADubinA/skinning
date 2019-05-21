@@ -90,6 +90,10 @@ IndexedModel Bezier2D::GetSurface(const int resT, const int resS)
 				surface.indices.push_back(2 * array_num[segment_indexT][t + 1][s]);
 				surface.indices.push_back(2 * array_num[segment_indexT][t + 1][s + 1]);
 				surface.indices.push_back(2 * array_num[segment_indexT][t][s + 1]);
+				surface.weights.push_back(calcWeight(segment_indexT, 0, timet, times));
+				surface.weights.push_back(calcWeight(segment_indexT, 0, (float)(t + 1) / resT, times));
+				surface.weights.push_back(calcWeight(segment_indexT, 0, (float)(t + 1) / resT, times));
+				surface.weights.push_back(calcWeight(segment_indexT, 0, timet,                 times));
 
 			}
 		}
@@ -140,6 +144,17 @@ glm::vec3 Bezier2D::GetNormal(int segmentT, int segmentS, float t, float s)
 	normal.y = sign * normal.y;
 
 	return normal;
+}
+
+glm::vec3 Bezier2D::calcWeight(int segmentT, int segmentS, float t, float s)
+{
+	float f1 = 0, f3 = 0;
+	if (t>0.5)
+		f3 = (1 - 4.0f*(1 - t)*t)*(1 - t) / 2.0f + (1 - 4.0f*(1 - t)*t)*t / 2.0f;
+	else
+		f1 = (1 - 4.0f*(1 - t)*t)*(1 - t) / 2.0f + (1 - 4.0f*(1 - t)*t)*t / 2.0f;
+	float f2 = (2.0f*(1 - t)*(t + 0.0) + 0.5f);
+	return glm::vec3(f1, f2, f3);
 }
 
 

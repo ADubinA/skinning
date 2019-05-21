@@ -1,0 +1,2 @@
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54

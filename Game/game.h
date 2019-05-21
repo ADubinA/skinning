@@ -26,7 +26,7 @@ public:
 	void createSnake(int num_of_joints);
 
 //	void Update( glm::mat4 MVP ,glm::mat4 *jointTransforms,const int length,const int  shaderIndx);
-	void Update(const glm::mat4 &MVP,const glm::mat4 &Normal,Shader *s);
+	void Update(const glm::mat4 &MV, const glm::mat4 &P ,const glm::mat4 &Normal, int indx, Shader *s);
 	void ControlPointUpdate();
 	void WhenRotate();
 	void WhenTranslate();

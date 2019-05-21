@@ -18,7 +18,7 @@ int main(int argc,char *argv[])
 	
 	scn->Init();
 	
-	scn->addShader("../res/shaders/basicShader");
+	scn->addShader("../res/shaders/skiningShader");
 	scn->addShader("../res/shaders/pickingShader");	
 	
 	display.setScene(scn);
