@@ -27,10 +27,10 @@ Shader::Shader(const std::string& fileName)
 		glAttachShader(m_program, m_shaders[i]);
 	
 	GLCall(glBindAttribLocation(m_program, POSITION_VB, "position"));
-	GLCall(glBindAttribLocation(m_program, TEXCOORD_VB, "texCoords"));
 	GLCall(glBindAttribLocation(m_program, NORMAL_VB, "normal"));
 	GLCall(glBindAttribLocation(m_program, COLOR_VB, "color"));
 	GLCall(glBindAttribLocation(m_program, WEIGHT_VB, "weights"));
+	GLCall(glBindAttribLocation(m_program, TEXCOORD_VB, "texCoords"));
 	GLCall(glBindAttribLocation(m_program, JOINT_INDEX_VB, "jointIndices"));
 
 
@@ -139,6 +139,11 @@ void Shader::SetUniformMat4fv(const std::string& name,const glm::mat4 *matrices,
 void Shader::SetUniform4fv(const std::string& name, float value[20])
 {
 	GLCall(glUniform4fv(GetUniformLocation(name), 1, &value[0]));
+}
+
+void Shader::SetUniform4v(const std::string& name, glm::vec4 value[20])
+{
+	GLCall(glUniform4fv(GetUniformLocation(name), 20, &value[0][0]));
 }
 
 int Shader::GetUniformLocation(const std::string& name) {

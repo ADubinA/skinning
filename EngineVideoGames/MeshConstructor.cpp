@@ -246,7 +246,7 @@ void MeshConstructor::InitMesh( IndexedModel &model){
 
 
 	
-	ib = new IndexBuffer((unsigned int*)model.GetData(4),indicesNum);
+	ib = new IndexBuffer((unsigned int*)model.GetData(5),indicesNum);
 	
 	vao.Unbind();
 	is2D = true;

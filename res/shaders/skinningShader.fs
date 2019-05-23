@@ -8,6 +8,9 @@ uniform vec4 lightColor;
 uniform sampler2D sampler;
 uniform vec4 lightDirection;
 
+uniform mat4 MV;
+uniform mat4 P;
+uniform mat4 Normal;
 
 void main()
 {

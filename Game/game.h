@@ -14,7 +14,6 @@ class Game : public Scene
 
 	};
 	Bezier1D *curve;
-	void Game::Rec_Create_Bounding_Box(std::vector<TransStruct>* data, Node* root, int parent, int level, bool is_left);
 	void Game::CreateBoundingBoxes(BVH *box_tree, int parent, int level);
 public:
 	Game(void);

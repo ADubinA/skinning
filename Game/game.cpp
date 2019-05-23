@@ -43,11 +43,11 @@ void Game::createSnake(int num_of_joints)
 {
 	Bezier1D * body = new Bezier1D(BODY);
 	Bezier1D * edge = new Bezier1D(EDGE);
-	addShape(body, -1, QUADS);
+	addShape(body, -1, 5);
 	int body_index = shapes.size() - 1;
 	shapes[shapes.size() - 1]->Hide();
 
-	addShape(edge, -1, QUADS);
+	addShape(edge, -1, 5);
 	int edge_index = shapes.size() - 1;
 
 	
@@ -61,7 +61,7 @@ void Game::createSnake(int num_of_joints)
 	shapeTransformation(zGlobalTranslate, edgebox->static_center.z);
 	for (int i = 0; i < num_of_joints; i++) {
 		//addShapeCopy(body_index, edge_index + i - 1, QUADS);
-		addShapeCopy(body_index,- 1, QUADS);
+		addShapeCopy(body_index,- 1, 5);
 		pickedShape = shapes.size() - 1;
 		shapeTransformation(xGlobalTranslate, bodybox->static_center.x + bodybox->size.x	 );
 		shapeTransformation(yGlobalTranslate, bodybox->static_center.y 	);
@@ -70,7 +70,7 @@ void Game::createSnake(int num_of_joints)
 	}
 
 
-	addShapeCopy(edge_index, - 1, QUADS);
+	addShapeCopy(edge_index, - 1, 5);
 	pickedShape = shapes.size() - 1;
 	shapeTransformation(zLocalRotate, 180);
 	shapeTransformation(xGlobalTranslate, edgebox->static_center.x +  bodybox->size.x);
@@ -154,7 +154,7 @@ void Game::Init()
 	
 }
 
-void Game::Update(const glm::mat4 &MV, const glm::mat4 &P, const glm::mat4 &Normal, glm::vec3 joint_indecies, Shader *s)
+void Game::Update(const glm::mat4 &MV, const glm::mat4 &P, const glm::mat4 &Normal, int indx, Shader *s)
 {
 	int r = ((pickedShape+1) & 0x000000FF) >>  0;
 	int g = ((pickedShape+1) & 0x0000FF00) >>  8;
@@ -162,10 +162,15 @@ void Game::Update(const glm::mat4 &MV, const glm::mat4 &P, const glm::mat4 &Norm
 	s->Bind();
 	s->SetUniformMat4f("MV", MV);
 	s->SetUniformMat4f("P", P);
+	s->SetUniform3i("jointIndex", indx-1,indx,indx+1); // TODO make a better function for this shit
+	
+	
+	s->SetUniform3i("jointIndex", indx - 1, indx, indx + 1);
+	//s->SetUniformMat4f("MVP", P*MV);
 	s->SetUniformMat4f("Normal", Normal);
 	s->SetUniform4f("lightDirection", 0.0f , 0.0f, -1.0f, 1.0f);
 	s->SetUniform4f("lightColor",r/255.0f, g/255.0f, b/255.0f,1.0f);	
-	s->SetUniform3i("jointIndices", joint_indecies.x, joint_indecies.y, joint_indecies.z);
+	//s->SetUniform3i("jointIndices", joint_indecies.x, joint_indecies.y, joint_indecies.z);
 	collisionDetection();
 }
 

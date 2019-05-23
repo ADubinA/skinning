@@ -115,7 +115,8 @@ using namespace glm;
 		glm::mat4 Normal = makeTrans();
 		glm::mat4 MV =   Normal;
 		glm::mat4 P = cameras[0]->GetViewProjection() ;
-		
+		glm::vec4 Qrot[NUM_OF_SHAPES];
+		glm::vec4 Qtrans[NUM_OF_SHAPES];
 		int p = pickedShape;
 //		shaders[shaderIndx]->Bind();
 		for (unsigned int i=0; i<shapes.size();i++)
@@ -135,14 +136,22 @@ using namespace glm;
 				MV1 = MV1 * shapes[i]->makeTransScale(mat4(1));
 				Normal1 = Normal1 * shapes[i]->makeTrans();
 
-				Update(MV1,P,Normal1 ,glm::vec3(0),shaders[shaderIndx]);
+				Update(MV1,P,Normal1 ,i,shaders[shaderIndx]);
 
 				if(shaderIndx == 1)
 					shapes[i]->Draw(*shaders[shaderIndx]);
 				else 
 					shapes[i]->Draw(*shaders[shaderIndx]);
+
+				glm::dualquat quatDul =shapes[i]->getQuaternion();
+				Qrot[i] = glm::vec4(quatDul[0]);
+				Qtrans[i] = glm::vec4(quatDul[1]);
+
 			}
 		}
+		shaders[shaderIndx]->SetUniform4v("Qrot", Qrot);
+		shaders[shaderIndx]->SetUniform4v("Qtrans", Qtrans);
+
 		pickedShape = p;
 	}
 

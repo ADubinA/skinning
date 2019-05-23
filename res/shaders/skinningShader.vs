@@ -3,7 +3,7 @@
 attribute vec3 position;
 attribute vec3 color;
 attribute vec3 normal;
-attribute vec2 texCoord;
+attribute vec2 texCoords;
 
 varying vec2 texCoord0;
 varying vec3 normal0;
@@ -13,9 +13,13 @@ uniform mat4 MV;
 uniform mat4 P;
 uniform mat4 Normal;
 
-attribute ivec3 jointIndices;
+uniform vec4 lightColor;
+uniform sampler2D sampler;
+uniform vec4 lightDirection;
+
 attribute vec3 weights;
 
+uniform ivec3 jointIndices;
 uniform vec4 Qrot[10];
 uniform vec4 Qtrans[10];
 
@@ -23,7 +27,7 @@ uniform vec4 Qtrans[10];
 
 void main (void) 
 {
-/*
+
   vec4 b_0 = Qrot[jointIndices.x] * weights.x +
 			 Qrot[jointIndices.y] * weights.y +
 			 Qrot[jointIndices.z] * weights.z;
@@ -68,9 +72,13 @@ void main (void)
         0,
 
         t0, t1, t2, 1);
-
+texCoord0 = texCoords;
+   color0 = weights;
   normal0 = Normal * Qmat * vec4(normal, 1.0);
   gl_Position =  P * MV * Qmat * vec4(positions, 1.0);
-  */
-   gl_Position =  P * MV * vec4(positions, 1.0);
+  /*
+
+	normal0 = (Normal * vec4(normal, 0.0)).xyz;
+	gl_Position =P *  MV * vec4(position, 1.0);
+	*/
 }

@@ -1,2 +1,106 @@
 [OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
-[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'MV' doesn't exist!
+Warning: uniform 'P' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'MV' doesn't exist!
+Warning: uniform 'P' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'MV' doesn't exist!
+Warning: uniform 'P' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'MV' doesn't exist!
+Warning: uniform 'P' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'MV' doesn't exist!
+Warning: uniform 'P' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+depth 1
+depth 1
+depth 1
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'MV' doesn't exist!
+Warning: uniform 'P' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+depth 0.894754
+picked 4
+depth 1
+depth 0.894685
+picked 4
+depth 0.889488
+picked 5
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+depth 1
+depth 1
+depth 0.536936
+picked 2
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+depth 1
+depth 1
+depth 1
+depth 0.0703718
+picked 3
+depth 0.865373
+picked 3
+depth 0.862431
+picked 4
+depth 0.841271
+picked 5
+depth 0.824313
+picked 6
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+depth 1
+depth 1
+depth 0.703094
+picked 3
+depth 0.706922
+picked 4
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+depth 1
+depth 1
+depth 0.779852
+picked 3

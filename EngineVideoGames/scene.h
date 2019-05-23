@@ -4,6 +4,7 @@
 #include "camera.h"
 #include "VertexArray.hpp"
 #include <vector>
+#define NUM_OF_SHAPES 10
 
 
 class Scene : public MovableGLM

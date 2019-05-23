@@ -143,7 +143,7 @@ glm::vec3 Bezier2D::GetNormal(int segmentT, int segmentS, float t, float s)
 	glm::vec3 normal = sign * glm::normalize(glm::cross(b_vec, c_vec));
 	normal.y = sign * normal.y;
 
-	return normal;
+	return -normal;
 }
 
 glm::vec3 Bezier2D::calcWeight(int segmentT, int segmentS, float t, float s)

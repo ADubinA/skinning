@@ -33,6 +33,13 @@ mat4 MovableGLM::makeTransScale() const
 	return makeTrans() * scale(mat4(1), scaleFactor);
 }
 
+glm::dualquat  MovableGLM::getQuaternion()
+{
+	glm::mat4 tran = makeTrans();
+	glm::mat3x4 small_tran = glm::mat3x4(tran[0], tran[1], tran[2]);
+	return glm::dualquat_cast(small_tran);
+}
+
 mat4 MovableGLM::makeTransScale(mat4 &prevTransformations) const
 {
 	return prevTransformations * makeTransScale();

@@ -2,7 +2,7 @@
 //#include <glm/glm.hpp>
 //#include <glm/gtc/matrix_transform.hpp>
 #include "EulerAngles.h"
-
+#include "glm/gtx/dual_quaternion.hpp"
 class MovableGLM : public EulerAngles
 {
 private:
@@ -25,6 +25,7 @@ public:
 	//vec3 findAxis2(vec4 &vec, int indx);
 	MovableGLM();
 	virtual ~MovableGLM(){}
+	glm::dualquat getQuaternion();
 	glm::mat4 makeTransScale(glm::mat4 &prevTransformations) const;
 	glm::mat4 makeTransScale() const;
 	glm::mat4 makeTrans(glm::mat4 &prevTransformations) const;
