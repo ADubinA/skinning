@@ -161,16 +161,13 @@ void Game::Update(const glm::mat4 &MV, const glm::mat4 &P, const glm::mat4 &Norm
 	int b = ((pickedShape+1) & 0x00FF0000) >> 16;
 	s->Bind();
 	s->SetUniformMat4f("MV", MV);
-	s->SetUniformMat4f("P", P);
-	s->SetUniform3i("jointIndex", indx-1,indx,indx+1); // TODO make a better function for this shit
-	
+	s->SetUniformMat4f("P", P);	
 	
 	s->SetUniform3i("jointIndex", indx - 1, indx, indx + 1);
 	//s->SetUniformMat4f("MVP", P*MV);
 	s->SetUniformMat4f("Normal", Normal);
 	s->SetUniform4f("lightDirection", 0.0f , 0.0f, -1.0f, 1.0f);
 	s->SetUniform4f("lightColor",r/255.0f, g/255.0f, b/255.0f,1.0f);	
-	//s->SetUniform3i("jointIndices", joint_indecies.x, joint_indecies.y, joint_indecies.z);
 	collisionDetection();
 }
 

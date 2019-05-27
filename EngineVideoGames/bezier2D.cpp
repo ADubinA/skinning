@@ -161,3 +161,4 @@ glm::vec3 Bezier2D::calcWeight(int segmentT, int segmentS, float t, float s)
 Bezier2D::~Bezier2D(void)
 {
 }
+

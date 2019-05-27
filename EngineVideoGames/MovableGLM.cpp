@@ -37,6 +37,9 @@ glm::dualquat  MovableGLM::getQuaternion()
 {
 	glm::mat4 tran = makeTrans();
 	glm::mat3x4 small_tran = glm::mat3x4(tran[0], tran[1], tran[2]);
+	small_tran[0][3] = tran[3][0];
+	small_tran[1][3] = tran[3][1];
+	small_tran[2][3] = tran[3][2];
 	return glm::dualquat_cast(small_tran);
 }
 

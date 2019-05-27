@@ -1,106 +1,799 @@
 [OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+Warning: uniform 'jointIndex' doesn't exist!
 Warning: uniform 'lightColor' doesn't exist!
-Warning: uniform 'lightColor' doesn't exist!
-Warning: uniform 'lightColor' doesn't exist!
-Warning: uniform 'MV' doesn't exist!
-Warning: uniform 'P' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
 Warning: uniform 'Normal' doesn't exist!
 Warning: uniform 'lightDirection' doesn't exist!
-depth 1
-Warning: uniform 'lightColor' doesn't exist!
-Warning: uniform 'MV' doesn't exist!
-Warning: uniform 'P' doesn't exist!
-Warning: uniform 'Normal' doesn't exist!
-Warning: uniform 'lightDirection' doesn't exist!
-depth 1
-Warning: uniform 'lightColor' doesn't exist!
-Warning: uniform 'MV' doesn't exist!
-Warning: uniform 'P' doesn't exist!
-Warning: uniform 'Normal' doesn't exist!
-Warning: uniform 'lightDirection' doesn't exist!
-depth 1
-Warning: uniform 'lightColor' doesn't exist!
-Warning: uniform 'MV' doesn't exist!
-Warning: uniform 'P' doesn't exist!
-Warning: uniform 'Normal' doesn't exist!
-Warning: uniform 'lightDirection' doesn't exist!
-depth 1
-Warning: uniform 'lightColor' doesn't exist!
-Warning: uniform 'MV' doesn't exist!
-Warning: uniform 'P' doesn't exist!
-Warning: uniform 'Normal' doesn't exist!
-Warning: uniform 'lightDirection' doesn't exist!
-depth 1
-depth 1
-depth 1
-depth 1
-Warning: uniform 'lightColor' doesn't exist!
-Warning: uniform 'MV' doesn't exist!
-Warning: uniform 'P' doesn't exist!
-Warning: uniform 'Normal' doesn't exist!
-Warning: uniform 'lightDirection' doesn't exist!
-depth 1
-depth 1
-depth 1
-depth 1
-depth 1
-depth 1
-depth 1
-depth 1
-depth 1
-depth 1
-depth 1
-depth 1
-depth 1
-depth 1
-depth 1
-depth 1
-Warning: uniform 'lightColor' doesn't exist!
-Warning: uniform 'Normal' doesn't exist!
-Warning: uniform 'lightDirection' doesn't exist!
-depth 0.894754
-picked 4
-depth 1
-depth 0.894685
-picked 4
-depth 0.889488
-picked 5
-Warning: uniform 'lightColor' doesn't exist!
-Warning: uniform 'Normal' doesn't exist!
-Warning: uniform 'lightDirection' doesn't exist!
-depth 1
-depth 1
-depth 0.536936
-picked 2
-Warning: uniform 'lightColor' doesn't exist!
-Warning: uniform 'Normal' doesn't exist!
-Warning: uniform 'lightDirection' doesn't exist!
-depth 1
-depth 1
-depth 1
-depth 0.0703718
-picked 3
-depth 0.865373
-picked 3
-depth 0.862431
-picked 4
-depth 0.841271
-picked 5
-depth 0.824313
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.895009
 picked 6
+depth 0.894937
+picked 5
+Warning: uniform 'jointIndex' doesn't exist!
 Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
 Warning: uniform 'Normal' doesn't exist!
 Warning: uniform 'lightDirection' doesn't exist!
-depth 1
-depth 1
-depth 0.703094
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.895434
+picked 6
+depth 0.894693
+picked 5
+depth 0.895701
+picked 5
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.895173
+picked 6
+depth 0.894681
+picked 5
+depth 0.89489
+picked 4
+depth 0.895022
 picked 3
-depth 0.706922
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894864
+picked 5
+depth 1
+depth 1
+depth 1
+depth 1
+depth 0.65715
+picked 5
+depth 1
+depth 0.644356
+picked 5
+depth 0.643626
+picked 4
+depth 1
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894758
+picked 5
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894888
+picked 5
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894737
+picked 5
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894945
+picked 3
+depth 0.901643
+picked 4
+depth 0.902502
+picked 4
+depth 1
+depth 0.528817
+picked 4
+depth 0.51811
+picked 3
+depth 0.556922
+picked 5
+depth 1
+depth 0.752445
+picked 2
+depth 0.752445
+picked 2
+depth 0.753387
+picked 2
+depth 1
+depth 0.746454
+picked 2
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894702
+picked 4
+depth 0.894737
+picked 5
+depth 0.894768
+picked 4
+depth 0.894853
+picked 3
+depth 0.894792
+picked 2
+depth 0.898491
+picked 6
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.895195
+picked 4
+depth 0.89142
+picked 5
+depth 0.892953
+picked 5
+depth 0.895348
+picked 2
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 0.895905
+picked 2
+depth 0.894972
+picked 2
+depth 0.894947
+picked 2
+depth 1
+depth 1
+depth 0.895082
+picked 3
+depth 0.895069
+picked 3
+depth 0.894764
+picked 3
+depth 0.89475
+picked 3
+depth 0.893115
+picked 4
+depth 0.885998
+picked 5
+depth 0.865678
+picked 6
+depth 1
+depth 1
+depth 1
+depth 1
+depth 0.494795
+picked 4
+depth 1
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 0.766891
+picked 3
+depth 0.774715
+picked 4
+depth 0.738623
+picked 5
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 0.235875
+picked 5
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894971
+picked 4
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894679
+picked 3
+depth 0.890775
+picked 4
+depth 0.891423
+picked 5
+depth 0.889418
+picked 6
+depth 0.891111
+picked 5
+depth 0.891828
+picked 4
+depth 0.8934
+picked 3
+depth 0.894959
+picked 2
+depth 0.892651
+picked 4
+depth 1
+depth 1
+depth 1
+depth 0.739202
+picked 4
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 1
+depth 1
+depth 0.837464
+picked 3
+depth 0.834064
+picked 4
+depth 0.829725
+picked 5
+depth 0.825475
+picked 6
+depth 0.82815
+picked 5
+depth 0.831442
+picked 4
+depth 0.834287
+picked 3
+depth 0.836195
+picked 3
+depth 0.834718
+picked 2
+depth 1
+depth 1
+depth 1
+depth 0.770073
+picked 2
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.895089
+picked 3
+depth 0.890256
+picked 4
+depth 0.884856
+picked 5
+depth 0.869979
+picked 6
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.895009
+picked 5
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894691
+picked 5
+[OpenGL Error] (1282) glUseProgram(m_program) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 54
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'MV' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+Warning: uniform 'MV' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.895229
+picked 3
+Warning: uniform 'MV' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894777
+picked 5
+depth 0.894719
+picked 3
+depth 1
+depth 0.879489
+picked 5
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.89474
+picked 3
+depth 0.894753
+picked 2
+depth 0.894861
+picked 5
+depth 1
+depth 0.895754
+picked 2
+depth 0.898617
+picked 5
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894775
+picked 4
+depth 1
+depth 0.89474
+picked 3
+depth 0.897868
+picked 0
+depth 0.899768
+picked 2
+depth 0.899084
+picked 2
+depth 0.906311
+picked 3
+depth 1
+depth 1
+depth 1
+depth 1
+depth 0.756845
+picked 3
+depth 0.742868
+picked 3
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894747
 picked 4
 Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
 Warning: uniform 'Normal' doesn't exist!
 Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
 depth 1
 depth 1
-depth 0.779852
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.89532
+picked 4
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894703
+picked 4
+depth 0.894704
 picked 3
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 1
+depth 0.821546
+picked 3
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 1
+depth 1
+depth 0.667988
+picked 3
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 0.482457
+picked 3
+depth 1
+depth 1
+depth 0.952301
+picked 4
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 1
+depth 0.768686
+picked 5
+depth 0.768396
+picked 3
+depth 0.778304
+picked 3
+depth 0.770347
+picked 5
+depth 0.801736
+picked 5
+depth 0.798653
+picked 5
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 1
+depth 1
+depth 1
+depth 0.725795
+picked 5
+depth 0.748375
+picked 5
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 1
+depth 1
+depth 1
+depth 0.643105
+picked 5
+depth 1
+depth 0.643914
+picked 5
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 1
+depth 1
+depth 0.614364
+picked 5
+depth 0.639624
+picked 5
+depth 0.661605
+picked 6
+depth 0.614301
+picked 3
+depth 0.628983
+picked 5
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894695
+picked 5
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.895119
+picked 5
+depth 0.894149
+picked 5
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894736
+picked 5
+depth 0.894683
+picked 3
+depth 1
+depth 1
+depth 0.750677
+picked 3
+depth 0.723776
+picked 5
+depth 0.729349
+picked 3
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894769
+picked 5
+depth 0.894966
+picked 3
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.89478
+picked 3
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 1
+depth 1
+depth 1
+depth 0.892262
+picked 3
+depth 0.889605
+picked 5
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 1
+depth 0.894395
+picked 3
+depth 1
+depth 0.880174
+picked 5
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 0.851831
+picked 3
+depth 0.850893
+picked 3
+depth 0.854897
+picked 5
+depth 1
+depth 0.854777
+picked 3
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 0.899884
+picked 3
+depth 0.911455
+picked 5
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 1
+depth 0.742526
+picked 3
+depth 0.771134
+picked 5
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894792
+picked 2
+depth 0.900996
+picked 4
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.895025
+picked 4
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894831
+picked 5
+depth 1
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894714
+picked 5
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 0.869935
+picked 4
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 0.902674
+picked 5

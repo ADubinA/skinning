@@ -144,11 +144,20 @@ using namespace glm;
 					shapes[i]->Draw(*shaders[shaderIndx]);
 
 				glm::dualquat quatDul =shapes[i]->getQuaternion();
-				Qrot[i] = glm::vec4(quatDul[0]);
-				Qtrans[i] = glm::vec4(quatDul[1]);
+
+				Qrot[i]   = glm::vec4(quatDul.real.x,
+									  quatDul.real.y, 
+									  quatDul.real.z, 
+									  quatDul.real.w);
+
+				Qtrans[i] = glm::vec4(quatDul.dual.x,
+									  quatDul.dual.y,
+									  quatDul.dual.z,
+									  quatDul.dual.w);
 
 			}
 		}
+
 		shaders[shaderIndx]->SetUniform4v("Qrot", Qrot);
 		shaders[shaderIndx]->SetUniform4v("Qtrans", Qtrans);
 
