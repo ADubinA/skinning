@@ -23,7 +23,7 @@ uniform vec4 Qtrans[10];
 
 void main (void) 
 {
-if(jointIndex.y>1&&jointIndex.y<7)
+if(jointIndex.y>1)
 {
   vec4 b_0 = Qrot[jointIndex.x] * weights.x +
 			 Qrot[jointIndex.y] * weights.y +

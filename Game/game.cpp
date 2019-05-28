@@ -57,23 +57,23 @@ void Game::createSnake(int num_of_joints)
 	BoundingBox* bodybox = shapes[body_index]->mesh->bvh.box;
 	BoundingBox* edgebox = shapes[edge_index]->mesh->bvh.box;
 	pickedShape = edge_index;
-	shapeTransformation(xGlobalTranslate, edgebox->static_center.x - bodybox->size.x);
-	shapeTransformation(yGlobalTranslate, edgebox->static_center.y);
-	shapeTransformation(zGlobalTranslate, edgebox->static_center.z);
+	shapeTransformation(xLocalTranslate, edgebox->static_center.x - bodybox->size.x);
+	shapeTransformation(yLocalTranslate, edgebox->static_center.y);
+	shapeTransformation(zLocalTranslate, edgebox->static_center.z);
 	for (int i = 0; i < num_of_joints; i++) {
 		//addShapeCopy(body_index, edge_index + i - 1, QUADS);
 		addShapeCopy(body_index,- 1, 5);
 		pickedShape = shapes.size() - 1;
-		shapeTransformation(xGlobalTranslate, bodybox->static_center.x + bodybox->size.x);
-		shapeTransformation(yGlobalTranslate, bodybox->static_center.y 	);
-		shapeTransformation(zGlobalTranslate, bodybox->static_center.z 	);
+		shapeTransformation(xLocalTranslate, bodybox->static_center.x + bodybox->size.x);
+		shapeTransformation(yLocalTranslate, bodybox->static_center.y 	);
+		shapeTransformation(zLocalTranslate, bodybox->static_center.z 	);
 		chainParents[pickedShape] = pickedShape-1;
 	}
 
 
 	addShape(tail, -1, 5);
 	pickedShape = shapes.size() - 1;
-	shapeTransformation(zLocalRotate, 180);
+	//shapeTransformation(zLocalRotate, 180);
 	shapeTransformation(xGlobalTranslate, edgebox->static_center.x +  bodybox->size.x);
 	//shapeTransformation(xLocalTranslate,  -2*bodybox->size.x);
 	shapeTransformation(yGlobalTranslate, edgebox->static_center.y);
