@@ -23,7 +23,7 @@ uniform vec4 Qtrans[10];
 
 void main (void) 
 {
-if(jointIndex.y>4&&jointIndex.y<6)
+if(jointIndex.y>1&&jointIndex.y<7)
 {
   vec4 b_0 = Qrot[jointIndex.x] * weights.x +
 			 Qrot[jointIndex.y] * weights.y +
@@ -75,11 +75,11 @@ if(jointIndex.y>4&&jointIndex.y<6)
   color0 = weights;
   
   normal0 = (Normal * Qmat * vec4(normal, 0.0)).xyz;
-  gl_Position =  P  * MV *Qmat * vec4(position, 1.0);
+  gl_Position =  P  *Qmat * vec4(position, 1.0);
   }
   else
   {
 	normal0 = (Normal * vec4(normal, 0.0)).xyz;
-	gl_Position =P *  MV * vec4(position, 1.0);
+	gl_Position =P *MV* vec4(position, 1.0);
   }
 }

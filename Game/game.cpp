@@ -42,12 +42,13 @@ void Game::addShape(Bezier1D * curve, int parent, unsigned int mode)
 void Game::createSnake(int num_of_joints)
 {
 	Bezier1D * body = new Bezier1D(BODY);
-	Bezier1D * edge = new Bezier1D(EDGE);
+	Bezier1D * head = new Bezier1D(HEAD);
+	Bezier1D * tail = new Bezier1D(TAIL);
 	addShape(body, -1, 5);
 	int body_index = shapes.size() - 1;
 	shapes[shapes.size() - 1]->Hide();
 
-	addShape(edge, -1, 5);
+	addShape(head, -1, 5);
 	int edge_index = shapes.size() - 1;
 
 	
@@ -63,18 +64,18 @@ void Game::createSnake(int num_of_joints)
 		//addShapeCopy(body_index, edge_index + i - 1, QUADS);
 		addShapeCopy(body_index,- 1, 5);
 		pickedShape = shapes.size() - 1;
-		shapeTransformation(xGlobalTranslate, bodybox->static_center.x + bodybox->size.x	 );
+		shapeTransformation(xGlobalTranslate, bodybox->static_center.x + bodybox->size.x);
 		shapeTransformation(yGlobalTranslate, bodybox->static_center.y 	);
 		shapeTransformation(zGlobalTranslate, bodybox->static_center.z 	);
 		chainParents[pickedShape] = pickedShape-1;
 	}
 
 
-	addShapeCopy(edge_index, - 1, 5);
+	addShape(tail, -1, 5);
 	pickedShape = shapes.size() - 1;
 	shapeTransformation(zLocalRotate, 180);
 	shapeTransformation(xGlobalTranslate, edgebox->static_center.x +  bodybox->size.x);
-	shapeTransformation(xLocalTranslate,  -2*bodybox->size.x);
+	//shapeTransformation(xLocalTranslate,  -2*bodybox->size.x);
 	shapeTransformation(yGlobalTranslate, edgebox->static_center.y);
 	shapeTransformation(zGlobalTranslate, edgebox->static_center.z);
 	chainParents[pickedShape] = pickedShape - 1;
@@ -163,7 +164,7 @@ void Game::Update(const glm::mat4 &MV, const glm::mat4 &P, const glm::mat4 &Norm
 	s->SetUniformMat4f("MV", MV);
 	s->SetUniformMat4f("P", P);	
 	
-	s->SetUniform3i("jointIndex", indx - 1, indx, indx + 1);
+	s->SetUniform3i("jointIndex", indx-1 , indx, indx+1 );
 	//s->SetUniformMat4f("MVP", P*MV);
 	s->SetUniformMat4f("Normal", Normal);
 	s->SetUniform4f("lightDirection", 0.0f , 0.0f, -1.0f, 1.0f);

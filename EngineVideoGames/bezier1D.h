@@ -2,7 +2,9 @@
 #include "Mesh.h"
 #include "glm/gtc/matrix_transform.hpp"
 #define BODY 0
-#define EDGE 1
+#define HEAD 1
+#define TAIL 2
+
 class Bezier1D
 {
 	//each line in the matrix represents x,y,z,w of a control point
