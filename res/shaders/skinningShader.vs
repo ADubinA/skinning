@@ -74,7 +74,7 @@ if(jointIndex.y>0)
   texCoord0 = texCoords;
   color0 = weights;
   
-  normal0 = (Normal * Qmat * vec4(normal, 0.0)).xyz;
+  normal0 = ( Qmat * vec4(normal, 0.0)).xyz;
   gl_Position =  P  *Qmat * vec4(position.x+jointIndex.y*0.9-3,position.y,position.z, 1.0);
   }
   else

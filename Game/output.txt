@@ -2047,3 +2047,52 @@ picked 2
 depth 0.434157
 picked 2
 depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 1
+depth 0.887118
+picked 5
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 0.897068
+picked 4
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894742
+picked 3
+depth 1
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 0.894315
+picked 3
+depth 0.904116
+picked 5
+depth 0.894476
+picked 2
+depth 0.906782
+picked 5
+depth 0.905498
+picked 4
+depth 0.897508
+picked 3
+depth 1
