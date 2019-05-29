@@ -23,7 +23,7 @@ uniform vec4 Qtrans[10];
 
 void main (void) 
 {
-if(jointIndex.y>1)
+if(jointIndex.y>0)
 {
   vec4 b_0 = Qrot[jointIndex.x] * weights.x +
 			 Qrot[jointIndex.y] * weights.y +
@@ -35,7 +35,6 @@ if(jointIndex.y>1)
 
   // normalize b_0 and b_E
   float b_norm = length(b_0);
- 
   vec4 c_0 = b_0 / b_norm;
   vec4 c_E = b_E / b_norm;
   
@@ -48,6 +47,7 @@ if(jointIndex.y>1)
   float y_E = c_E[2];
   float z_E = c_E[3];
   float w_E = c_E[0];
+
 
   float t0 = 2.0 * (-w_E * x_0 + x_E * w_0 - y_E * z_0 + z_E * y_0);
   float t1 = 2.0 * (-w_E * y_0 + x_E * z_0 + y_E * w_0 - z_E * x_0);
@@ -75,7 +75,7 @@ if(jointIndex.y>1)
   color0 = weights;
   
   normal0 = (Normal * Qmat * vec4(normal, 0.0)).xyz;
-  gl_Position =  P  *Qmat * vec4(position, 1.0);
+  gl_Position =  P  *Qmat * vec4(position.x+jointIndex.y*0.9-3,position.y,position.z, 1.0);
   }
   else
   {

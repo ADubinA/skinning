@@ -143,30 +143,19 @@ using namespace glm;
 				else 
 					shapes[i]->Draw(*shaders[shaderIndx]);
 
-				glm::mat3x4 small_tran = glm::mat3x4(MV1[0], MV1[1], MV1[2]);
-				small_tran[0][3] = MV1[3][0];
-				small_tran[1][3] = MV1[3][1];
-				small_tran[2][3] = MV1[3][2];
-				//glm::mat3x4 small_tran = glm::mat3x4(transpose(MV1));
+
+				glm::mat3x4 small_tran = glm::mat3x4(transpose(MV1));
 				glm::dualquat quatDul = glm::dualquat_cast(small_tran);
-				//Qrot[i]   = glm::vec4(quatDul.real.x,
-				//					  quatDul.real.y,
-				//					  quatDul.real.z,
-				//					  quatDul.real.w);
 
-				//Qtrans[i] = glm::vec4(quatDul.dual.x,
-				//					  quatDul.dual.y,
-				//					  quatDul.dual.z,
-				//					  quatDul.dual.w);
 
-				Qrot[i] = glm::vec4(quatDul.real.w,
-									quatDul.real.x,
-									quatDul.real.y,
-									quatDul.real.z);
+				Qrot[i]   = glm::vec4(	quatDul.real.w,
+										quatDul.real.x,
+										quatDul.real.y,
+										quatDul.real.z);
 
-				Qtrans[i] = glm::vec4(quatDul.dual.w,
+				Qtrans[i] = glm::vec4(	quatDul.dual.w,
 					quatDul.dual.x,
-					quatDul.dual.y,
+						quatDul.dual.y,
 					quatDul.dual.z);
 
 			}
