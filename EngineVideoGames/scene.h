@@ -33,10 +33,19 @@ public:
 	
 	void addShapeFromFile(const std::string& fileName,int parent,unsigned int mode);
 	virtual void addShape(int type,int parent,unsigned int mode);
+	virtual	void addShape(Bezier1D * curve, int parent, unsigned int mode);
+
 	void addShapeCopy(int indx,int parent,unsigned int mode);
 	void collisionDetection();
 	void addShader(const std::string& fileName);
 	void ZeroShapesTrans();
+	int get_picked_shape();
+	void set_picked_shape(int newPicked);
+	int get_num_of_shapes();
+	void hide_shape(int indx);
+	Shape* get_shape(int indx);
+	std::vector<int> get_chain_parents();
+	void set_chain_parents(int child, int parent);
 
 	//virtual void Update( glm::mat4 MVP ,glm::mat4 *jointTransforms,const int length,const int  shaderIndx);//
 

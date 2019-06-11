@@ -64,6 +64,10 @@ using namespace glm;
 		shapes.push_back(new Shape(type,mode));
 	}
 
+	void Scene::addShape(Bezier1D * curve, int parent, unsigned int mode)
+	{
+	}
+
 	void Scene::addShapeCopy(int indx,int parent,unsigned int mode)
 	{
 		chainParents.push_back(parent);
@@ -501,6 +505,44 @@ using namespace glm;
 		//	shapes[i]->zeroRot(true);
 		}
 	}
+
+	int Scene::get_picked_shape()
+	{
+		return pickedShape;
+	}
+
+	void Scene::set_picked_shape(int newPicked)
+	{
+		pickedShape = newPicked;
+	}
+
+	int Scene::get_num_of_shapes()
+	{
+		return this->shapes.size();
+	}
+
+	void Scene::hide_shape(int indx)
+	{
+		shapes[indx]->Hide();
+
+	}
+
+	Shape* Scene::get_shape(int indx)
+	{
+		return shapes[indx];
+	}
+
+	std::vector<int> Scene::get_chain_parents()
+	{
+		return this->chainParents;
+	}
+
+	void Scene::set_chain_parents(int child, int parent)
+	{
+		chainParents[child] = parent;
+	}
+
+
 
 	void Scene::ReadPixel()
 	{

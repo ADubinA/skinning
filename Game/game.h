@@ -1,7 +1,7 @@
 #pragma once
 #include "scene.h"
 #include "bezier1D.h"
-
+#include "snak.h"
 class Game : public Scene
 {
 	struct TransStruct
@@ -20,7 +20,7 @@ public:
 	Game(glm::vec3 position,float angle,float hwRelation,float near, float far);
 	void Init();
 	void addShape(int type,int parent,unsigned int mode);
-	void Game::addShape(Bezier1D * curve, int parent, unsigned int mode);
+	void addShape(Bezier1D * curve, int parent, unsigned int mode);
 
 	void createSnake(int num_of_joints);
 
