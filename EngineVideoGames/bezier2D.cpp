@@ -154,7 +154,7 @@ glm::vec3 Bezier2D::calcWeight(int segmentT, int segmentS, float t, float s)
 	else
 		f1 = (1 - 4.0f*(1 - t)*t)*(1 - t) / 2.0f + (1 - 4.0f*(1 - t)*t)*t / 2.0f;
 	float f2 = (2.0f*(1 - t)*(t + 0.0) + 0.5f);
-	return glm::normalize(glm::vec3(f1, f2, f3));
+	return glm::vec3(f1, f2, f3);
 }
 
 

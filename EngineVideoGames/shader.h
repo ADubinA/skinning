@@ -4,10 +4,16 @@
 #include <string>
 #include <unordered_map>
 #include "glm\glm.hpp"
-
+enum Shaders_type
+{
+	Basic,
+	Picking,
+	Skinning
+};
 class Shader
 {
 public:
+
 	Shader(const std::string& fileName);
 
 	void Bind() const;

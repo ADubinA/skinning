@@ -1,15 +1,32 @@
 #pragma once
 #include "bezier1D.h"
 #include "scene.h"
-class snak
+class Snak
 
 
 
 {
+private:
+	int head_indx;
+	
+	int num_of_links;
+	glm::vec3 velocity;
+	bool is_dead;
+	Scene* scn;
+	
 public:
-	void createSnake(int num_of_joints, Scene* scn);
+	int tail_indx;
+	enum Direction
+	{
+		Up,
+		Down,
+		Left,
+		Right
+	};
+	void createSnake();
+	void move(Direction direction);
 
-	snak();
-	~snak();
+	Snak(int num_of_joints, Scene* scn);
+	~Snak();
 };
 

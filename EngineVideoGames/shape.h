@@ -15,6 +15,8 @@ private:
 	bool toRender;
 
 public:
+
+	Shaders_type shader_indx;
 	MeshConstructor *mesh;
 	unsigned int mode;
 

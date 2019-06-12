@@ -16,6 +16,7 @@ class Game : public Scene
 	Bezier1D *curve;
 	void Game::CreateBoundingBoxes(BVH *box_tree, int parent, int level);
 public:
+	Snak* snak;
 	Game(void);
 	Game(glm::vec3 position,float angle,float hwRelation,float near, float far);
 	void Init();
@@ -25,7 +26,7 @@ public:
 	void createSnake(int num_of_joints);
 
 //	void Update( glm::mat4 MVP ,glm::mat4 *jointTransforms,const int length,const int  shaderIndx);
-	void Update(const glm::mat4 &MV, const glm::mat4 &P ,const glm::mat4 &Normal, int indx, Shader *s);
+	void Update(const glm::mat4 &MV, const glm::mat4 &P ,const glm::mat4 &Normal, int indx, Shader *s, Shaders_type s_index);
 	void ControlPointUpdate();
 	void WhenRotate();
 	void WhenTranslate();

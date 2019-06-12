@@ -39,49 +39,6 @@ void Game::addShape(Bezier1D * curve, int parent, unsigned int mode)
 
 }
 
-//void Game::createSnake(int num_of_joints)
-//{
-//	Bezier1D * body = new Bezier1D(BODY);
-//	Bezier1D * head = new Bezier1D(HEAD);
-//	Bezier1D * tail = new Bezier1D(TAIL);
-//	addShape(body, -1, 5);
-//	int body_index = shapes.size() - 1;
-//	shapes[shapes.size() - 1]->Hide();
-//
-//	addShape(head, -1, 5);
-//	int edge_index = shapes.size() - 1;
-//
-//	
-//	
-//
-//	BoundingBox* bodybox = shapes[body_index]->mesh->bvh.box;
-//	BoundingBox* edgebox = shapes[edge_index]->mesh->bvh.box;
-//	pickedShape = edge_index;
-//	shapeTransformation(xGlobalTranslate, edgebox->static_center.x - bodybox->size.x);
-//	shapeTransformation(yGlobalTranslate, edgebox->static_center.y);
-//	shapeTransformation(zGlobalTranslate, edgebox->static_center.z);
-//	for (int i = 0; i < num_of_joints; i++) {
-//		//addShapeCopy(body_index, edge_index + i - 1, QUADS);
-//		addShapeCopy(body_index,- 1, 5);
-//		pickedShape = shapes.size() - 1;
-//		shapeTransformation(xGlobalTranslate, bodybox->static_center.x + bodybox->size.x);
-//		shapeTransformation(yGlobalTranslate, bodybox->static_center.y 	);
-//		shapeTransformation(zGlobalTranslate, bodybox->static_center.z 	);
-//		chainParents[pickedShape] = pickedShape-1;
-//	}
-//
-//
-//	addShape(tail, -1, 5);
-//	pickedShape = shapes.size() - 1;
-//	//shapeTransformation(zLocalRotate, 180);
-//	shapeTransformation(xGlobalTranslate, edgebox->static_center.x +  bodybox->size.x);
-//	//shapeTransformation(xLocalTranslate,  -2*bodybox->size.x);
-//	shapeTransformation(yGlobalTranslate, edgebox->static_center.y);
-//	shapeTransformation(zGlobalTranslate, edgebox->static_center.z);
-//	chainParents[pickedShape] = pickedShape - 1;
-//
-//
-//}
 
 void Game::CreateBoundingBoxes(BVH * box_tree, int parent, int level)
 {
@@ -123,8 +80,8 @@ void Game::Init()
 	std::vector<TransStruct> data;
 	addShape(Axis,-1,LINES);
 	//createSnake(3);
-	snak snak;
-	snak.createSnake(3, this);
+	this->snak = new Snak(3, this);
+	this->snak->createSnake();
 
 	//translate all scene away from camera
 	myTranslate(glm::vec3(0, 0, -10), 0);
@@ -134,6 +91,17 @@ void Game::Init()
 	shapeTransformation(yScale, 10);
 	shapeTransformation(xScale, 10);
 	shapeTransformation(zScale, 10);
+
+	addShape(Cube, -1, TRIANGLES);
+	pickedShape = this->shapes.size()-1;
+
+	shapeTransformation(yGlobalTranslate, 5);
+	
+
+	addShape(Cube, -1, TRIANGLES);
+	pickedShape = this->shapes.size() - 1;
+	shapeTransformation(zGlobalTranslate, -5);
+	
 
 	ReadPixel();
 	pickedShape = -1;
@@ -157,17 +125,34 @@ void Game::Init()
 	
 }
 
-void Game::Update(const glm::mat4 &MV, const glm::mat4 &P, const glm::mat4 &Normal, int indx, Shader *s)
+void Game::Update(const glm::mat4 &MV, const glm::mat4 &P, const glm::mat4 &Normal, int indx, Shader *s, Shaders_type s_indx)
 {
-	int r = ((pickedShape+1) & 0x000000FF) >>  0;
-	int g = ((pickedShape+1) & 0x0000FF00) >>  8;
-	int b = ((pickedShape+1) & 0x00FF0000) >> 16;
 	s->Bind();
-	s->SetUniformMat4f("MV", MV);
-	s->SetUniformMat4f("P", P);	
-	
-	s->SetUniform3i("jointIndex", indx-1 , indx, indx+1 );
-	//s->SetUniformMat4f("MVP", P*MV);
+	int r = ((pickedShape + 1) & 0x000000FF) >> 0;
+	int g = ((pickedShape + 1) & 0x0000FF00) >> 8;
+	int b = ((pickedShape + 1) & 0x00FF0000) >> 16;
+
+	switch (s_indx)
+	{
+	case Basic:
+		s->SetUniformMat4f("MVP", P*MV);
+
+		break;
+	case Skinning:
+		s->SetUniformMat4f("MV", MV);
+		s->SetUniformMat4f("P", P);
+		if (snak->tail_indx != indx)
+		{
+			s->SetUniform3i("jointIndex", indx - 1, indx, indx + 1);
+		}
+		else
+		{
+			s->SetUniform3i("jointIndex", indx - 1, indx, indx);
+		}
+		break;
+	default:
+		break;
+	}
 	s->SetUniformMat4f("Normal", Normal);
 	s->SetUniform4f("lightDirection", 0.0f , 0.0f, -1.0f, 1.0f);
 	s->SetUniform4f("lightColor",r/255.0f, g/255.0f, b/255.0f,1.0f);	
@@ -194,13 +179,7 @@ void Game::Motion()
 	if(isActive)
 	{
 		int p = pickedShape;
-		if (this->tmp_test_mode)
-		{
-			pickedShape = 1;
-			shapeTransformation(zLocalRotate, 0.45);
-			pickedShape = 3;
-			shapeTransformation(yGlobalTranslate, -0.2);
-		}
+		//this->snak->move(glm::vec3(-0.001, 0.0, 0.0));
 		pickedShape = p;
 	}
 }

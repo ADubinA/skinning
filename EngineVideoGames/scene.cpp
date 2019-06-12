@@ -140,34 +140,30 @@ using namespace glm;
 				MV1 = MV1 * shapes[i]->makeTransScale(mat4(1));
 				Normal1 = Normal1 * shapes[i]->makeTrans();
 
-				Update(MV1,P,Normal1 ,i,shaders[shaderIndx]);
-
-				if(shaderIndx == 1)
-					shapes[i]->Draw(*shaders[shaderIndx]);
-				else 
-					shapes[i]->Draw(*shaders[shaderIndx]);
-
+				Update(MV1,P,Normal1 ,i,shaders[shapes[i]->shader_indx], shapes[i]->shader_indx);
+				shapes[i]->Draw(*shaders[shapes[i]->shader_indx]);
 
 				glm::mat3x4 small_tran = glm::mat3x4(transpose(MV1));
 				glm::dualquat quatDul = glm::dualquat_cast(small_tran);
 
 
-				Qrot[i]   = glm::vec4(	quatDul.real.w,
+				Qrot[i] = glm::vec4(	quatDul.real.w,
 										quatDul.real.x,
 										quatDul.real.y,
 										quatDul.real.z);
 
 				Qtrans[i] = glm::vec4(	quatDul.dual.w,
-					quatDul.dual.x,
-						quatDul.dual.y,
-					quatDul.dual.z);
+										quatDul.dual.x,
+										quatDul.dual.y,
+										quatDul.dual.z);
+				
 
 			}
 		}
-
-		shaders[shaderIndx]->SetUniform4v("Qrot", Qrot);
-		shaders[shaderIndx]->SetUniform4v("Qtrans", Qtrans);
-
+		shaders[Skinning]->Bind();
+		shaders[Skinning]->SetUniform4v("Qrot", Qrot);
+		shaders[Skinning]->SetUniform4v("Qtrans", Qtrans);
+		
 		pickedShape = p;
 	}
 

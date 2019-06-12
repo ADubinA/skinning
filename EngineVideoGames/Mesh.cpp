@@ -82,6 +82,7 @@ IndexedModel CubeTriangles()
 							  23, 22, 20
 	                          };
 
+
 	    IndexedModel model;
 	
 	for(unsigned int i = 0; i < 24; i++)
@@ -93,7 +94,7 @@ IndexedModel CubeTriangles()
 	}
 	for(unsigned int i = 0; i < 36; i++)
         model.indices.push_back(indices[i]);
-	
+	model.weights.push_back(glm::vec3(0));
 	return model;
 }
 

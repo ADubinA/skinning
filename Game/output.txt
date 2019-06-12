@@ -2096,3 +2096,298 @@ picked 4
 depth 0.897508
 picked 3
 depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 1
+depth 0.891155
+picked 2
+depth 0.879121
+picked 4
+depth 1
+depth 0.92933
+picked 3
+depth 1
+depth 1
+depth 0.929094
+picked 4
+depth 0.93305
+picked 6
+depth 1
+depth 1
+depth 1
+depth 0.9369
+picked 6
+depth 0.93278
+picked 2
+depth 1
+depth 1
+depth 1
+depth 1
+depth 0.913277
+picked 6
+depth 0.918513
+picked 5
+depth 1
+depth 0.933243
+picked 3
+depth 0.933818
+picked 3
+depth 0.933358
+picked 3
+depth 0.938044
+picked 5
+depth 0.934144
+picked 3
+depth 0.937839
+picked 4
+depth 1
+depth 0.934078
+picked 3
+depth 0.933249
+picked 5
+depth 1
+depth 0.933438
+picked 4
+depth 1
+depth 1
+depth 0.926133
+picked 5
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 0.925004
+picked 5
+depth 1
+depth 1
+depth 1
+depth 0.932304
+picked 3
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894768
+picked 3
+depth 0.889735
+picked 4
+depth 0.880151
+picked 6
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.895629
+picked 3
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894821
+picked 3
+depth 0.889186
+picked 4
+depth 0.888575
+picked 5
+depth 0.885918
+picked 6
+depth 0.896061
+picked 2
+depth 1
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894768
+picked 3
+depth 0.895107
+picked 4
+depth 1
+depth 1
+depth 1
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.895213
+picked 5
+depth 1
+depth 1
+depth 1
+depth 1
+depth 0.894728
+picked 3
+depth 1
+depth 0.87464
+picked 5
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.894679
+picked 4
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 0.863523
+picked 4
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 1
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'Normal' doesn't exist!
+Warning: uniform 'lightDirection' doesn't exist!
+Warning: uniform 'Qrot' doesn't exist!
+Warning: uniform 'Qtrans' doesn't exist!
+depth 1
+depth 0.996248
+picked 7
+depth 0.997184
+picked 7
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 1
+depth 0.997624
+picked 7
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUniform4fv(GetUniformLocation(name), 20, &value[0][0]) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 146
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUniform4fv(GetUniformLocation(name), 20, &value[0][0]) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 146
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUniform4fv(GetUniformLocation(name), 20, &value[0][0]) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 146
+Warning: uniform 'jointIndex' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUniform4fv(GetUniformLocation(name), 20, &value[0][0]) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 146
+Warning: uniform 'MVP' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUniform4fv(GetUniformLocation(name), 20, &value[0][0]) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 146
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUniform4fv(GetUniformLocation(name), 20, &value[0][0]) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 146
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUniform4fv(GetUniformLocation(name), 20, &value[0][0]) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 146
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUniform4fv(GetUniformLocation(name), 20, &value[0][0]) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 146
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUniform4fv(GetUniformLocation(name), 20, &value[0][0]) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 146
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUniform4fv(GetUniformLocation(name), 20, &value[0][0]) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 146
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUniform4fv(GetUniformLocation(name), 20, &value[0][0]) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 146
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUniform4fv(GetUniformLocation(name), 20, &value[0][0]) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 146
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUniform4fv(GetUniformLocation(name), 20, &value[0][0]) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 146
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUniform4fv(GetUniformLocation(name), 20, &value[0][0]) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 146
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+depth 0.895494
+picked 12451839
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUniform4fv(GetUniformLocation(name), 20, &value[0][0]) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 146
+Warning: uniform 'lightColor' doesn't exist!
+[OpenGL Error] (1282) glUniform4fv(GetUniformLocation(name), 20, &value[0][0]) c:\users\karolina\desktop\skinning\collision-detection\enginevideogames\enginevideogames\shader.cpp 146
+Warning: uniform 'lightColor' doesn't exist!
+depth 0.895007
+picked 14942207
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+depth 0.956938
+Warning: uniform 'lightColor' doesn't exist!
+depth 1
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+depth 1
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+Warning: uniform 'lightColor' doesn't exist!
+depth 1

@@ -13,6 +13,8 @@ Shape::Shape(const Shape& shape,unsigned int mode)
 	isCopy = true;
 	this->mode = mode;
 	toRender = true;
+	this->shader_indx = shape.shader_indx;
+	
 }
 
 Shape::Shape(const std::string& fileName, unsigned int mode){
@@ -20,6 +22,7 @@ Shape::Shape(const std::string& fileName, unsigned int mode){
 	isCopy = false;
 	this->mode = mode;
 	toRender = true;
+	this->shader_indx = Basic;
 }
 
 Shape::Shape(const int SimpleShapeType,unsigned int mode)
@@ -29,6 +32,7 @@ Shape::Shape(const int SimpleShapeType,unsigned int mode)
 	this->mode = mode;
 	isCopy = false;
 	toRender = true;
+	this->shader_indx = Basic;
 }
 
 Shape::Shape(Bezier1D *curve, unsigned int xResolution,unsigned int yResolution,bool is2D,unsigned int mode)
@@ -37,6 +41,7 @@ Shape::Shape(Bezier1D *curve, unsigned int xResolution,unsigned int yResolution,
 	this->mode = mode;
 	isCopy = false;
 	toRender = true;
+	this->shader_indx = Skinning;
 }
 
 

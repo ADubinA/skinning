@@ -40,20 +40,17 @@
 						scn->Deactivate();
 				break;
 					case GLFW_KEY_RIGHT:
-					//scn->shapeTransformation(scn->zGlobalRotate,-20.1f);
-						scn->shapeTransformation(scn->xGlobalTranslate,0.1);
-						//scn->shapeTransformation(scn->yLocalTranslate,0.1);
-						//scn->shapeTransformation(scn->zLocalTranslate,0.1);
+					scn->snak->move(scn->snak->Right);
 					break;
 				case GLFW_KEY_LEFT:
-					scn->shapeTransformation(scn->xGlobalTranslate, -0.1);
+					scn->snak->move(scn->snak->Left);
 
 					break;
 				case GLFW_KEY_UP:
-					scn->shapeTransformation(scn->yGlobalTranslate, 0.1);
+					scn->snak->move(scn->snak->Up);
 					break;
 				case GLFW_KEY_DOWN:
-					scn->shapeTransformation(scn->yGlobalTranslate, -0.1);
+					scn->snak->move(scn->snak->Down);
 					break;
 				case GLFW_KEY_S:
 					scn->tmp_test_mode = !scn->tmp_test_mode;
