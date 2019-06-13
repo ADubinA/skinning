@@ -55,6 +55,17 @@
 				case GLFW_KEY_S:
 					scn->tmp_test_mode = !scn->tmp_test_mode;
 					break;
+				case GLFW_KEY_C:
+					if (scn->get_camera_indx() == FirstPersonCamera)
+					{
+						scn->set_camera_indx(ThirdPersonCamera);
+					}
+					else
+					{
+						scn->set_camera_indx(FirstPersonCamera);
+
+					}
+					break;
 			default:
 				break;
 			}

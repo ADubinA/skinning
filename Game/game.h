@@ -23,8 +23,6 @@ public:
 	void addShape(int type,int parent,unsigned int mode);
 	void addShape(Bezier1D * curve, int parent, unsigned int mode);
 
-	void createSnake(int num_of_joints);
-
 //	void Update( glm::mat4 MVP ,glm::mat4 *jointTransforms,const int length,const int  shaderIndx);
 	void Update(const glm::mat4 &MV, const glm::mat4 &P ,const glm::mat4 &Normal, int indx, Shader *s, Shaders_type s_index);
 	void ControlPointUpdate();
@@ -33,4 +31,3 @@ public:
 	void Motion();
 	~Game(void);
 };
-

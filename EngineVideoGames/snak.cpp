@@ -9,7 +9,7 @@ Snak::Snak(int num_of_joints, Scene* scn)
 	this->head_indx = 0;
 	this->tail_indx = 0;
 	this->is_dead = 1;
-	this->velocity = glm::vec3 (1,0,0);
+	this->velocity = glm::vec3 (-1,0,0);
 	this->scn = scn;
 
 }
@@ -63,18 +63,20 @@ void Snak::move(Direction direction)
 	switch (direction)
 	{
 	case Up:
-		this->velocity =glm::vec3( glm::rotate(0.1f, glm::vec3(0, 0, 1))*glm::vec4(this->velocity,0));
+		this->velocity =glm::vec3( glm::rotate(5.0f, glm::vec3(0, 0, 1))*glm::vec4(this->velocity,0));
 		break;
 	case Down:
-		this->velocity = glm::vec3(glm::rotate(0.1f, glm::vec3(0, 0, -1))*glm::vec4(this->velocity, 0));
+		this->velocity = glm::vec3(glm::rotate(5.0f, glm::vec3(0, 0, -1))*glm::vec4(this->velocity, 0));
 
 		break;
 	case Left:
-		this->velocity = glm::vec3(glm::rotate(0.1f, glm::vec3(0, 1, 0))*glm::vec4(this->velocity, 0));
+		this->velocity = glm::vec3(glm::rotate(5.0f, glm::vec3(0, 1, 0))*glm::vec4(this->velocity, 0));
 
 		break;
 	case Right:
-		this->velocity = glm::vec3(glm::rotate(0.1f, glm::vec3(0, -1, 0))*glm::vec4(this->velocity, 0));
+		this->velocity = glm::vec3(glm::rotate(5.0f, glm::vec3(0, -1, 0))*glm::vec4(this->velocity, 0));
+		break;
+	case Forward:
 
 		break;
 	default:
@@ -86,10 +88,21 @@ void Snak::move(Direction direction)
 	scn->shapeTransformation(scn->xGlobalTranslate,0.01*velocity.x);
 	scn->shapeTransformation(scn->yGlobalTranslate,0.01*velocity.y);
 	scn->shapeTransformation(scn->zGlobalTranslate,0.01*velocity.z);
-
-
+	for (int i = ThirdPersonCamera; i<=FirstPersonCamera;i=i+1)
+	{
+		Camera *cam = scn->get_camera(i);
+		cam->TranslateCamera(glm::vec3(0.01*velocity.x,
+			0.01*velocity.y,
+			0.01*velocity.z));
+	}
 
 	scn->set_picked_shape(tmp_picked_shape);
+}
+
+glm::vec3 Snak::get_head_pos()
+{
+	BoundingBox *head_box = scn->get_shape(this->head_indx)->mesh->bvh.box;
+	return head_box->center - head_box->size;
 }
 
 Snak::~Snak()

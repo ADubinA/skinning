@@ -27,7 +27,7 @@ using namespace glm;
 		//indicesSize = sizeof(indices)/sizeof(indices[0]) ; 
 		glLineWidth(3);
 		
-		cameras.push_back(new Camera(vec3(0,0,1.0f),60.0f,1.0f,0.1f,100.0f));
+		cameras.push_back(new Camera(vec3(0,0,1.0f)));
 		pickedShape = -1;
 		depth = 0;
 		cameraIndx = 0;
@@ -42,7 +42,7 @@ using namespace glm;
 		//
 		//indicesSize = sizeof(indices)/sizeof(indices[0]) ; 
 		glLineWidth(6);
-		cameras.push_back(new Camera(position,angle,hwRelation,near,far));
+		cameras.push_back(new Camera(position));
 	//	axisMesh = new Shape(axisVertices,sizeof(axisVertices)/sizeof(axisVertices[0]),axisIndices, sizeof(axisIndices)/sizeof(axisIndices[0]));
 		pickedShape = -1;
 		depth = 0;
@@ -114,11 +114,11 @@ using namespace glm;
 		return shapes[pickedShape]->makeTrans();
 	}
 
-	void Scene::Draw(int shaderIndx,int cameraIndx,bool debugMode)
+	void Scene::Draw(int shaderIndx,bool debugMode)
 	{
 		glm::mat4 Normal = makeTrans();
 		glm::mat4 MV =   Normal;
-		glm::mat4 P = cameras[0]->GetViewProjection() ;
+		glm::mat4 P = cameras[cameraIndx]->GetViewProjection() ;
 		glm::vec4 Qrot[NUM_OF_SHAPES];
 		glm::vec4 Qtrans[NUM_OF_SHAPES];
 		int p = pickedShape;
@@ -391,6 +391,23 @@ using namespace glm;
 		std::cout<<"end ("<<posEnd.x <<", "<<posEnd.y<<", "<<posEnd.z<<")"<<std::endl;
 		shapes[i]->myTranslate((posStart-posEnd),0);
 	}
+
+	Camera* Scene::get_camera(int indx)
+	{
+		return this->cameras[indx];
+	}
+
+	int Scene::get_camera_indx()
+	{
+		return this->cameraIndx;
+	}
+
+	void Scene::set_camera_indx(int i)
+	{
+		this->cameraIndx = i;
+	}
+
+	
 	
 	void Scene::resize(int width,int height)
 	{
@@ -403,7 +420,7 @@ using namespace glm;
 		//float depth;
 		glClearColor(0.0,0.0,0.0,0.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		Draw(1,0,false); 
+		Draw(1,false); 
 						
 		GLint viewport[4];  
 		unsigned char data[4];

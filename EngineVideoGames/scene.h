@@ -6,13 +6,13 @@
 #include <vector>
 #define NUM_OF_SHAPES 10
 
-
+enum camera_mode { ThirdPersonCamera, FirstPersonCamera };
 class Scene : public MovableGLM
 {
 
 public:
 	bool tmp_test_mode = false; // TODO remove after tamir check the work is good~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+	
 	enum axis{xAxis,yAxis,zAxis};
 	enum transformations{xLocalTranslate,yLocalTranslate,zLocalTranslate,xGlobalTranslate,yGlobalTranslate,zGlobalTranslate,
 		xLocalRotate,yLocalRotate,zLocalRotate,xGlobalRotate,yGlobalRotate,zGlobalRotate,xScale,yScale,zScale,xCameraTranslate,yCameraTranslate,zCameraTranslate};
@@ -54,7 +54,7 @@ public:
 	virtual void WhenTranslate(){};
 	virtual void WhenRotate(){};
 	virtual void Motion(){};
-	virtual void Draw(int shaderIndx,int cameraIndx,bool debugMode);
+	virtual void Draw(int shaderIndx,bool debugMode);
 
 	glm::mat4 GetViewProjection(int indx) const; 
 	glm::mat4 GetShapeTransformation() const;
@@ -86,9 +86,13 @@ public:
 	glm::vec3 GetTipPositionInSystem(int indx);
 	glm::vec3 GetVectorInSystem(int indx,glm::vec3 vec);
 	void Scene::OpositeDirectionRot(glm::vec3 vec,float angle);
+	Camera* get_camera(int indx);
+	int get_camera_indx();
+	void set_camera_indx(int i);
+	
 private:	
 
-	std::vector<Camera*> cameras; //light will have the properties of camera
+	
 	
 	Shape *axisMesh;
 	int verticesSize;
@@ -96,9 +100,10 @@ private:
 
 	float depth;
 	int xold, yold,xrel, yrel;
-	int cameraIndx;
 
 protected:
+	int cameraIndx;
+	std::vector<Camera*> cameras; //light will have the properties of camera
 	std::vector<Shape*> shapes;
 	std::vector<Shader*> shaders;
 	std::vector<int> chainParents;

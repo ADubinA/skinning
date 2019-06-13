@@ -84,7 +84,7 @@ void Game::Init()
 	this->snak->createSnake();
 
 	//translate all scene away from camera
-	myTranslate(glm::vec3(0, 0, -10), 0);
+	//myTranslate(glm::vec3(0, 0, -10), 0);
 
 	pickedShape = 0;
 
@@ -106,23 +106,12 @@ void Game::Init()
 	ReadPixel();
 	pickedShape = -1;
 	Activate();
-
-	//addShapeCopy(3,2,LINE_LOOP);+		vao	{m_RendererID=4 }	VertexArray
-
-	// created bvh visual
-	/*for (int i=0; i<this->shapes.size(); i++)
-	{
-		Shape *shape = shapes[i];
-		if (shape->mode == TRIANGLES)
-		{
-			BVH *bvh = &shape->mesh->bvh;
-			
-			CreateBoundingBoxes(bvh, i, 0);
-
-
-		}
-	}*/
+	// add camera for the head (this is first person)
 	
+	cameras.push_back(new Camera(snak->get_head_pos()));
+	cameras[FirstPersonCamera]->RotateCamera(glm::rotate(90.0f, glm::vec3(0, 1, 0)));
+	this->cameraIndx = FirstPersonCamera;
+
 }
 
 void Game::Update(const glm::mat4 &MV, const glm::mat4 &P, const glm::mat4 &Normal, int indx, Shader *s, Shaders_type s_indx)
@@ -179,7 +168,7 @@ void Game::Motion()
 	if(isActive)
 	{
 		int p = pickedShape;
-		//this->snak->move(glm::vec3(-0.001, 0.0, 0.0));
+		this->snak->move(snak->Forward);
 		pickedShape = p;
 	}
 }

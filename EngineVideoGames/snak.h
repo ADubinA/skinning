@@ -21,10 +21,12 @@ public:
 		Up,
 		Down,
 		Left,
-		Right
+		Right,
+		Forward
 	};
 	void createSnake();
 	void move(Direction direction);
+	glm::vec3 get_head_pos();
 
 	Snak(int num_of_joints, Scene* scn);
 	~Snak();
