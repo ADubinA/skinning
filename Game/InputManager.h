@@ -30,7 +30,8 @@
 			switch (key)
 			{
 				case GLFW_KEY_ESCAPE:			
-					glfwSetWindowShouldClose(window,GLFW_TRUE);
+					scn->menu_mode = !scn->menu_mode;
+
 				break;
 				case GLFW_KEY_SPACE:
 					scn->HideShape(0);
@@ -83,15 +84,17 @@
 	void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
 	{
 		Game *scn = (Game*)glfwGetWindowUserPointer(window);
-
-		scn->updatePosition((float)xpos,(float)ypos);
-		if(glfwGetMouseButton(window,GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS)
+		if (!scn->menu_mode)
 		{
-			scn->mouseProccessing(GLFW_MOUSE_BUTTON_RIGHT);
-		}
-		else if(glfwGetMouseButton(window,GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
-		{
-			scn->mouseProccessing(GLFW_MOUSE_BUTTON_LEFT);
+			scn->updatePosition((float)xpos, (float)ypos);
+			if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS)
+			{
+				scn->mouseProccessing(GLFW_MOUSE_BUTTON_RIGHT);
+			}
+			else if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+			{
+				scn->mouseProccessing(GLFW_MOUSE_BUTTON_LEFT);
+			}
 		}
 
 	}

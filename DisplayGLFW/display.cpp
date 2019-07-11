@@ -28,7 +28,10 @@ Display::Display(int width, int height, const std::string& title)
 	//glEnable(GL_CULL_FACE);
 	//glCullFace(GL_FRONT_AND_BACK);
 }
-
+GLFWwindow * Display::get_window()
+{
+	return this->m_window;
+}
 void Display::addKeyCallBack(void(*keyCallback)(GLFWwindow *,int,int,int,int))
 {
 	glfwSetKeyCallback(m_window,(void(*)(GLFWwindow *,int,int,int,int))keyCallback);//{

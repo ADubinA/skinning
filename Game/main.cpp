@@ -1,5 +1,6 @@
 #include "InputManager.h"
 #include "glm\glm.hpp"
+#include "Menu.h"
 
 int main(int argc,char *argv[])
 {
@@ -13,7 +14,6 @@ int main(int argc,char *argv[])
 	Game *scn = new Game(glm::vec3(0.0f, 0.0f, 10.0f), CAM_ANGLE, relation, zNear,zFar);
 	
 	Display display(DISPLAY_WIDTH, DISPLAY_HEIGHT, "OpenGL");
-	
 	init(display);
 	
 	scn->Init();
@@ -22,15 +22,37 @@ int main(int argc,char *argv[])
 	scn->addShader("../res/shaders/skinningShader");
 	
 	display.setScene(scn);
-
+	Menu* menu = new Menu(&display, scn);
 	while(!display.closeWindow())
 	{
-		display.Clear(1.0f, 1.0f, 1.0f, 1.0f);
-		scn->Draw(0,true);
-		scn->Motion();
+			display.Clear(1.0f, 1.0f, 1.0f, 1.0f);
+
+			scn->Draw(0, true);
+			scn->Motion();
+			//scn->Motion(menu->f);
+			if (scn->menu_mode)
+			{
+				if (!menu->created)
+				{
+					menu->create();
+					init(display);
+				}
+				menu->DrawMenu();
+
+			}
+			else
+			{
+				if (menu->created)
+				{
+					menu->destroy();
+					init(display);
+				}
+			}
+
 		display.SwapBuffers();
 		display.PollEvents();
 	}
 	delete scn;
+	glfwTerminate();
 	return 0;
 }

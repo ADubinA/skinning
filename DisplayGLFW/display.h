@@ -15,6 +15,7 @@ public:
 	void PollEvents();
 	bool IsFullscreen(  );
 	void* getScene();
+	GLFWwindow* get_window();
 	void addKeyCallBack(void(*func)(GLFWwindow *,int,int,int,int));
 	void addMouseCallBacks(void (* mousebuttonfun)(GLFWwindow*,int,int,int),void(* scrollfun)(GLFWwindow*,double,double),void (* cursorposfun)(GLFWwindow*,double,double));
 	void addResizeCallBack(void (*windowsizefun)(GLFWwindow*,int,int));
