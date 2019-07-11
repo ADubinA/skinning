@@ -175,7 +175,8 @@ IndexedModel TethrahedronGenerator()
 	}
 	for(unsigned int i = 0; i < 12; i++)
         model.indices.push_back(indices[i]);
-	
+	model.weights.push_back(glm::vec3(0));
+
 	return model;
 }
 
@@ -241,7 +242,8 @@ IndexedModel OctahedronGenerator()
 	}
 	for(unsigned int i = 0; i < 24; i++)
         model.indices.push_back(indices[i]);
-	
+	model.weights.push_back(glm::vec3(0));
+
 	return model;
 }
 

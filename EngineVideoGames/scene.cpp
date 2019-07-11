@@ -52,6 +52,19 @@ using namespace glm;
 		isActive = false;
 	}
 
+	glm::mat4 Scene::getShapeTotalTrans(int pickedShape)
+	{
+		glm::mat4 scene_trans = makeTrans();
+		glm::mat4 shape_trans = shapes[pickedShape]->makeTrans();
+		mat4 total_trans = mat4(1);
+		for (int j = pickedShape; chainParents[j] > -1; j = chainParents[j])
+		{
+			total_trans = shapes[chainParents[j]]->makeTrans() * total_trans;
+		}
+
+		return scene_trans*total_trans*shape_trans;
+	}
+
 	void Scene::addShapeFromFile(const std::string& fileName,int parent,unsigned int mode)
 	{
 		chainParents.push_back(parent);
@@ -76,21 +89,27 @@ using namespace glm;
 
 	void Scene::collisionDetection()
 	{
-		int picked;
-		for (auto& shape1 : shapes)
+		bool picked;
+		for (int i=0; i<shapes.size(); i++)
 		{
-			if (shape1->mode == TRIANGLES)
+			Shape* shape1 = shapes[i];
+			if (shape1->mode >= TRIANGLES)
 			{
-				for (auto& shape2 : shapes)
+				for (int j=0; j<shapes.size(); j++)
 				{
+					Shape* shape2 = shapes[j];
 					// TODO check that equality is very true
-					if (shape2->mode == TRIANGLES && &shape1!=&shape2)
+					if (shape2->mode == TRIANGLES && i!=j)
 					{
-						picked = shape1->checkCollision(shape2);
-						if (picked >= 0)
+
+						picked = shape1->checkCollision(shape2,
+														getShapeTotalTrans(i),
+														getShapeTotalTrans(j));
+						if (picked)
 						{
-							shapes[picked]->Unhide();
-							this->tmp_test_mode = false;
+							//shapes[picked]->Unhide();
+							this->Deactivate();
+							std::cout << j << "," << i << std::endl;
 						}
 					}
 				}

@@ -43,10 +43,12 @@ void Game::addShape(Bezier1D * curve, int parent, unsigned int mode)
 void Game::CreateBoundingBoxes(BVH * box_tree, int parent, int level)
 {
 	this->addShapeCopy(BOUNDING_BOX_INDEX, -1, LINE_LOOP);
+	
 	pickedShape = shapes.size() - 1;
 	box_tree->box->setPickShape(pickedShape);
 	box_tree->level = level;
 	shapes[pickedShape]->Hide();
+	shapes[pickedShape]->shader_indx = Basic;
 
 	shapeTransformation(xLocalTranslate, box_tree->box->static_center.x);
 	shapeTransformation(yLocalTranslate, box_tree->box->static_center.y);
@@ -60,7 +62,7 @@ void Game::CreateBoundingBoxes(BVH * box_tree, int parent, int level)
 	chainParents[pickedShape] = parent;
 
 
-	if (level ==0 )
+	if (level < 1 )
 	{
 		shapes[pickedShape]->Unhide();
 	}
@@ -92,16 +94,28 @@ void Game::Init()
 	shapeTransformation(xScale, 10);
 	shapeTransformation(zScale, 10);
 
-	addShape(Cube, -1, TRIANGLES);
+	addShape(Octahedron, -1, TRIANGLES);
 	pickedShape = this->shapes.size()-1;
 
 	shapeTransformation(yGlobalTranslate, 5);
 	
 
-	addShape(Cube, -1, TRIANGLES);
+	addShape(Octahedron, -1, TRIANGLES);
 	pickedShape = this->shapes.size() - 1;
 	shapeTransformation(zGlobalTranslate, -5);
 	
+	//for (int i = 0; i<this->shapes.size(); i++)
+	//{
+	//	Shape *shape = shapes[i];
+	//	if (shape->mode >= TRIANGLES)
+	//	{
+	//		BVH *bvh = &shape->mesh->bvh;
+
+	//		CreateBoundingBoxes(bvh, i, 0);
+
+
+	//	}
+	//}
 
 	ReadPixel();
 	pickedShape = -1;
@@ -145,7 +159,7 @@ void Game::Update(const glm::mat4 &MV, const glm::mat4 &P, const glm::mat4 &Norm
 	s->SetUniformMat4f("Normal", Normal);
 	s->SetUniform4f("lightDirection", 0.0f , 0.0f, -1.0f, 1.0f);
 	s->SetUniform4f("lightColor",r/255.0f, g/255.0f, b/255.0f,1.0f);	
-	collisionDetection();
+	
 }
 
 void Game::WhenRotate()
@@ -165,6 +179,7 @@ void Game::WhenTranslate()
 
 void Game::Motion()
 {
+	collisionDetection();
 	if(isActive)
 	{
 		int p = pickedShape;

@@ -30,7 +30,7 @@ public:
 
 	void AddTexture(const std::string& textureFileName);
 
-	int Shape::checkCollision(Shape * other);
+	bool Shape::checkCollision(Shape * other, glm::mat4 this_trans, glm::mat4 other_trans);
 
 	void Draw( const Shader& shader);
 

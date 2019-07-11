@@ -50,12 +50,12 @@ void Shape::AddTexture(const std::string& textureFileName)
 	tex = new Texture(textureFileName);
 }
 
-int Shape::checkCollision(Shape * other)
+bool Shape::checkCollision(Shape * other,glm::mat4 this_trans, glm::mat4 other_trans)
 {
 	std::queue<BVH*> other_queue;
 	BVH* other_curr ;
 	other_queue.push(&other->mesh->bvh);
-	int picked = -1;
+	bool picked = false;
 	int counter = 0;
 
 	while (!other_queue.empty()) 
@@ -65,9 +65,9 @@ int Shape::checkCollision(Shape * other)
 		other_curr = other_queue.front();
 		other_queue.pop();
 
-		picked = this->mesh->checkCollision(other_curr,this->makeTrans(),other->makeTrans());
+		picked = this->mesh->checkCollision(other_curr,this_trans,other_trans);
 
-		if (picked !=-1)
+		if (picked)
 
 		{
 			/*if (counter >= 10)
@@ -84,11 +84,11 @@ int Shape::checkCollision(Shape * other)
 			{
 				//std::cout << other_curr->level << std::endl;
 
-				return picked;
+				return true;
 			}
 		}
 	}
-	return -1;
+	return false;
 
 }
 

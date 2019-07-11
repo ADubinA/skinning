@@ -11,7 +11,6 @@ class Scene : public MovableGLM
 {
 
 public:
-	bool tmp_test_mode = false; // TODO remove after tamir check the work is good~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
 	enum axis{xAxis,yAxis,zAxis};
 	enum transformations{xLocalTranslate,yLocalTranslate,zLocalTranslate,xGlobalTranslate,yGlobalTranslate,zGlobalTranslate,
@@ -31,7 +30,7 @@ public:
 	
 	Scene();
 	Scene(glm::vec3 position,float angle,float hwRelation,float near, float far);
-	
+	glm::mat4 getShapeTotalTrans(int pickedShape);
 	void addShapeFromFile(const std::string& fileName,int parent,unsigned int mode);
 	virtual void addShape(int type,int parent,unsigned int mode);
 	virtual	void addShape(Bezier1D * curve, int parent, unsigned int mode);

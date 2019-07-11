@@ -5,7 +5,7 @@
 #include "Mesh.h"
 #include "bezier1D.h"
 #include "kdtree.h"
-#define MINIMUM_VERTCIES_FOR_BVH 1000
+#define MINIMUM_VERTCIES_RATIO_FOR_BVH 0.25
 
 class BVH {
 public:
@@ -40,7 +40,7 @@ class MeshConstructor
 	
 public:
 	Kdtree tree;
-
+	int verticesNum;
 	BVH bvh;
 
 	//TO DO: add collision detection function which get other MeshConstructor and Mat4 of related transformasions. The function may return a pointer to the relevant Bounding Box when collide
@@ -59,7 +59,7 @@ public:
 	MeshConstructor(const std::string& fileName);
 	
 	// returns the pickshape index of the collision. if no collision, return -1
-	int MeshConstructor::checkCollision(BVH* other,  glm::mat4 self_trans, glm::mat4 other_trans);
+	bool MeshConstructor::checkCollision(BVH* other,  glm::mat4 self_trans, glm::mat4 other_trans);
 	void Bind() {vao.Bind();}
 	void Unbind() {vao.Unbind();}
 	inline unsigned int GetIndicesNum(){return indicesNum;}

@@ -39,7 +39,7 @@ MeshConstructor::MeshConstructor(const std::string& fileName)
 	InitMesh(OBJModel(fileName).ToIndexedModel());
 }
 
-int MeshConstructor::checkCollision(BVH* other, glm::mat4 self_trans,glm::mat4 other_trans)
+bool MeshConstructor::checkCollision(BVH* other, glm::mat4 self_trans,glm::mat4 other_trans)
 
 
 {
@@ -69,13 +69,15 @@ int MeshConstructor::checkCollision(BVH* other, glm::mat4 self_trans,glm::mat4 o
 			else
 			{
 				//std::cout << self_curr->level << std::endl;
-				return self_curr->box->pickShape;
+				//return self_curr->box->pickShape;
+				return true;
 			}
 		}
 		
 	}
 
-	return -1;
+	//return -1;
+	return false;
 }
 
 MeshConstructor::MeshConstructor(Bezier1D *curve,bool isSurface,unsigned int resT,unsigned int resS)
@@ -172,7 +174,7 @@ BVH* MeshConstructor::make_BVH(Node node, std::vector<glm::vec3> point_list, int
 	bvh->level = level;
 
 	std::vector<glm::vec3> new_point_list;
-	if (node.left != nullptr && point_list.size()>MINIMUM_VERTCIES_FOR_BVH)
+	if (node.left != nullptr && point_list.size()/verticesNum >= MINIMUM_VERTCIES_RATIO_FOR_BVH)
 	{
 		for (int i = 0; i < point_list.size(); i++)
 		{
@@ -190,7 +192,7 @@ BVH* MeshConstructor::make_BVH(Node node, std::vector<glm::vec3> point_list, int
 	}
 	new_point_list.clear();
 
-	if (node.right != nullptr && point_list.size() > MINIMUM_VERTCIES_FOR_BVH)
+	if (node.right != nullptr && point_list.size() / verticesNum >= MINIMUM_VERTCIES_RATIO_FOR_BVH)
 	{
 		for (int i = 0; i < point_list.size(); i++)
 		{
@@ -211,7 +213,7 @@ BVH* MeshConstructor::make_BVH(Node node, std::vector<glm::vec3> point_list, int
 
 void MeshConstructor::InitLine(IndexedModel &model){
 	
-	int verticesNum = model.positions.size();
+	verticesNum = model.positions.size();
 	indicesNum = model.indices.size();
 	
 	vao.Bind();
@@ -230,10 +232,10 @@ void MeshConstructor::InitLine(IndexedModel &model){
 }
 
 void MeshConstructor::InitMesh( IndexedModel &model){
-	make_tree(model.positions);
-	int verticesNum = model.positions.size();
-	indicesNum = model.indices.size();
 	
+	verticesNum = model.positions.size();
+	indicesNum = model.indices.size();
+	make_tree(model.positions);
 	vao.Bind();
 
 	for (int i = 0; i < 4; i++)
