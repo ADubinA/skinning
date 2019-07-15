@@ -39,8 +39,8 @@ MeshConstructor::MeshConstructor(const std::string& fileName)
 	InitMesh(OBJModel(fileName).ToIndexedModel());
 }
 
-bool MeshConstructor::checkCollision(BVH* other, glm::mat4 self_trans,glm::mat4 other_trans)
-
+bool MeshConstructor::checkCollision(BVH* other, glm::mat4 self_trans, glm::vec3 self_scale,
+												 glm::mat4 other_trans, glm::vec3 other_scale)
 
 {
 	std::queue<BVH*> self_queue;
@@ -51,8 +51,8 @@ bool MeshConstructor::checkCollision(BVH* other, glm::mat4 self_trans,glm::mat4 
 		counter++;
 		self_curr = self_queue.front();
 		self_queue.pop();
-		other->box->updateDynamic(other_trans);
-		self_curr->box->updateDynamic(self_trans);
+		other->box->updateDynamic(other_trans,other_scale);
+		self_curr->box->updateDynamic(self_trans,self_scale);
 		if (self_curr->box->checkCollision(other->box)) 
 
 		{
@@ -136,7 +136,7 @@ BVH* MeshConstructor::make_BVH (Node node, BoundingBox daddy, bool is_left, int 
 {
 	int axis = level % 3;
 	glm::vec3 center = daddy.static_center;
-	glm::vec3 size = daddy.size;
+	glm::vec3 size = daddy.static_size;
 	BVH *bvh = new BVH();
 
 	

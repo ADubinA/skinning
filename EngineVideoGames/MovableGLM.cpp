@@ -210,3 +210,8 @@ void MovableGLM::printRot(bool generalRot)
 		printAngles(zAxis12);
 
 }
+
+glm::vec3 MovableGLM::getScale()
+{
+	return scaleFactor;
+}

@@ -16,6 +16,7 @@ Snak::Snak(int num_of_joints, Scene* scn)
 
 void Snak::createSnake()
 {
+	
 	Bezier1D * body = new Bezier1D(BODY);
 	Bezier1D * head = new Bezier1D(HEAD);
 	Bezier1D * tail = new Bezier1D(TAIL);
@@ -25,6 +26,8 @@ void Snak::createSnake()
 	scn->addShape(head, -1, 5);
 	int edge_index = scn->get_num_of_shapes() - 1;
 	this->head_indx = edge_index;
+	scn->get_shape(this->head_indx)->AddTexture(scn->getTexture(SNAKE_TEX_INDEX));
+	scn->get_shape(body_index)->AddTexture(scn->getTexture(SNAKE_TEX_INDEX));
 
 
 
@@ -46,8 +49,11 @@ void Snak::createSnake()
 
 
 	scn->addShape(tail, -1, 5);
+	
+
 	scn->set_picked_shape(scn->get_num_of_shapes() - 1);
 	this->tail_indx = scn->get_num_of_shapes() - 1;
+	scn->get_shape(this->tail_indx)->AddTexture(scn->getTexture(SNAKE_TEX_INDEX));
 	//shapeTransformation(zLocalRotate, 180);
 	scn->shapeTransformation(scn->xGlobalTranslate, edgebox->static_center.x + bodybox->size.x);
 	//shapeTransformation(xLocalTranslate,  -2*bodybox->size.x);

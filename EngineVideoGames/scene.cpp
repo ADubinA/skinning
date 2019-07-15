@@ -88,6 +88,10 @@ using namespace glm;
 		shapes.push_back(new Shape(*shapes[indx],mode));
 	}
 
+	void Scene::AddTexture(const std::string& textureFileName)
+	{
+		textures.push_back(new Texture(textureFileName));
+	}
 	void Scene::collisionDetection()
 	{
 		bool picked;
@@ -425,6 +429,11 @@ using namespace glm;
 	void Scene::set_camera_indx(int i)
 	{
 		this->cameraIndx = i;
+	}
+
+	Texture* Scene::getTexture(int index)
+	{
+		return this->textures[index];
 	}
 
 	

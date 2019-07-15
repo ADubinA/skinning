@@ -32,6 +32,7 @@ public:
 	Scene();
 	Scene(glm::vec3 position,float angle,float hwRelation,float near, float far);
 	glm::mat4 getShapeTotalTrans(int pickedShape);
+	void AddTexture(const std::string& textureFileName);
 	void addShapeFromFile(const std::string& fileName,int parent,unsigned int mode);
 	virtual void addShape(int type,int parent,unsigned int mode);
 	virtual	void addShape(Bezier1D * curve, int parent, unsigned int mode);
@@ -89,7 +90,7 @@ public:
 	Camera* get_camera(int indx);
 	int get_camera_indx();
 	void set_camera_indx(int i);
-	
+	Texture* getTexture(int index);
 private:	
 
 	
@@ -106,6 +107,7 @@ protected:
 	std::vector<Camera*> cameras; //light will have the properties of camera
 	std::vector<Shape*> shapes;
 	std::vector<Shader*> shaders;
+	std::vector<Texture*> textures;
 	std::vector<int> chainParents;
 	int pickedShape;
 	int direction;

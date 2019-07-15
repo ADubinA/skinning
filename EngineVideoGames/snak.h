@@ -2,8 +2,7 @@
 #include "bezier1D.h"
 #include "scene.h"
 class Snak
-
-
+#define SNAKE_TEX_INDEX 0
 
 {
 private:

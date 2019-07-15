@@ -16,10 +16,15 @@ int main(int argc,char *argv[])
 	Display display(DISPLAY_WIDTH, DISPLAY_HEIGHT, "OpenGL");
 	init(display);
 	
-	scn->Init();
+	
 	scn->addShader("../res/shaders/basicShader");
 	scn->addShader("../res/shaders/pickingShader");
 	scn->addShader("../res/shaders/skinningShader");
+
+	scn->AddTexture("../res/textures/box0.bmp");
+	scn->AddTexture("../res/textures/metal_tread.jpg");
+
+	scn->Init();
 	
 	display.setScene(scn);
 	Menu* menu = new Menu(&display, scn);

@@ -147,7 +147,8 @@ IndexedModel OBJModel::ToIndexedModel()
 			result.colors[i] = normalModel.colors[indexMap[i]];
 		}
     }
-    
+	result.weights.push_back(glm::vec3(0));
+
     return result;
 };
 

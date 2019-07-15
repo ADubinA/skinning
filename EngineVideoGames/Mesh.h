@@ -75,6 +75,7 @@ public:
 	glm::vec3 center;     // center coordinates
 	glm::vec3 static_center;
 	glm::vec3 size;       // distance between the center of the box to its side in each dimension 
+	glm::vec3 static_size;
 	glm::vec3 xInit;      // x axis of the box. default value (1,0,0)		  
 	glm::vec3 yInit;      // y axis of the box. default value (0,1,0)		 
 	glm::vec3 zInit;      // z axis of the box. default value (0,0,1)
@@ -88,7 +89,7 @@ public:
 	void setPickShape(int index);
 
 	bool BoundingBox::checkCollision(BoundingBox* other);
-	void BoundingBox::updateDynamic(glm::mat4 transmat);
+	void BoundingBox::updateDynamic(glm::mat4 transmat, glm::vec3 scale_factor);
 
 };
 

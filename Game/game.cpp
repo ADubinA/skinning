@@ -55,9 +55,9 @@ void Game::CreateBoundingBoxes(BVH * box_tree, int parent, int level)
 	shapeTransformation(zLocalTranslate, box_tree->box->static_center.z);
 
 
-	shapeTransformation(xScale, box_tree->box->size.x);
-	shapeTransformation(yScale, box_tree->box->size.y);
-	shapeTransformation(zScale, box_tree->box->size.z);
+	shapeTransformation(xScale, box_tree->box->static_size.x);
+	shapeTransformation(yScale, box_tree->box->static_size.y);
+	shapeTransformation(zScale, box_tree->box->static_size.z);
 
 	chainParents[pickedShape] = parent;
 
@@ -80,7 +80,8 @@ void Game::CreateBoundingBoxes(BVH * box_tree, int parent, int level)
 void Game::Init()
 {
 	std::vector<TransStruct> data;
-	addShape(Axis,-1,LINES);
+	addShape(Axis, -1, LINES);
+	
 	//createSnake(3);
 	this->snak = new Snak(3, this);
 	this->snak->createSnake();
@@ -96,14 +97,19 @@ void Game::Init()
 
 	addShape(Octahedron, -1, TRIANGLES);
 	pickedShape = this->shapes.size()-1;
-
 	shapeTransformation(yGlobalTranslate, 5);
-	
+	//shapeTransformation(yScale, 0.05);
+	//shapeTransformation(xScale, 0.05);
+	//shapeTransformation(zScale, 0.05);
 
-	addShape(Octahedron, -1, TRIANGLES);
-	pickedShape = this->shapes.size() - 1;
+	//addShapeCopy(pickedShape, -1, TRIANGLES);
+	/*pickedShape = this->shapes.size() - 1;
+	shapes[pickedShape]->AddTexture(textures[1]);
+
 	shapeTransformation(zGlobalTranslate, -5);
-	
+	shapeTransformation(yScale, 0.05);
+	shapeTransformation(xScale, 0.05);
+	shapeTransformation(zScale, 0.05);*/
 	//for (int i = 0; i<this->shapes.size(); i++)
 	//{
 	//	Shape *shape = shapes[i];

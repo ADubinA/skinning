@@ -59,7 +59,8 @@ public:
 	MeshConstructor(const std::string& fileName);
 	
 	// returns the pickshape index of the collision. if no collision, return -1
-	bool MeshConstructor::checkCollision(BVH* other,  glm::mat4 self_trans, glm::mat4 other_trans);
+	bool MeshConstructor::checkCollision(BVH* other,  glm::mat4 self_trans, glm::vec3 self_scale,
+													  glm::mat4 other_trans, glm::vec3 other_scale);
 	void Bind() {vao.Bind();}
 	void Unbind() {vao.Unbind();}
 	inline unsigned int GetIndicesNum(){return indicesNum;}

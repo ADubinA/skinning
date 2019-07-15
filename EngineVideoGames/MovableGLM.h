@@ -42,7 +42,7 @@ public:
 	void translateInSystem(const MovableGLM  &system,glm::vec3 &vec, int indx, bool toScale);
 	void mergeRot2Euler();
 	void printRot(bool generalRot);
-
+	glm::vec3 getScale();
 	
 
 	glm::vec4 getTraslate();

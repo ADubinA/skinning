@@ -9,7 +9,7 @@ Shape::Shape(const Shape& shape,unsigned int mode)
 	
 	mesh = new MeshConstructor(*shape.mesh);
 	mesh->bvh =*new BVH (shape.mesh->bvh);
-	//tex = shape.tex;
+	tex = shape.tex;
 	isCopy = true;
 	this->mode = mode;
 	toRender = true;
@@ -41,7 +41,7 @@ Shape::Shape(Bezier1D *curve, unsigned int xResolution,unsigned int yResolution,
 	this->mode = mode;
 	isCopy = false;
 	toRender = true;
-	this->shader_indx = Skinning;
+	this->shader_indx = Basic;
 }
 
 
@@ -50,6 +50,10 @@ void Shape::AddTexture(const std::string& textureFileName)
 	tex = new Texture(textureFileName);
 }
 
+void Shape::AddTexture(Texture *tex )
+{
+	this->tex = tex;
+}
 bool Shape::checkCollision(Shape * other,glm::mat4 this_trans, glm::mat4 other_trans)
 {
 	std::queue<BVH*> other_queue;
@@ -65,7 +69,7 @@ bool Shape::checkCollision(Shape * other,glm::mat4 this_trans, glm::mat4 other_t
 		other_curr = other_queue.front();
 		other_queue.pop();
 
-		picked = this->mesh->checkCollision(other_curr,this_trans,other_trans);
+		picked = this->mesh->checkCollision(other_curr,this_trans,this->getScale(),other_trans,other->getScale());
 
 		if (picked)
 
@@ -95,8 +99,8 @@ bool Shape::checkCollision(Shape * other,glm::mat4 this_trans, glm::mat4 other_t
 
 void Shape::Draw( const Shader& shader)
 {
-//	if(tex)
-//		tex->Bind();
+	if(tex)
+		tex->Bind();
 
 	shader.Bind();
 	mesh->Bind();
@@ -113,8 +117,8 @@ Shape::~Shape(void)
 	{
 		if(mesh)
 			delete mesh;
-		if(tex)
-			delete tex;
+		//if(tex)
+			//delete tex;
 	}
 }
 
