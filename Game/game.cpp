@@ -48,7 +48,7 @@ void Game::CreateBoundingBoxes(BVH * box_tree, int parent, int level)
 	box_tree->box->setPickShape(pickedShape);
 	box_tree->level = level;
 	shapes[pickedShape]->Hide();
-	shapes[pickedShape]->shader_indx = Basic;
+	shapes[pickedShape]->shaderID = BASIC_SHADER;
 
 	shapeTransformation(xLocalTranslate, box_tree->box->static_center.x);
 	shapeTransformation(yLocalTranslate, box_tree->box->static_center.y);
@@ -98,6 +98,7 @@ void Game::Init()
 	addShape(Octahedron, -1, TRIANGLES);
 	pickedShape = this->shapes.size()-1;
 	shapeTransformation(yGlobalTranslate, 5);
+	shapes[pickedShape]->SetTexture(1);
 	//shapeTransformation(yScale, 0.05);
 	//shapeTransformation(xScale, 0.05);
 	//shapeTransformation(zScale, 0.05);
@@ -130,11 +131,11 @@ void Game::Init()
 	
 	cameras.push_back(new Camera(snak->get_head_pos()));
 	cameras[FirstPersonCamera]->RotateCamera(glm::rotate(90.0f, glm::vec3(0, 1, 0)));
-	this->cameraIndx = FirstPersonCamera;
+	this->cameraIndx = ThirdPersonCamera;
 
 }
 
-void Game::Update(const glm::mat4 &MV, const glm::mat4 &P, const glm::mat4 &Normal, int indx, Shader *s, Shaders_type s_indx)
+void Game::Update(const glm::mat4 &MV, const glm::mat4 &P, const glm::mat4 &Normal, int indx, Shader *s, int s_indx)
 {
 	s->Bind();
 	int r = ((pickedShape + 1) & 0x000000FF) >> 0;
@@ -143,11 +144,11 @@ void Game::Update(const glm::mat4 &MV, const glm::mat4 &P, const glm::mat4 &Norm
 
 	switch (s_indx)
 	{
-	case Basic:
+	case BASIC_SHADER:
 		s->SetUniformMat4f("MVP", P*MV);
 
 		break;
-	case Skinning:
+	case SKINNING_SHADER:
 		s->SetUniformMat4f("MV", MV);
 		s->SetUniformMat4f("P", P);
 		if (snak->tail_indx != indx)

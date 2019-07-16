@@ -4,12 +4,12 @@
 #include <string>
 #include <unordered_map>
 #include "glm\glm.hpp"
-enum Shaders_type
-{
-	Basic,
-	Picking,
-	Skinning
-};
+
+#define	BASIC_SHADER 0
+#define	PICKING_SHADER 1
+#define	SKINNING_SHADER 2
+
+
 class Shader
 {
 public:

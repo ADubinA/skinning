@@ -13,6 +13,7 @@ public:
 	IndexedModel GetSurface(int resT, int resS);						//generates model for rendering using MeshConstructor::initMeshs
 	Vertex GetVertex(int segmentT, int segmentS, float t, float s);		//returns point on surface in the requested segments for value of t and s
 	glm::vec3 GetNormal(int segmentT, int segmentS, float t, float s);		//returns point on surface in the requested segments for value of t and s
-	glm::vec3 calcWeight(int segmentT, int segmentS, float t, float s);
+	glm::vec3 calcWeight(int segmentT, int segmentS, float t, float s);
+
 	~Bezier2D(void);
 };

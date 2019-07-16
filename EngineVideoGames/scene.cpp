@@ -164,8 +164,9 @@ using namespace glm;
 				MV1 = MV1 * shapes[i]->makeTransScale(mat4(1));
 				Normal1 = Normal1 * shapes[i]->makeTrans();
 
-				Update(MV1,P,Normal1 ,i,shaders[shapes[i]->shader_indx], shapes[i]->shader_indx);
-				shapes[i]->Draw(*shaders[shapes[i]->shader_indx]);
+				Update(MV1,P,Normal1 ,i,shaders[shapes[i]->shaderID], shapes[i]->shaderID);
+				shapes[i]->Draw(shaders, textures, false);
+				//shapes[i]->Draw(*shaders[shapes[i]->shader_indx]);
 
 				glm::mat3x4 small_tran = glm::mat3x4(transpose(MV1));
 				glm::dualquat quatDul = glm::dualquat_cast(small_tran);
@@ -184,9 +185,9 @@ using namespace glm;
 
 			}
 		}
-		shaders[Skinning]->Bind();
-		shaders[Skinning]->SetUniform4v("Qrot", Qrot);
-		shaders[Skinning]->SetUniform4v("Qtrans", Qtrans);
+		shaders[SKINNING_SHADER]->Bind();
+		shaders[SKINNING_SHADER]->SetUniform4v("Qrot", Qrot);
+		shaders[SKINNING_SHADER]->SetUniform4v("Qtrans", Qtrans);
 		
 		pickedShape = p;
 	}

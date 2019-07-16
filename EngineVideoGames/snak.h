@@ -2,8 +2,8 @@
 #include "bezier1D.h"
 #include "scene.h"
 class Snak
-#define SNAKE_TEX_INDEX 0
-
+#define SNAKE_TEX_INDEX 1
+#define ROTATION_SPEED 5.0f
 {
 private:
 	int head_indx;
@@ -12,7 +12,7 @@ private:
 	glm::vec3 velocity;
 	bool is_dead;
 	Scene* scn;
-	
+	std::vector<int> index_chain; //shape indeces starting from head to tail
 public:
 	int tail_indx;
 	enum Direction

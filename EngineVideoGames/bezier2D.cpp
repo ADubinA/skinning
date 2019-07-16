@@ -82,10 +82,10 @@ IndexedModel Bezier2D::GetSurface(const int resT, const int resS)
 				surface.normals.push_back(*vertex2.GetNormal());
 				surface.normals.push_back(*vertex3.GetNormal());
 				surface.normals.push_back(*vertex4.GetNormal());
-				surface.texCoords.push_back(glm::vec2(1));
-				surface.texCoords.push_back(glm::vec2(1));
-				surface.texCoords.push_back(glm::vec2(1));
-				surface.texCoords.push_back(glm::vec2(1));
+				surface.texCoords.push_back(glm::vec2(timet, times));
+				surface.texCoords.push_back(glm::vec2(timet + (1.0f / resT), times));
+				surface.texCoords.push_back(glm::vec2(timet + (1.0f / resT), times));
+				surface.texCoords.push_back(glm::vec2(timet, times));
 				surface.indices.push_back(2 * array_num[segment_indexT][t][s]);
 				surface.indices.push_back(2 * array_num[segment_indexT][t + 1][s]);
 				surface.indices.push_back(2 * array_num[segment_indexT][t + 1][s + 1]);

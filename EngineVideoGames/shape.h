@@ -9,14 +9,14 @@
 class Shape : public MovableGLM
 {
 private:
-
-	Texture *tex;
+	int texID;
 	bool isCopy;
 	bool toRender;
 
 public:
 
-	Shaders_type shader_indx;
+	int shaderID;
+
 	MeshConstructor *mesh;
 	unsigned int mode;
 
@@ -28,13 +28,13 @@ public:
 
 	Shape(Bezier1D *curve, unsigned int xResolution,unsigned int yResolution,bool is2D,unsigned int mode);
 
-	void AddTexture(const std::string& textureFileName);
+	inline void SetTexture(int id) { texID = id; }
 
-	void AddTexture(Texture * tex);
+	inline void SetShader(int id) { shaderID = id; }
 
 	bool Shape::checkCollision(Shape * other, glm::mat4 this_trans, glm::mat4 other_trans);
 
-	void Draw( const Shader& shader);
+	void Shape::Draw(const std::vector<Shader*> shaders, const std::vector<Texture*> textures, bool isPicking);
 
 	inline void Hide() {toRender = false;}
 

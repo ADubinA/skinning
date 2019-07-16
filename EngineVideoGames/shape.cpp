@@ -9,11 +9,12 @@ Shape::Shape(const Shape& shape,unsigned int mode)
 	
 	mesh = new MeshConstructor(*shape.mesh);
 	mesh->bvh =*new BVH (shape.mesh->bvh);
-	tex = shape.tex;
 	isCopy = true;
 	this->mode = mode;
 	toRender = true;
-	this->shader_indx = shape.shader_indx;
+	this->texID = shape.texID;
+	this->shaderID = shape.shaderID;
+
 	
 }
 
@@ -22,7 +23,7 @@ Shape::Shape(const std::string& fileName, unsigned int mode){
 	isCopy = false;
 	this->mode = mode;
 	toRender = true;
-	this->shader_indx = Basic;
+	this->shaderID = BASIC_SHADER;
 }
 
 Shape::Shape(const int SimpleShapeType,unsigned int mode)
@@ -32,7 +33,7 @@ Shape::Shape(const int SimpleShapeType,unsigned int mode)
 	this->mode = mode;
 	isCopy = false;
 	toRender = true;
-	this->shader_indx = Basic;
+	this->shaderID = BASIC_SHADER;
 }
 
 Shape::Shape(Bezier1D *curve, unsigned int xResolution,unsigned int yResolution,bool is2D,unsigned int mode)
@@ -41,19 +42,10 @@ Shape::Shape(Bezier1D *curve, unsigned int xResolution,unsigned int yResolution,
 	this->mode = mode;
 	isCopy = false;
 	toRender = true;
-	this->shader_indx = Basic;
+	this->shaderID = SKINNING_SHADER;
 }
 
 
-void Shape::AddTexture(const std::string& textureFileName)
-{
-	tex = new Texture(textureFileName);
-}
-
-void Shape::AddTexture(Texture *tex )
-{
-	this->tex = tex;
-}
 bool Shape::checkCollision(Shape * other,glm::mat4 this_trans, glm::mat4 other_trans)
 {
 	std::queue<BVH*> other_queue;
@@ -97,17 +89,19 @@ bool Shape::checkCollision(Shape * other,glm::mat4 this_trans, glm::mat4 other_t
 }
 
 
-void Shape::Draw( const Shader& shader)
+void Shape::Draw(const std::vector<Shader*> shaders, const std::vector<Texture*> textures, bool isPicking)
 {
-	if(tex)
-		tex->Bind();
-
-	shader.Bind();
+	if (texID >= 0)
+		textures[texID]->Bind(0);
+	if (isPicking)
+		shaders[0]->Bind();
+	else
+		shaders[shaderID]->Bind();
 	mesh->Bind();
 	/*if(isCopy)
-		glDrawArrays(GL_TRIANGLES, 0, indicesNum);
+	glDrawArrays(GL_TRIANGLES, 0, indicesNum);
 	else*/
-	GLCall(glDrawElements(mode,mesh->GetIndicesNum(), GL_UNSIGNED_INT, 0));
+	GLCall(glDrawElements(mode, mesh->GetIndicesNum(), GL_UNSIGNED_INT, 0));
 	mesh->Unbind();
 }
 

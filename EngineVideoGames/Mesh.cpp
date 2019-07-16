@@ -419,7 +419,7 @@ void BoundingBox::updateDynamic(glm::mat4 transmat, glm::vec3 scale_factor)
 								 transmat[2],
 								 glm::vec4(0, 0, 0, 1)
 	);
-	this->center = glm::vec3(transmat*glm::vec4(this->static_center, 1));
+	this->center = glm::vec3(transmat*glm::vec4(this->static_center*scale_factor, 1));
 	this->xInit  = glm::vec3(rotmat*  glm::vec4(this->static_xInit , 1));
 	this->yInit  = glm::vec3(rotmat*  glm::vec4(this->static_yInit , 1));
 	this->zInit  = glm::vec3(rotmat*  glm::vec4(this->static_zInit , 1));
