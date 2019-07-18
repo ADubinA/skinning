@@ -1,12 +1,27 @@
 #include "camera.h"
 
+//void Camera::myRotate(float ang, glm::vec3 & vec, int indx)
+//{
+//	MovableGLM::myRotate(ang, vec, indx);
+//	forward = glm::vec3(MovableGLM::GetRot()*glm::vec4(this->default_forward,0));
+//	up = glm::vec3(MovableGLM::GetRot()*glm::vec4(this->default_up, 0));
+//
+//}
+//
+//void Camera::myTranslate(glm::vec3 & vec, int indx)
+//{
+//	MovableGLM::myTranslate(vec, indx);
+//	pos =  glm::vec3(makeTrans()*glm::vec4(this->default_pos, 1);
+//
+//}
+
 Camera::Camera(const glm::vec3& pos)
 
 {
 
 	this->forward = glm::vec3(0.0f, 0.0f, -1.0f);
 	this->up = glm::vec3(0.0f, 1.0f, 0.0f);
-
+	this->default_pos = pos;
 	this->pos = pos;
 	this->fov = 60.0f;
 	this->near = 1.0f;
@@ -41,10 +56,11 @@ void Camera::TranslateCamera(glm::vec3 position)
 	this->pos += position;
 }
 
-void Camera::RotateCamera(glm::mat4 rotation_matrix)
+void Camera::RotateCamera(glm::mat4 rotation_matrix,glm::vec3 center)
 {
-	this->up = glm::vec3(rotation_matrix * glm::vec4(up,0));
-	this->forward = glm::vec3(rotation_matrix * glm::vec4(forward, 0));
+	this->up = glm::normalize(glm::vec3(rotation_matrix * glm::vec4(up,0)));
+	this->forward = glm::normalize(glm::vec3(rotation_matrix * glm::vec4(forward, 0)));
+	this->pos = glm::vec3( glm::translate(center)*rotation_matrix *glm::vec4(this->default_pos, 1));
 }
 
 void Camera::MoveRight(float amt)

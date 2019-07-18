@@ -73,28 +73,37 @@ void Snak::createSnake()
 void Snak::move(Direction direction)
 {
 	glm::mat4 head_rotation = scn->get_shape(this->head_indx)->GetRot();
-	glm::vec3 z_after_rotation = glm::vec3(head_rotation * glm::vec4(0, 0, 1, 0));
-	glm::vec3 y_after_rotation = glm::vec3(head_rotation * glm::vec4(0, 1, 0, 0));
+	glm::vec3 z_after_rotation = glm::vec3(0, 0, 1);//glm::vec3(head_rotation * glm::vec4(0, 0, 1, 0));
+	glm::vec3 y_after_rotation = glm::vec3(0, 1, 0);//glm::vec3(head_rotation * glm::vec4(0, 1, 0, 0));
+
+	glm::mat4 changed_rotation = glm::mat4(1);
 	switch (direction)
 	{
 	case Up:
-		this->velocity =glm::vec3( glm::rotate(ROTATION_SPEED, z_after_rotation)*glm::vec4(this->velocity,0));
-		scn->shapeRotation(z_after_rotation, ROTATION_SPEED, this->head_indx);
+		this->velocity =glm::vec3( glm::rotate(ROTATION_SPEED, z_after_rotation)*head_rotation*glm::vec4(-1,0,0,0));
+		scn->get_shape(this->head_indx)->myRotate(ROTATION_SPEED, z_after_rotation, -1);
+		changed_rotation = glm::rotate(ROTATION_SPEED, z_after_rotation);
 		break;
 
 	case Down:
-		this->velocity = glm::vec3(glm::rotate(ROTATION_SPEED, -z_after_rotation)*glm::vec4(this->velocity, 0));
-		scn->shapeRotation(-z_after_rotation, ROTATION_SPEED, this->head_indx);
+		this->velocity = glm::vec3(glm::rotate(-ROTATION_SPEED, z_after_rotation)*head_rotation*glm::vec4(-1, 0, 0, 0));
+		scn->get_shape(this->head_indx)->myRotate(-ROTATION_SPEED, z_after_rotation, -1);
+		changed_rotation = glm::rotate(-ROTATION_SPEED, z_after_rotation);
+
 		break;
 
 	case Left:
-		this->velocity = glm::vec3(glm::rotate(ROTATION_SPEED, y_after_rotation)*glm::vec4(this->velocity, 0));
-		scn->shapeRotation(y_after_rotation, ROTATION_SPEED, this->head_indx);
+		this->velocity = glm::vec3(glm::rotate(ROTATION_SPEED, y_after_rotation)*head_rotation*glm::vec4(-1, 0, 0, 0));
+		scn->get_shape(this->head_indx)->myRotate(ROTATION_SPEED, y_after_rotation, -1);
+		changed_rotation = glm::rotate(ROTATION_SPEED, y_after_rotation);
+
 		break;
 
 	case Right:
-		this->velocity = glm::vec3(glm::rotate(ROTATION_SPEED, -y_after_rotation)*glm::vec4(this->velocity, 0));
-		scn->shapeRotation(-y_after_rotation, ROTATION_SPEED, this->head_indx);
+		this->velocity = glm::vec3(glm::rotate(-ROTATION_SPEED, y_after_rotation)*head_rotation*glm::vec4(-1, 0, 0, 0));
+		scn->get_shape(this->head_indx)->myRotate(-ROTATION_SPEED, y_after_rotation, -1);
+		changed_rotation = glm::rotate(-ROTATION_SPEED, y_after_rotation);
+
 		break;
 
 	case Forward:
@@ -106,18 +115,18 @@ void Snak::move(Direction direction)
 	int tmp_picked_shape = scn->get_picked_shape();
 	scn->set_picked_shape(this->head_indx);
 
-	//if (old_velocity != this->velocity)
-	//{
-	//	glm::vec3 rotation_axis = glm::normalize(glm::cross(old_velocity,velocity));
-	//	float rotation_angle = glm::acos(glm::dot(old_velocity, this->velocity));
-	//	scn->shapeRotation(rotation_axis, 100*rotation_angle, this->head_indx);
-	//}
-
-
-	
 	scn->shapeTransformation(scn->xGlobalTranslate,0.01*velocity.x);
 	scn->shapeTransformation(scn->yGlobalTranslate,0.01*velocity.y);
 	scn->shapeTransformation(scn->zGlobalTranslate,0.01*velocity.z);
+
+	/*for (int i = head_indx; i <= tail_indx;i++)
+	{
+		int currect_segment_index = index_chain[i];
+		scn->set_picked_shape(currect_segment_index);
+		scn->get_shape(currect_segment_index)->myRotate(i*ROTATION_SPEED, z_after_rotation, -1);
+
+	}*/
+
 
 	for (int i = ThirdPersonCamera; i<=FirstPersonCamera;i=i+1)
 	{
@@ -125,6 +134,7 @@ void Snak::move(Direction direction)
 		cam->TranslateCamera(glm::vec3(0.01*velocity.x,
 			0.01*velocity.y,
 			0.01*velocity.z));
+		//cam->RotateCamera(changed_rotation, this->get_head_pos());
 	}
 
 	scn->set_picked_shape(tmp_picked_shape);

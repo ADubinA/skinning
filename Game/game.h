@@ -2,6 +2,17 @@
 #include "scene.h"
 #include "bezier1D.h"
 #include "snak.h"
+#define metal_tread 0
+#define earth 1
+#define jupiter 2
+#define mars 3
+#define mercury 4
+#define neptune 5
+#define saturn 6
+#define uranus 7
+#define venus 8
+#define sun 9
+
 class Game : public Scene
 {
 	struct TransStruct

@@ -27,7 +27,7 @@ using namespace glm;
 		//indicesSize = sizeof(indices)/sizeof(indices[0]) ; 
 		glLineWidth(3);
 		
-		cameras.push_back(new Camera(vec3(0,0,1.0f)));
+		//cameras.push_back(new Camera(vec3(0,0,1.0f)));
 		pickedShape = -1;
 		depth = 0;
 		cameraIndx = 0;
@@ -43,7 +43,7 @@ using namespace glm;
 		//
 		//indicesSize = sizeof(indices)/sizeof(indices[0]) ; 
 		glLineWidth(6);
-		cameras.push_back(new Camera(position));
+		
 	//	axisMesh = new Shape(axisVertices,sizeof(axisVertices)/sizeof(axisVertices[0]),axisIndices, sizeof(axisIndices)/sizeof(axisIndices[0]));
 		pickedShape = -1;
 		depth = 0;

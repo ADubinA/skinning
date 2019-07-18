@@ -21,8 +21,7 @@ int main(int argc,char *argv[])
 	scn->addShader("../res/shaders/pickingShader");
 	scn->addShader("../res/shaders/skinningShader");
 
-	scn->AddTexture("../res/textures/box0.bmp");
-	scn->AddTexture("../res/textures/metal_tread.jpg");
+
 
 	scn->Init();
 	

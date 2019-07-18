@@ -79,6 +79,17 @@ void Game::CreateBoundingBoxes(BVH * box_tree, int parent, int level)
 
 void Game::Init()
 {
+	this->AddTexture("../res/textures/metal_tread.jpg");
+	this->AddTexture("../res/textures/earth.jpg");
+	this->AddTexture("../res/textures/jupiter.jpg");
+	this->AddTexture("../res/textures/mars.jpg");
+	this->AddTexture("../res/textures/mercury.jpg");
+	this->AddTexture("../res/textures/neptune.jpg");
+	this->AddTexture("../res/textures/saturn.jpg");
+	this->AddTexture("../res/textures/uranus.jpg");
+	this->AddTexture("../res/textures/venus.jpg");
+	this->AddTexture("../res/textures/sun.jpg");
+
 	std::vector<TransStruct> data;
 	addShape(Axis, -1, LINES);
 	
@@ -95,13 +106,13 @@ void Game::Init()
 	shapeTransformation(xScale, 10);
 	shapeTransformation(zScale, 10);
 
-	addShape(Octahedron, -1, TRIANGLES);
+	addShapeFromFile("../res/objs/sphere.obj", -1, TRIANGLES);
 	pickedShape = this->shapes.size()-1;
 	shapeTransformation(yGlobalTranslate, 5);
-	shapes[pickedShape]->SetTexture(1);
-	//shapeTransformation(yScale, 0.05);
-	//shapeTransformation(xScale, 0.05);
-	//shapeTransformation(zScale, 0.05);
+	shapes[pickedShape]->SetTexture(sun);
+	shapeTransformation(yScale, 0.05);
+	shapeTransformation(xScale, 0.05);
+	shapeTransformation(zScale, 0.05);
 
 	//addShapeCopy(pickedShape, -1, TRIANGLES);
 	/*pickedShape = this->shapes.size() - 1;
@@ -128,9 +139,9 @@ void Game::Init()
 	pickedShape = -1;
 	Activate();
 	// add camera for the head (this is first person)
-	
+	cameras.push_back(new Camera(glm::vec3(0.0f, 0.0f, 10.0f)));
 	cameras.push_back(new Camera(snak->get_head_pos()));
-	cameras[FirstPersonCamera]->RotateCamera(glm::rotate(90.0f, glm::vec3(0, 1, 0)));
+	cameras[FirstPersonCamera]->RotateCamera(glm::rotate(90.0f, glm::vec3(0, 1, 0)), snak->get_head_pos());
 	this->cameraIndx = ThirdPersonCamera;
 
 }
