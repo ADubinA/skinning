@@ -66,8 +66,8 @@ bool Shape::checkCollision(Shape * other,glm::mat4 this_trans, glm::mat4 other_t
 		if (picked)
 
 		{
-			/*if (counter >= 10)
-				return picked;*/
+			if (counter >= 10)
+				return picked;
 			if (other_curr->left != nullptr && other_curr->right != nullptr) {
 				other_queue.push(other_curr->left);
 				other_queue.push(other_curr->right);

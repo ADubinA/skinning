@@ -24,8 +24,8 @@ Camera::Camera(const glm::vec3& pos)
 	this->default_pos = pos;
 	this->pos = pos;
 	this->fov = 60.0f;
-	this->near = 1.0f;
-	this->far = 100.0f;
+	this->near = 0.6f;
+	this->far = 200.0f;
 	this->relation = (float)1200 / (float)800;
 	this->projection = glm::perspective(fov, relation, near, far);
 	this->projection = this->projection * glm::lookAt(pos, pos + forward, up);
@@ -59,14 +59,16 @@ void Camera::TranslateCamera(glm::vec3 position)
 void Camera::RotateCamera(glm::mat4 rotation_matrix,glm::vec3 center)
 {
 	this->up = glm::normalize(glm::vec3(rotation_matrix * glm::vec4(up,0)));
-	this->forward = glm::normalize(glm::vec3(rotation_matrix * glm::vec4(forward, 0)));
-	this->pos = glm::vec3( glm::translate(center)*rotation_matrix *glm::vec4(this->default_pos, 1));
+	this->forward = glm::vec3(rotation_matrix * glm::vec4(forward, 0));
+	//this->pos = glm::vec3(rotation_matrix *glm::translate(center)*glm::vec4(this->default_pos, 1));
 }
 
 void Camera::MoveRight(float amt)
 {
 	pos += glm::cross(up, forward) * amt;
 }
+
+
 
 void Camera::Pitch(float angle)
 {
@@ -78,11 +80,21 @@ void Camera::Pitch(float angle)
 
 void Camera::RotateY(float angle)
 {
-	static const glm::vec3 UP(0.0f, 1.0f, 0.0f);
+	//static const glm::vec3 UP(0.0f, 1.0f, 0.0f);
 
-	glm::mat4 rotation = glm::rotate(angle, UP);
+	glm::mat4 rotation = glm::rotate(angle, up);
 
 	forward = glm::vec3(glm::normalize(rotation * glm::vec4(forward, 0.0)));
+	//up = glm::vec3(glm::normalize(rotation * glm::vec4(up, 0.0)));
+}
+
+void Camera::RotateZ(float angle)
+{
+	//static const glm::vec3 FORW(0.0f, 0.0f, 1.0f);
+
+	glm::mat4 rotation = glm::rotate(angle, forward);
+
+	//forward = glm::vec3(glm::normalize(rotation * glm::vec4(forward, 0.0)));
 	up = glm::vec3(glm::normalize(rotation * glm::vec4(up, 0.0)));
 }
  float Camera::GetAngle()

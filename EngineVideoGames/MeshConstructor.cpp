@@ -56,8 +56,8 @@ bool MeshConstructor::checkCollision(BVH* other, glm::mat4 self_trans, glm::vec3
 		if (self_curr->box->checkCollision(other->box)) 
 
 		{
-			//if(counter>=100)
-			//	return self_curr->box->pickShape;
+			if(counter>=10)
+				return self_curr->box->pickShape;
 			if (self_curr->left != nullptr && self_curr->right != nullptr) {
 				self_queue.push(self_curr->left);
 				self_queue.push(self_curr->right);
@@ -174,7 +174,7 @@ BVH* MeshConstructor::make_BVH(Node node, std::vector<glm::vec3> point_list, int
 	bvh->level = level;
 
 	std::vector<glm::vec3> new_point_list;
-	if (node.left != nullptr && point_list.size()/verticesNum >= MINIMUM_VERTCIES_RATIO_FOR_BVH)
+	if (node.left != nullptr && float(point_list.size()/verticesNum) >= MINIMUM_VERTCIES_RATIO_FOR_BVH)
 	{
 		for (int i = 0; i < point_list.size(); i++)
 		{
@@ -192,7 +192,7 @@ BVH* MeshConstructor::make_BVH(Node node, std::vector<glm::vec3> point_list, int
 	}
 	new_point_list.clear();
 
-	if (node.right != nullptr && point_list.size() / verticesNum >= MINIMUM_VERTCIES_RATIO_FOR_BVH)
+	if (node.right != nullptr && float(point_list.size() / verticesNum) >= MINIMUM_VERTCIES_RATIO_FOR_BVH)
 	{
 		for (int i = 0; i < point_list.size(); i++)
 		{

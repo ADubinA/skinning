@@ -98,13 +98,13 @@ using namespace glm;
 		for (int i=0; i<shapes.size(); i++)
 		{
 			Shape* shape1 = shapes[i];
-			if (shape1->mode >= TRIANGLES)
+			if (shape1->mode >= TRIANGLES && i!=spacse_indx)
 			{
 				for (int j=0; j<shapes.size(); j++)
 				{
 					Shape* shape2 = shapes[j];
 					// TODO check that equality is very true
-					if (shape2->mode == TRIANGLES && i!=j)
+					if (shape2->mode == TRIANGLES && i!=j && j!= spacse_indx)
 					{
 
 						picked = shape1->checkCollision(shape2,
@@ -145,7 +145,7 @@ using namespace glm;
 		glm::mat4 P = cameras[cameraIndx]->GetViewProjection() ;
 		glm::vec4 Qrot[NUM_OF_SHAPES];
 		glm::vec4 Qtrans[NUM_OF_SHAPES];
-		int p = pickedShape;
+//		int p = pickedShape;
 //		shaders[shaderIndx]->Bind();
 		for (unsigned int i=0; i<shapes.size();i++)
 		{
@@ -189,7 +189,7 @@ using namespace glm;
 		shaders[SKINNING_SHADER]->SetUniform4v("Qrot", Qrot);
 		shaders[SKINNING_SHADER]->SetUniform4v("Qtrans", Qtrans);
 		
-		pickedShape = p;
+//		pickedShape = p;
 	}
 
 	 void Scene::shapeRotation(vec3 v, float ang,int indx)

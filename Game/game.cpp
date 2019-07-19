@@ -5,6 +5,7 @@
 
 #define BOUNDING_BOX_INDEX 2
 
+
 static void printMat(const glm::mat4 mat)
 {
 	std::cout<<" matrix:"<<std::endl;
@@ -89,6 +90,7 @@ void Game::Init()
 	this->AddTexture("../res/textures/uranus.jpg");
 	this->AddTexture("../res/textures/venus.jpg");
 	this->AddTexture("../res/textures/sun.jpg");
+	this->AddTexture("../res/textures/galaxy2.jpg");
 
 	std::vector<TransStruct> data;
 	addShape(Axis, -1, LINES);
@@ -107,12 +109,43 @@ void Game::Init()
 	shapeTransformation(zScale, 10);
 
 	addShapeFromFile("../res/objs/sphere.obj", -1, TRIANGLES);
-	pickedShape = this->shapes.size()-1;
-	shapeTransformation(yGlobalTranslate, 5);
+	pickedShape = this->shapes.size() - 1;
+	shapeTransformation(xGlobalTranslate, -10);
+	shapes[pickedShape]->SetTexture(earth);
+	shapeTransformation(yScale, 0.05);
+	shapeTransformation(xScale, 0.05);
+	shapeTransformation(zScale, 0.05);
+
+	addShapeFromFile("../res/objs/sphere.obj", -1, TRIANGLES);
+	pickedShape = this->shapes.size() - 1;
+	shapeTransformation(yGlobalTranslate, 6);
 	shapes[pickedShape]->SetTexture(sun);
 	shapeTransformation(yScale, 0.05);
 	shapeTransformation(xScale, 0.05);
 	shapeTransformation(zScale, 0.05);
+
+	addShapeFromFile("../res/objs/sphere.obj", -1, TRIANGLES);
+	pickedShape = this->shapes.size() - 1;
+	this->spacse_indx = pickedShape;
+	//shapeTransformation(yGlobalTranslate, 9);
+	shapes[pickedShape]->SetTexture(galaxy);
+	//shapeTransformation(yScale, 0.05);
+	//shapeTransformation(xScale, 0.05);
+	//shapeTransformation(zScale, 0.05);
+
+	/*addShapeFromFile("../res/objs/sphere.obj", -1, TRIANGLES);
+	pickedShape = this->shapes.size() - 1;
+	shapeTransformation(yGlobalTranslate, 9);
+	shapes[pickedShape]->SetTexture(mercury);
+	shapeTransformation(yScale, 0.05);
+	shapeTransformation(xScale, 0.05);
+	shapeTransformation(zScale, 0.05);*/
+
+	
+
+	
+	
+	
 
 	//addShapeCopy(pickedShape, -1, TRIANGLES);
 	/*pickedShape = this->shapes.size() - 1;

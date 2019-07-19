@@ -12,6 +12,7 @@
 #define uranus 7
 #define venus 8
 #define sun 9
+#define galaxy 10
 
 class Game : public Scene
 {
