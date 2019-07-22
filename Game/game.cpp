@@ -44,6 +44,7 @@ void Game::addSolarSystem()
 {
 	//float self_rotation_speed, float parent_rotation_speed,int shape_index,
 	//float planet_size,int texture_index,glm::vec3 starting_pos
+	addPlanet(0.01f, 0.01f, shapes.size(),0.5f,sun, glm::vec3 (0,0,30));
 
 
 
@@ -128,7 +129,11 @@ void Game::Init()
 	addShapeFromFile("../res/objs/sphere.obj", -1, TRIANGLES);
 	pickedShape = this->shapes.size() - 1;
 	this->spacse_indx = pickedShape;
+	shapeTransformation(yScale, 2);
+	shapeTransformation(xScale, 2);
+	shapeTransformation(zScale, 2);
 	shapes[pickedShape]->SetTexture(galaxy);
+	
 
 	addSolarSystem();
 
