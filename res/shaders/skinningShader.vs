@@ -16,8 +16,8 @@ uniform mat4 Normal;
 attribute vec3 weights;
 
 uniform ivec3 jointIndex;
-uniform vec4 Qrot[10];
-uniform vec4 Qtrans[10];
+uniform vec4 Qrot[30];
+uniform vec4 Qtrans[30];
 
 
 

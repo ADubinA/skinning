@@ -40,6 +40,23 @@ void Game::addShape(Bezier1D * curve, int parent, unsigned int mode)
 
 }
 
+void Game::addSolarSystem()
+{
+	//float self_rotation_speed, float parent_rotation_speed,int shape_index,
+	//float planet_size,int texture_index,glm::vec3 starting_pos
+
+
+
+}
+
+void Game::addPlanet(float self_rotation_speed, float parent_rotation_speed, int shape_index, float planet_size, int texture_index, glm::vec3 starting_pos)
+{
+	chainParents.push_back(-1);
+	this->planets.push_back(new Planet(self_rotation_speed, parent_rotation_speed, shape_index, planet_size, texture_index, starting_pos));
+	this->shapes.push_back(planets.back());
+}
+
+
 
 void Game::CreateBoundingBoxes(BVH * box_tree, int parent, int level)
 {
@@ -110,36 +127,11 @@ void Game::Init()
 
 	addShapeFromFile("../res/objs/sphere.obj", -1, TRIANGLES);
 	pickedShape = this->shapes.size() - 1;
-	shapeTransformation(xGlobalTranslate, -10);
-	shapes[pickedShape]->SetTexture(earth);
-	shapeTransformation(yScale, 0.05);
-	shapeTransformation(xScale, 0.05);
-	shapeTransformation(zScale, 0.05);
-
-	addShapeFromFile("../res/objs/sphere.obj", -1, TRIANGLES);
-	pickedShape = this->shapes.size() - 1;
-	shapeTransformation(yGlobalTranslate, 6);
-	shapes[pickedShape]->SetTexture(sun);
-	shapeTransformation(yScale, 0.05);
-	shapeTransformation(xScale, 0.05);
-	shapeTransformation(zScale, 0.05);
-
-	addShapeFromFile("../res/objs/sphere.obj", -1, TRIANGLES);
-	pickedShape = this->shapes.size() - 1;
 	this->spacse_indx = pickedShape;
-	//shapeTransformation(yGlobalTranslate, 9);
 	shapes[pickedShape]->SetTexture(galaxy);
-	//shapeTransformation(yScale, 0.05);
-	//shapeTransformation(xScale, 0.05);
-	//shapeTransformation(zScale, 0.05);
 
-	/*addShapeFromFile("../res/objs/sphere.obj", -1, TRIANGLES);
-	pickedShape = this->shapes.size() - 1;
-	shapeTransformation(yGlobalTranslate, 9);
-	shapes[pickedShape]->SetTexture(mercury);
-	shapeTransformation(yScale, 0.05);
-	shapeTransformation(xScale, 0.05);
-	shapeTransformation(zScale, 0.05);*/
+	addSolarSystem();
+
 
 	
 

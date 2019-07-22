@@ -11,7 +11,7 @@ Snak::Snak(int num_of_joints, Scene* scn)
 	this->is_dead = 1;
 	this->velocity = glm::vec3 (-1,0,0);
 	this->scn = scn;
-
+	this->speed = 0.01;
 }
 
 void Snak::createSnake()
@@ -84,6 +84,8 @@ void Snak::move(Direction direction)
 	case Up:
 		this->velocity =glm::vec3( glm::rotate(ROTATION_SPEED, z_after_rotation)*head_rotation*glm::vec4(-1,0,0,0));
 		scn->get_shape(this->head_indx)->myRotate(ROTATION_SPEED, z_after_rotation, -1);
+		//TODO remove
+		//scn->get_shape(this->head_indx+1)->myRotate(-1*ROTATION_SPEED, z_after_rotation, -1);
 		cam3->RotateZ(-ROTATION_SPEED);
 		cam1->Pitch(ROTATION_SPEED);
 		
@@ -93,6 +95,10 @@ void Snak::move(Direction direction)
 	case Down:
 		this->velocity = glm::vec3(glm::rotate(-ROTATION_SPEED, z_after_rotation)*head_rotation*glm::vec4(-1, 0, 0, 0));
 		scn->get_shape(this->head_indx)->myRotate(-ROTATION_SPEED, z_after_rotation, -1);
+
+		//TODO remove
+		//scn->get_shape(this->head_indx + 1)->myRotate(1 * ROTATION_SPEED, z_after_rotation, -1);
+
 		cam3->RotateZ(ROTATION_SPEED);
 		cam1->Pitch(-ROTATION_SPEED);
 
@@ -101,6 +107,10 @@ void Snak::move(Direction direction)
 	case Left:
 		this->velocity = glm::vec3(glm::rotate(ROTATION_SPEED, y_after_rotation)*head_rotation*glm::vec4(-1, 0, 0, 0));
 		scn->get_shape(this->head_indx)->myRotate(ROTATION_SPEED, y_after_rotation, -1);
+
+		//TODO remove
+		//scn->get_shape(this->head_indx + 1)->myRotate(-1 * ROTATION_SPEED, y_after_rotation, -1);
+
 		cam3->RotateY(ROTATION_SPEED);
 		cam3->MoveRight(-1);
 		cam1->RotateY(ROTATION_SPEED);
@@ -110,6 +120,8 @@ void Snak::move(Direction direction)
 	case Right:
 		this->velocity = glm::vec3(glm::rotate(-ROTATION_SPEED, y_after_rotation)*head_rotation*glm::vec4(-1, 0, 0, 0));
 		scn->get_shape(this->head_indx)->myRotate(-ROTATION_SPEED, y_after_rotation, -1);
+		//TODO remove
+		//scn->get_shape(this->head_indx + 1)->myRotate(1 * ROTATION_SPEED, y_after_rotation, -1);
 		cam3->RotateY(-ROTATION_SPEED);
 		cam3->MoveRight(1);
 		cam1->RotateY(-ROTATION_SPEED);
@@ -125,11 +137,11 @@ void Snak::move(Direction direction)
 	int tmp_picked_shape = scn->get_picked_shape();
 	scn->set_picked_shape(this->head_indx);
 
-	scn->shapeTransformation(scn->xGlobalTranslate,0.01*velocity.x);
-	scn->shapeTransformation(scn->yGlobalTranslate, 0.01*velocity.y);
-	scn->shapeTransformation(scn->zGlobalTranslate,0.01*velocity.z);
-	cam3->MoveRight(0.01);
-	cam1->MoveForward(0.01);
+	scn->shapeTransformation(scn->xGlobalTranslate, speed*velocity.x);
+	scn->shapeTransformation(scn->yGlobalTranslate, speed*velocity.y);
+	scn->shapeTransformation(scn->zGlobalTranslate, speed*velocity.z);
+	cam3->MoveRight(speed);
+	cam1->MoveForward(speed);
 
 
 	scn->set_picked_shape(tmp_picked_shape);

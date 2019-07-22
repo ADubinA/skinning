@@ -15,6 +15,7 @@ private:
 public:
 	int head_indx;
 	int tail_indx;
+	float speed;
 	enum Direction
 	{
 		Up,

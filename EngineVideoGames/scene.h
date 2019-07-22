@@ -4,7 +4,7 @@
 #include "camera.h"
 #include "VertexArray.hpp"
 #include <vector>
-#define NUM_OF_SHAPES 10
+#define NUM_OF_SHAPES 30
 
 enum camera_mode { ThirdPersonCamera, FirstPersonCamera };
 class Scene : public MovableGLM
