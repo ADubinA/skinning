@@ -32,12 +32,13 @@ public:
 	
 	Scene();
 	Scene(glm::vec3 position,float angle,float hwRelation,float near, float far);
+	int planets[9];
 	glm::mat4 getShapeTotalTrans(int pickedShape);
 	void AddTexture(const std::string& textureFileName);
 	void addShapeFromFile(const std::string& fileName,int parent,unsigned int mode);
 	virtual void addShape(int type,int parent,unsigned int mode);
 	virtual	void addShape(Bezier1D * curve, int parent, unsigned int mode);
-
+	int score;
 	void addShapeCopy(int indx,int parent,unsigned int mode);
 	void collisionDetection();
 	void addShader(const std::string& fileName);

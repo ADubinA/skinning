@@ -44,17 +44,34 @@ void Game::addSolarSystem()
 {
 	//float self_rotation_speed, float parent_rotation_speed,int shape_index,
 	//float planet_size,int texture_index,glm::vec3 starting_pos
-	addPlanet(0.01f, 0.01f, shapes.size(),0.5f,sun, glm::vec3 (0,0,30));
+	addPlanet(0.2f,0.2f, shapes.size(),0.3f,sun, glm::vec3 (0,0,-20),-1,8);
+
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.015f, mercury, glm::vec3(7, 0, 0), planets[8], 7);
+
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.018, mars, glm::vec3(-8, 0, 0), planets[8], 6);
+
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.02f, earth, glm::vec3(0, 0, 11), planets[8], 5);
+
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.015f, venus, glm::vec3(0, 0, -13), planets[8], 4);
+
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.08f, jupiter, glm::vec3(16, 0, 0), planets[8], 3);
+
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.07f, saturn, glm::vec3(0, 0, 18), planets[8], 2);
+
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.05f, neptune, glm::vec3(-20, 0, 0), planets[8], 1);
+
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.04f, uranus, glm::vec3(0, 0, -22), planets[8], 0);
 
 
 
 }
 
-void Game::addPlanet(float self_rotation_speed, float parent_rotation_speed, int shape_index, float planet_size, int texture_index, glm::vec3 starting_pos)
+void Game::addPlanet(float self_rotation_speed, float parent_rotation_speed, int shape_index, float planet_size, int texture_index, glm::vec3 starting_pos, int parent, int indx)
 {
-	chainParents.push_back(-1);
-	this->planets.push_back(new Planet(self_rotation_speed, parent_rotation_speed, shape_index, planet_size, texture_index, starting_pos));
-	this->shapes.push_back(planets.back());
+	chainParents.push_back(parent);
+	Planet *planet = new Planet(self_rotation_speed, parent_rotation_speed, shape_index, planet_size, texture_index, starting_pos);
+	this->planets[indx] = planet->shape_index;
+	this->shapes.push_back(planet);
 }
 
 
@@ -132,38 +149,10 @@ void Game::Init()
 	shapeTransformation(yScale, 2);
 	shapeTransformation(xScale, 2);
 	shapeTransformation(zScale, 2);
+	shapeTransformation(zGlobalTranslate, -10);
 	shapes[pickedShape]->SetTexture(galaxy);
 	
-
 	addSolarSystem();
-
-
-	
-
-	
-	
-	
-
-	//addShapeCopy(pickedShape, -1, TRIANGLES);
-	/*pickedShape = this->shapes.size() - 1;
-	shapes[pickedShape]->AddTexture(textures[1]);
-
-	shapeTransformation(zGlobalTranslate, -5);
-	shapeTransformation(yScale, 0.05);
-	shapeTransformation(xScale, 0.05);
-	shapeTransformation(zScale, 0.05);*/
-	//for (int i = 0; i<this->shapes.size(); i++)
-	//{
-	//	Shape *shape = shapes[i];
-	//	if (shape->mode >= TRIANGLES)
-	//	{
-	//		BVH *bvh = &shape->mesh->bvh;
-
-	//		CreateBoundingBoxes(bvh, i, 0);
-
-
-	//	}
-	//}
 
 	ReadPixel();
 	pickedShape = -1;
@@ -234,6 +223,8 @@ void Game::Motion()
 		this->snak->move(snak->Forward);
 		pickedShape = p;
 	}
+	((Planet*)(shapes[planets[8]]))->move();
+
 }
 
 Game::~Game(void)

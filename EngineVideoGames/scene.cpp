@@ -35,6 +35,7 @@ using namespace glm;
 		yold = 0;
 		isActive = false;
 		menu_mode = false;
+		score = 0;
 	}
 
 	Scene::Scene(vec3 position,float angle,float hwRelation,float near, float far)
@@ -98,13 +99,13 @@ using namespace glm;
 		for (int i=0; i<shapes.size(); i++)
 		{
 			Shape* shape1 = shapes[i];
-			if (shape1->mode >= TRIANGLES && i!=spacse_indx)
+			if (shape1->mode >= TRIANGLES && i!=spacse_indx&& shape1->Is2Render())
 			{
 				for (int j=0; j<shapes.size(); j++)
 				{
 					Shape* shape2 = shapes[j];
 					// TODO check that equality is very true
-					if (shape2->mode == TRIANGLES && i!=j && j!= spacse_indx)
+					if (shape2->mode == TRIANGLES && i!=j && j!= spacse_indx && shape2->Is2Render())
 					{
 
 						picked = shape1->checkCollision(shape2,
@@ -113,8 +114,17 @@ using namespace glm;
 						if (picked)
 						{
 							//shapes[picked]->Unhide();
-							this->Deactivate();
-							std::cout << j << "," << i << std::endl;
+							if (i == planets[score] ) {
+								shape1->Hide();
+								score++;
+							}
+							else if (j == planets[score]) {
+								shape2->Hide();
+								score++;
+							}
+							else
+								this->Deactivate();
+							//std::cout << j << "," << i << std::endl;
 						}
 					}
 				}

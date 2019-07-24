@@ -16,9 +16,12 @@ Planet::Planet(float self_rotation_speed, float parent_rotation_speed,int shape_
 void Planet:: build_planet()
 {
 	// 1 means local translate
-	
-	this->myTranslate(glm::vec3(this->starting_pos), 1);
+	if(texture_index==sun)
+		this->myTranslate(glm::vec3(this->starting_pos), 0);
+	else
+		this->myTranslate(glm::vec3(this->starting_pos), 1);
 	this->myScale(glm::vec3(this->planet_size, this->planet_size, this->planet_size));
+	// this->myRotate(this->parent_rotation_speed, ROTATION_AXIS, -1);
 	this->SetTexture(this->texture_index);
 }
 

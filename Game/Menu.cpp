@@ -33,14 +33,14 @@ void Menu::DrawMenu()
 	ImGui_ImplGlfwGL3_NewFrame();
 
 	
-	ImGui::Begin("MainWindow");                          // Create a window called "Hello, world!" and append into it.
-	ImGui::SetWindowSize("MainWindow", ImVec2((float)1400, (float)800));
+	ImGui::Begin("Score Window");                          // Create a window called "Hello, world!" and append into it.
+	ImGui::SetWindowSize("Score Window", ImVec2((float)1400, (float)800));
 
 	//ImGui::Text("picked shape is: %d", scn->pickedShape);
 	//ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
 	//ImGui::Checkbox("Another Window", &show_another_window);
 
-	ImGui::SliderFloat("velocity", &this->f, -5.0f, 5.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+	//ImGui::SliderFloat("velocity", &this->f, -5.0f, 5.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
 	
 
 	if (ImGui::Button("Pause")) 
@@ -57,10 +57,10 @@ void Menu::DrawMenu()
 	// Buttons return true when clicked (most widgets return true when edited/activated)
 		//scn->tmp_test_mode = !scn->tmp_test_mode;
 		
-	ImGui::SameLine();
-	ImGui::Text("target is moving: %d", scn->IsActive());
+	//ImGui::SameLine();
+	ImGui::Text("your score is: %d", scn->score);
 
-	ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+	//ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 	ImGui::End();
 
 	ImGui::Render();

@@ -11,7 +11,7 @@ Snak::Snak(int num_of_joints, Scene* scn)
 	this->is_dead = 1;
 	this->velocity = glm::vec3 (-1,0,0);
 	this->scn = scn;
-	this->speed = 0.01;
+	this->speed = 0.1;
 	this->interpolation_constant = 0.1;
 }
 
@@ -86,7 +86,7 @@ void Snak::move(Direction direction)
 		this->velocity =glm::vec3( glm::rotate(ROTATION_SPEED, z_after_rotation)*head_rotation*glm::vec4(-1,0,0,0));
 		scn->get_shape(this->head_indx)->myRotate(ROTATION_SPEED, z_after_rotation, -1);
 		//TODO remove
-		scn->get_shape(this->head_indx+1)->myRotate(-1*ROTATION_SPEED, z_after_rotation, -1);
+		//scn->get_shape(this->head_indx+1)->myRotate(-1*ROTATION_SPEED, z_after_rotation, -1);
 		cam3->RotateZ(-ROTATION_SPEED);
 		cam1->Pitch(ROTATION_SPEED);
 		
@@ -98,8 +98,7 @@ void Snak::move(Direction direction)
 		scn->get_shape(this->head_indx)->myRotate(-ROTATION_SPEED, z_after_rotation, -1);
 
 		//TODO remove
-		scn->get_shape(this->head_indx + 1)->myRotate(1 * ROTATION_SPEED, z_after_rotation, -1);
-
+		//scn->get_shape(this->head_indx + 1)->myRotate(1 * ROTATION_SPEED, z_after_rotation, -1);
 		cam3->RotateZ(ROTATION_SPEED);
 		cam1->Pitch(-ROTATION_SPEED);
 
@@ -108,10 +107,8 @@ void Snak::move(Direction direction)
 	case Left:
 		this->velocity = glm::vec3(glm::rotate(ROTATION_SPEED, y_after_rotation)*head_rotation*glm::vec4(-1, 0, 0, 0));
 		scn->get_shape(this->head_indx)->myRotate(ROTATION_SPEED, y_after_rotation, -1);
-
 		//TODO remove
-		scn->get_shape(this->head_indx + 1)->myRotate(-1 * ROTATION_SPEED, y_after_rotation, -1);
-
+		//scn->get_shape(this->head_indx + 1)->myRotate(-1 * ROTATION_SPEED, y_after_rotation, -1);
 		cam3->RotateY(ROTATION_SPEED);
 		cam3->MoveRight(-1);
 		cam1->RotateY(ROTATION_SPEED);
@@ -122,7 +119,7 @@ void Snak::move(Direction direction)
 		this->velocity = glm::vec3(glm::rotate(-ROTATION_SPEED, y_after_rotation)*head_rotation*glm::vec4(-1, 0, 0, 0));
 		scn->get_shape(this->head_indx)->myRotate(-ROTATION_SPEED, y_after_rotation, -1);
 		//TODO remove
-		scn->get_shape(this->head_indx + 1)->myRotate(1 * ROTATION_SPEED, y_after_rotation, -1);
+		//scn->get_shape(this->head_indx + 1)->myRotate(1 * ROTATION_SPEED, y_after_rotation, -1);
 		cam3->RotateY(-ROTATION_SPEED);
 		cam3->MoveRight(1);
 		cam1->RotateY(-ROTATION_SPEED);

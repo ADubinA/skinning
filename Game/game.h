@@ -29,7 +29,6 @@ class Game : public Scene
 	};
 	Bezier1D *curve;
 	void Game::CreateBoundingBoxes(BVH *box_tree, int parent, int level);
-	std::vector<Planet*> planets;
 
 public:
 	Snak* snak;
@@ -39,7 +38,8 @@ public:
 	void addShape(int type,int parent,unsigned int mode);
 	void addShape(Bezier1D * curve, int parent, unsigned int mode);
 	void addSolarSystem();
-	void addPlanet(float self_rotation_speed, float parent_rotation_speed, int shape_index, float planet_size, int texture_index, glm::vec3 starting_pos);
+	void addPlanet(float self_rotation_speed, float parent_rotation_speed, int shape_index, float planet_size, int texture_index, glm::vec3 starting_pos, int parent, int indx);
+	void addPlanet(float self_rotation_speed, float parent_rotation_speed, int shape_index, float planet_size, int texture_index, glm::vec3 starting_pos, int parent);
 //	void Update( glm::mat4 MVP ,glm::mat4 *jointTransforms,const int length,const int  shaderIndx);
 	void Update(const glm::mat4 &MV, const glm::mat4 &P ,const glm::mat4 &Normal, int indx, Shader *s, int s_index);
 	void ControlPointUpdate();
