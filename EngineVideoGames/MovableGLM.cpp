@@ -90,7 +90,10 @@ void MovableGLM::myRotate(float ang, glm::vec3 &vec, int indx)
 
 	//}
 }
-
+void MovableGLM::myRotate(glm::mat4 matrix)
+{
+	rotateMat = matrix *rotateMat;
+}
 void MovableGLM::myTranslate(vec3 &vec, int indx)
 {
 	translateMat[indx] = translate(translateMat[indx], scaleFactor * vec ) ;

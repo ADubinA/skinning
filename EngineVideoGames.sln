@@ -1,5 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "Game\Game.vcxproj", "{257FC222-2301-4B67-A02B-880548704235}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EngineVideoGames", "EngineVideoGames\EngineVideoGames.vcxproj", "{42AF4C92-9210-42BB-AFD2-30E6108E4CC4}"
@@ -9,8 +11,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KDtree", "KDtree\KDtree.vcxproj", "{7CE449AF-34F9-48D2-8604-7C3D4910871D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "linearSolver", "linearSolver\linearSolver\linearSolver.vcxproj", "{DECFCF3E-C42F-4674-B514-033BC0402038}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IK", "IK\IK.vcxproj", "{90FE4BBB-DB39-46B3-A195-5E8C41B74687}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,12 +38,11 @@ Global
 		{DECFCF3E-C42F-4674-B514-033BC0402038}.Debug|Win32.Build.0 = Debug|Win32
 		{DECFCF3E-C42F-4674-B514-033BC0402038}.Release|Win32.ActiveCfg = Release|Win32
 		{DECFCF3E-C42F-4674-B514-033BC0402038}.Release|Win32.Build.0 = Release|Win32
-		{90FE4BBB-DB39-46B3-A195-5E8C41B74687}.Debug|Win32.ActiveCfg = Debug|Win32
-		{90FE4BBB-DB39-46B3-A195-5E8C41B74687}.Debug|Win32.Build.0 = Debug|Win32
-		{90FE4BBB-DB39-46B3-A195-5E8C41B74687}.Release|Win32.ActiveCfg = Release|Win32
-		{90FE4BBB-DB39-46B3-A195-5E8C41B74687}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54961F22-3D43-462A-BF2D-754ECD6FF1EC}
 	EndGlobalSection
 EndGlobal

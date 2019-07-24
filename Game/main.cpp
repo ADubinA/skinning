@@ -20,9 +20,10 @@ int main(int argc,char *argv[])
 	scn->addShader("../res/shaders/basicShader");
 	scn->addShader("../res/shaders/pickingShader");
 	scn->addShader("../res/shaders/skinningShader");
-
-
-
+	//
+	//glm::mat4 rotate = glm::rotate(43.0f, glm::vec3(1.2, 1, 4))*glm::rotate(40.0f, glm::vec3(1, 12, 2));
+	//glm::mat4 after = get_rotation_matrix(glm::vec3(rotate*glm::vec4(0, 0, 1, 0)), glm::vec3(0,0,1));
+	//glm::vec4 result = after* rotate*glm::vec4(0, 0, 1, 0);
 	scn->Init();
 	
 	display.setScene(scn);

@@ -11,8 +11,8 @@ Snak::Snak(int num_of_joints, Scene* scn)
 	this->is_dead = 1;
 	this->velocity = glm::vec3 (-1,0,0);
 	this->scn = scn;
-	this->speed = 0.1;
-	this->interpolation_constant = 0.1;
+	this->speed = 0.01;
+	this->interpolation_constant = 90.0f;
 }
 
 void Snak::createSnake()
@@ -86,7 +86,7 @@ void Snak::move(Direction direction)
 		this->velocity =glm::vec3( glm::rotate(ROTATION_SPEED, z_after_rotation)*head_rotation*glm::vec4(-1,0,0,0));
 		scn->get_shape(this->head_indx)->myRotate(ROTATION_SPEED, z_after_rotation, -1);
 		//TODO remove
-		//scn->get_shape(this->head_indx+1)->myRotate(-1*ROTATION_SPEED, z_after_rotation, -1);
+		scn->get_shape(this->head_indx+1)->myRotate(-1*ROTATION_SPEED, z_after_rotation, -1);
 		cam3->RotateZ(-ROTATION_SPEED);
 		cam1->Pitch(ROTATION_SPEED);
 		
@@ -98,7 +98,7 @@ void Snak::move(Direction direction)
 		scn->get_shape(this->head_indx)->myRotate(-ROTATION_SPEED, z_after_rotation, -1);
 
 		//TODO remove
-		//scn->get_shape(this->head_indx + 1)->myRotate(1 * ROTATION_SPEED, z_after_rotation, -1);
+		scn->get_shape(this->head_indx + 1)->myRotate(1 * ROTATION_SPEED, z_after_rotation, -1);
 		cam3->RotateZ(ROTATION_SPEED);
 		cam1->Pitch(-ROTATION_SPEED);
 
@@ -108,7 +108,7 @@ void Snak::move(Direction direction)
 		this->velocity = glm::vec3(glm::rotate(ROTATION_SPEED, y_after_rotation)*head_rotation*glm::vec4(-1, 0, 0, 0));
 		scn->get_shape(this->head_indx)->myRotate(ROTATION_SPEED, y_after_rotation, -1);
 		//TODO remove
-		//scn->get_shape(this->head_indx + 1)->myRotate(-1 * ROTATION_SPEED, y_after_rotation, -1);
+		scn->get_shape(this->head_indx + 1)->myRotate(-1 * ROTATION_SPEED, y_after_rotation, -1);
 		cam3->RotateY(ROTATION_SPEED);
 		cam3->MoveRight(-1);
 		cam1->RotateY(ROTATION_SPEED);
@@ -119,7 +119,7 @@ void Snak::move(Direction direction)
 		this->velocity = glm::vec3(glm::rotate(-ROTATION_SPEED, y_after_rotation)*head_rotation*glm::vec4(-1, 0, 0, 0));
 		scn->get_shape(this->head_indx)->myRotate(-ROTATION_SPEED, y_after_rotation, -1);
 		//TODO remove
-		//scn->get_shape(this->head_indx + 1)->myRotate(1 * ROTATION_SPEED, y_after_rotation, -1);
+		scn->get_shape(this->head_indx + 1)->myRotate(1 * ROTATION_SPEED, y_after_rotation, -1);
 		cam3->RotateY(-ROTATION_SPEED);
 		cam3->MoveRight(1);
 		cam1->RotateY(-ROTATION_SPEED);
@@ -132,8 +132,10 @@ void Snak::move(Direction direction)
 	default:
 		break;
 	}
-	align_segments(index_chain[0], index_chain[1]);
-
+	for (int i = 0; i <= num_of_links; i++)
+	{
+		align_segments(index_chain[i], index_chain[i+1]);
+	}
 	int tmp_picked_shape = scn->get_picked_shape();
 	scn->set_picked_shape(this->head_indx);
 
@@ -160,23 +162,74 @@ glm::vec3 Snak::get_segment_tip(int indx)
 }
 glm::vec3 Snak::get_segment_center(int indx)
 {
-	BoundingBox *body_box = scn->get_shape(indx)->mesh->bvh.box;
-	return body_box->center;
+	glm::mat4 rot = glm::mat4(1);
+	for (int i = indx;; i--)
+	{
+		if (i == head_indx)
+		{
+			break;
+		}
+		rot *= scn->get_shape(i)->GetRot();
+	
+	}
+	return glm::vec3(rot*glm::vec4(1,0,0,0));
 }
 void Snak::align_segments(int stationary, int moving)
 {
- 	glm::vec3 stationary_vector = glm::normalize(this->get_segment_tip(stationary) - this->get_segment_center(stationary));
-	glm::vec3 moving_vector = -1.0f*glm::normalize((this->get_segment_tip(moving) - this->get_segment_center(moving)));
-	glm::vec3 rotation_axis = glm::cross(stationary_vector, moving_vector);
+ 	glm::vec3 stationary_vector = glm::normalize(this->get_segment_center(stationary));
+	glm::vec3 moving_vector = glm::normalize(this->get_segment_center(moving));
+		glm::mat4 R = get_rotation_matrix(moving_vector,stationary_vector,interpolation_constant);
+		scn->get_shape(moving)->myRotate(R);
+		scn->get_shape(moving + 1)->myRotate(glm::transpose(R));
+	
+
+
+	/*glm::vec3 rotation_axis = glm::cross(stationary_vector, moving_vector);
 	if (abs(glm::dot(rotation_axis, rotation_axis)) > 0.001)
 	{
-		float rotation_angle = 180-(180.0f/PI)*glm::acos(glm::dot(stationary_vector, moving_vector));
-		rotation_angle = rotation_angle*interpolation_constant;
+		rotation_axis = glm::normalize(rotation_axis);
+		float rotation_angle = (180.0f/PI)*glm::acos(glm::dot(stationary_vector, moving_vector));
+
+		rotation_angle = -rotation_angle * interpolation_constant;
+
 		scn->get_shape(moving)->myRotate(rotation_angle, rotation_axis, -1);
 
-	}
-}
 
+	}*/
+}
+glm::mat4 get_rotation_matrix(glm::vec3 stationary, glm::vec3 moving,float interpolation_constant)
+{
+	//glm::mat4 G = glm::mat4(glm::vec4(glm::dot(stationary, moving), -glm::normalize(glm::cross(stationary, moving)), 0, 0),
+	//						glm::vec4(glm::normalize(glm::cross(stationary, moving)), glm::dot(stationary, moving), 0, 0),
+	//						glm::vec4(0, 0, 1, 0),
+	//						glm::vec4(0, 0, 0, 1));
+	//glm::mat4 F = glm::mat4(glm::vec4(stationary, 0),
+	//						glm::vec4(glm::normalize(moving - glm::dot(stationary, moving)*stationary), 0),
+	//						glm::vec4(glm::cross(moving, stationary), 0),
+	//						glm::vec4(0, 0, 0, 1));
+	//glm::mat4 R = F
+	
+	stationary = (interpolation_constant*moving + stationary) /(interpolation_constant+1.0f);
+	glm::vec3 v = glm::cross(moving, stationary);
+	float c =     glm::dot(moving, stationary);
+	if (abs(1.0f + c) < 0.001)
+	{
+		return glm::mat4(1);
+	}
+	glm::mat4 vx = glm::mat4(
+		glm::vec4(0, -v.z, v.y, 0),
+		glm::vec4(v.z, 0, -v.x, 0),
+		glm::vec4(-v.y, v.x, 0, 0),
+		glm::vec4(0, 0, 0, 0));
+	glm::mat4 unit = glm::mat4(1);
+	glm::mat4 R = unit + vx + vx * vx*(1.0f/(1.0f+c));
+	return R;
+
+
+
+
+
+}
 Snak::~Snak()
 {
 }

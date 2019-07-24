@@ -32,6 +32,7 @@ public:
 	glm::mat4 makeTrans() const;
 	glm::mat4 GetRot() const;
 	void myRotate(float ang, glm::vec3 &vec, int indx);
+	void myRotate(glm::mat4 matrix);
 	void myTranslate(glm::vec3 &vec, int indx);
 	void myScale(glm::vec3 &vec);
 	void globalSystemRot(float ang, glm::vec3 &vec, int indx);

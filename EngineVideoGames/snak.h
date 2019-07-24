@@ -1,6 +1,9 @@
 #pragma once
 #include "bezier1D.h"
 #include "scene.h"
+#include "glm\gtx\norm.hpp"
+glm::mat4 get_rotation_matrix(glm::vec3 stationary, glm::vec3 moving,float interpolation_constant);
+
 class Snak
 #define SNAKE_TEX_INDEX 0
 #define PI 3.14159265358979323846264338327950288
