@@ -25,7 +25,7 @@ Camera::Camera(const glm::vec3& pos)
 	this->pos = pos;
 	this->fov = 60.0f;
 	this->near = 0.6f;
-	this->far = 200.0f;
+	this->far = 500.0f;
 	this->relation = (float)1200 / (float)800;
 	this->projection = glm::perspective(fov, relation, near, far);
 	this->projection = this->projection * glm::lookAt(pos, pos + forward, up);

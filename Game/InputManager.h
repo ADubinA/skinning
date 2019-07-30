@@ -54,14 +54,14 @@
 					scn->snak->move(scn->snak->Down);
 					break;
 				case GLFW_KEY_S:
-					if (scn->IsActive())
+					/*if (scn->IsActive())
 					{
 						scn->Deactivate();
 					}
 					else
 					{
 						scn->Activate();
-					}
+					}*/
 					break;
 				case GLFW_KEY_C:
 					if (scn->get_camera_indx() == FirstPersonCamera)

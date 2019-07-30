@@ -12,7 +12,7 @@ Snak::Snak(int num_of_joints, Scene* scn)
 	this->velocity = glm::vec3 (-1,0,0);
 	this->scn = scn;
 	this->speed = 0.1;
-	this->interpolation_constant = 40.0f;
+	this->interpolation_constant = 10.0f;
 }
 
 void Snak::createSnake()
@@ -82,7 +82,7 @@ void Snak::move(Direction direction)
 	//Camera *cam1 = scn->get_camera(FirstPersonCamera);
 	switch (direction)
 	{
-	case Up:
+	case Down:
 		this->velocity =glm::vec3( glm::rotate(ROTATION_SPEED, z_after_rotation)*head_rotation*glm::vec4(-1,0,0,0));
 		scn->get_shape(this->head_indx)->myRotate(ROTATION_SPEED, z_after_rotation, -1);
 		//TODO remove
@@ -93,7 +93,7 @@ void Snak::move(Direction direction)
 
 		break;
 
-	case Down:
+	case Up:
 		this->velocity = glm::vec3(glm::rotate(-ROTATION_SPEED, z_after_rotation)*head_rotation*glm::vec4(-1, 0, 0, 0));
 		scn->get_shape(this->head_indx)->myRotate(-ROTATION_SPEED, z_after_rotation, -1);
 
@@ -183,7 +183,10 @@ void Snak::align_segments(int stationary, int moving)
 	glm::vec3 moving_vector = glm::normalize(glm::vec3(this->get_segment_rotation(moving)*glm::vec4(1, 0, 0, 0)));
 		glm::mat4 R = get_rotation_matrix(moving_vector,stationary_vector,interpolation_constant);
 		scn->get_shape(moving)->myRotate(R);
-		scn->get_shape(moving + 1)->myRotate(glm::transpose(R));
+		if (moving + 1 <= this->tail_indx)
+		{
+			scn->get_shape(moving + 1)->myRotate(glm::transpose(R));
+		}
 	
 
 
