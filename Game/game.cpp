@@ -116,6 +116,7 @@ void Game::CreateBoundingBoxes(BVH * box_tree, int parent, int level)
 
 void Game::Init()
 {
+	playTune("Sounds/Jump.wav");
 	this->AddTexture("../res/textures/metal_tread.jpg");
 	this->AddTexture("../res/textures/earth.jpg");
 	this->AddTexture("../res/textures/jupiter.jpg");

@@ -3,10 +3,13 @@
 #include "scene.h"
 #include <iostream>
 #include <glm/gtc/quaternion.hpp>
+#include <SDL.h>
 
 
 using namespace std;
 using namespace glm;
+static Uint8 *audioPos;
+static Uint32 audioLen;
 
 
 
@@ -119,10 +122,12 @@ using namespace glm;
 							if (i == planets[score] ) {
 								shape1->Hide();
 								score++;
+								playTune("Sounds/Jump.wav");
 							}
 							else if (j == planets[score]) {
 								shape2->Hide();
 								score++;
+								playTune("Sounds/Jump.wav");
 							}
 							else
 								this->Deactivate();
@@ -644,4 +649,58 @@ using namespace glm;
 		shapeTransformation(xScale,factor);
 		shapeTransformation(yScale,factor);
 		shapeTransformation(zScale,factor);
+	}
+	void my_audio_callback(void *userdata, Uint8 *stream, int len);
+
+
+	void my_audio_callback(void *userdata, Uint8 *stream, int len)
+	{
+		if (audioLen == 0)
+			return;
+
+		len = (len > audioLen ? audioLen : len);
+		//SDL_memcpy (stream, audio_pos, len); 					// simply copy from one buffer into the other
+		SDL_MixAudio(stream, audioPos, len, SDL_MIX_MAXVOLUME);// mix from one buffer into another
+
+		audioPos += len;
+		audioLen -= len;
+	}
+
+	void Scene::playTune(char* str)
+	{
+		if (SDL_Init(SDL_INIT_AUDIO) < 0)
+			return;
+
+		//local variables
+		static Uint32 wav_length; // length of our sample
+		static Uint8 *wav_buffer; // buffer containing our audio file
+		static SDL_AudioSpec wav_spec; // the specs of our piece of music
+
+		if (SDL_LoadWAV(str, &wav_spec, &wav_buffer, &wav_length) == NULL) {
+			return;
+		}
+		// set the callback function
+		wav_spec.callback = my_audio_callback;
+		wav_spec.userdata = NULL;
+		// set our global static variables
+		audioPos = wav_buffer; // copy sound buffer
+		audioLen = wav_length; // copy file length
+
+								/* Open the audio device */
+		if (SDL_OpenAudio(&wav_spec, NULL) < 0) {
+			fprintf(stderr, "Couldn't open audio: %s\n", SDL_GetError());
+			exit(-1);
+		}
+
+		/* Start playing */
+		SDL_PauseAudio(0);
+
+		// wait until we're don't playing
+		while (audioLen > 0) {
+			SDL_Delay(100);
+		}
+
+		// shut everything down
+		SDL_CloseAudio();
+		SDL_FreeWAV(wav_buffer);
 	}
