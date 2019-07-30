@@ -69,22 +69,22 @@ void Menu::DrawMenuScore()
 			ImGui::Text("eat neptune (blue)");
 			break;
 		case 2:
-			ImGui::Text("eat saturn");
+			ImGui::Text("eat saturn, look for the rings on the planet!");
 			break;
 		case 3:
-			ImGui::Text("eat jupiter");
+			ImGui::Text("eat jupiter, it has an eye!");
 			break;
 		case 4:
-			ImGui::Text("eat venus");
+			ImGui::Text("eat venus, she is a lady ;)");
 			break;
 		case 5:
-			ImGui::Text("eat earth");
+			ImGui::Text("eat earth, come home?");
 			break;
 		case 6:
-			ImGui::Text("eat mars");
+			ImGui::Text("eat mars, where the aliens are");
 			break;
 		case 7:
-			ImGui::Text("eat mercury");
+			ImGui::Text("eat mercury, you are almost there");
 			break;
 		case 8:
 			ImGui::Text("eat the sun");

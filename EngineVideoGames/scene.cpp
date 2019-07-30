@@ -95,6 +95,8 @@ using namespace glm;
 	}
 	void Scene::collisionDetection()
 	{
+		
+
 		bool picked;
 		for (int i=0; i<shapes.size(); i++)
 		{

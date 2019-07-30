@@ -147,9 +147,9 @@ void Game::Init()
 	addShapeFromFile("../res/objs/sphere.obj", -1, TRIANGLES);
 	pickedShape = this->shapes.size() - 1;
 	this->spacse_indx = pickedShape;
-	shapeTransformation(yScale, 4);
-	shapeTransformation(xScale, 4);
-	shapeTransformation(zScale, 4);
+	shapeTransformation(yScale, 8);
+	shapeTransformation(xScale, 8);
+	shapeTransformation(zScale, 8);
 	shapeTransformation(zGlobalTranslate, -10);
 	shapes[pickedShape]->SetTexture(galaxy);
 
@@ -217,8 +217,11 @@ void Game::WhenTranslate()
 
 void Game::Motion()
 {
+
 	collisionDetection();
 	snak->align_cameras();
+	if (glm::distance(this->snak->get_head_pos(), glm::vec3(0, 0, 0)) > 100)
+		this->Deactivate();
 	if(isActive)
 	{
 		int p = pickedShape;
