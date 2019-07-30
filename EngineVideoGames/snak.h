@@ -35,12 +35,13 @@ public:
 
 	glm::vec3 get_segment_tip(int indx);
 
-	glm::vec3 get_segment_center(int indx);
+	glm::mat4 get_segment_rotation(int indx);
 
 	void align_segments(int stationary, int moving);
 
 
 	Snak(int num_of_joints, Scene* scn);
+	void align_cameras();
 	~Snak();
 };
 

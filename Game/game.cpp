@@ -217,6 +217,7 @@ void Game::WhenTranslate()
 void Game::Motion()
 {
 	collisionDetection();
+	snak->align_cameras();
 	if(isActive)
 	{
 		int p = pickedShape;

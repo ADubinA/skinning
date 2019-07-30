@@ -11,8 +11,8 @@ Snak::Snak(int num_of_joints, Scene* scn)
 	this->is_dead = 1;
 	this->velocity = glm::vec3 (-1,0,0);
 	this->scn = scn;
-	this->speed = 0.01;
-	this->interpolation_constant = 90.0f;
+	this->speed = 0.1;
+	this->interpolation_constant = 40.0f;
 }
 
 void Snak::createSnake()
@@ -78,8 +78,8 @@ void Snak::move(Direction direction)
 	glm::vec3 y_after_rotation = glm::vec3(0, 1, 0);//glm::vec3(head_rotation * glm::vec4(0, 1, 0, 0));
 
 	glm::mat4 changed_rotation = glm::mat4(1);
-	Camera *cam3 = scn->get_camera(ThirdPersonCamera);
-	Camera *cam1 = scn->get_camera(FirstPersonCamera);
+	//Camera *cam3 = scn->get_camera(ThirdPersonCamera);
+	//Camera *cam1 = scn->get_camera(FirstPersonCamera);
 	switch (direction)
 	{
 	case Up:
@@ -87,8 +87,8 @@ void Snak::move(Direction direction)
 		scn->get_shape(this->head_indx)->myRotate(ROTATION_SPEED, z_after_rotation, -1);
 		//TODO remove
 		scn->get_shape(this->head_indx+1)->myRotate(-1*ROTATION_SPEED, z_after_rotation, -1);
-		cam3->RotateZ(-ROTATION_SPEED);
-		cam1->Pitch(ROTATION_SPEED);
+		//cam3->RotateZ(-ROTATION_SPEED);
+		//cam1->Pitch(ROTATION_SPEED);
 		
 
 		break;
@@ -99,8 +99,8 @@ void Snak::move(Direction direction)
 
 		//TODO remove
 		scn->get_shape(this->head_indx + 1)->myRotate(1 * ROTATION_SPEED, z_after_rotation, -1);
-		cam3->RotateZ(ROTATION_SPEED);
-		cam1->Pitch(-ROTATION_SPEED);
+		//cam3->RotateZ(ROTATION_SPEED);
+		//cam1->Pitch(-ROTATION_SPEED);
 
 		break;
 
@@ -109,9 +109,9 @@ void Snak::move(Direction direction)
 		scn->get_shape(this->head_indx)->myRotate(ROTATION_SPEED, y_after_rotation, -1);
 		//TODO remove
 		scn->get_shape(this->head_indx + 1)->myRotate(-1 * ROTATION_SPEED, y_after_rotation, -1);
-		cam3->RotateY(ROTATION_SPEED);
-		cam3->MoveRight(-1);
-		cam1->RotateY(ROTATION_SPEED);
+		//cam3->RotateY(ROTATION_SPEED);
+		//cam3->MoveRight(-1);
+		//cam1->RotateY(ROTATION_SPEED);
 		
 		break;
 
@@ -120,9 +120,9 @@ void Snak::move(Direction direction)
 		scn->get_shape(this->head_indx)->myRotate(-ROTATION_SPEED, y_after_rotation, -1);
 		//TODO remove
 		scn->get_shape(this->head_indx + 1)->myRotate(1 * ROTATION_SPEED, y_after_rotation, -1);
-		cam3->RotateY(-ROTATION_SPEED);
-		cam3->MoveRight(1);
-		cam1->RotateY(-ROTATION_SPEED);
+		//cam3->RotateY(-ROTATION_SPEED);
+		//cam3->MoveRight(1);
+		//cam1->RotateY(-ROTATION_SPEED);
 
 		break;
 
@@ -132,18 +132,21 @@ void Snak::move(Direction direction)
 	default:
 		break;
 	}
+
+	// align the snake to almost straight 
 	for (int i = 0; i <= num_of_links; i++)
 	{
 		align_segments(index_chain[i], index_chain[i+1]);
 	}
+
 	int tmp_picked_shape = scn->get_picked_shape();
 	scn->set_picked_shape(this->head_indx);
 
 	scn->shapeTransformation(scn->xGlobalTranslate, speed*velocity.x);
 	scn->shapeTransformation(scn->yGlobalTranslate, speed*velocity.y);
 	scn->shapeTransformation(scn->zGlobalTranslate, speed*velocity.z);
-	cam3->MoveRight(speed);
-	cam1->MoveForward(speed);
+	//cam3->MoveRight(speed);
+	//cam1->MoveForward(speed);
 
 
 	scn->set_picked_shape(tmp_picked_shape);
@@ -152,7 +155,7 @@ void Snak::move(Direction direction)
 glm::vec3 Snak::get_head_pos()
 {
 	BoundingBox *head_box = scn->get_shape(this->head_indx)->mesh->bvh.box;
-	return head_box->center + head_box->size;
+	return head_box->center;
 }
 
 glm::vec3 Snak::get_segment_tip(int indx)
@@ -160,7 +163,7 @@ glm::vec3 Snak::get_segment_tip(int indx)
 	BoundingBox *body_box = scn->get_shape(indx)->mesh->bvh.box;
 	return body_box->center + body_box->size;
 }
-glm::vec3 Snak::get_segment_center(int indx)
+glm::mat4 Snak::get_segment_rotation(int indx)
 {
 	glm::mat4 rot = glm::mat4(1);
 	for (int i = indx;; i--)
@@ -172,12 +175,12 @@ glm::vec3 Snak::get_segment_center(int indx)
 		rot *= scn->get_shape(i)->GetRot();
 	
 	}
-	return glm::vec3(rot*glm::vec4(1,0,0,0));
+	return rot;
 }
 void Snak::align_segments(int stationary, int moving)
 {
- 	glm::vec3 stationary_vector = glm::normalize(this->get_segment_center(stationary));
-	glm::vec3 moving_vector = glm::normalize(this->get_segment_center(moving));
+	glm::vec3 stationary_vector = glm::normalize(glm::vec3(this->get_segment_rotation(stationary)*glm::vec4(1, 0, 0, 0)));
+	glm::vec3 moving_vector = glm::normalize(glm::vec3(this->get_segment_rotation(moving)*glm::vec4(1, 0, 0, 0)));
 		glm::mat4 R = get_rotation_matrix(moving_vector,stationary_vector,interpolation_constant);
 		scn->get_shape(moving)->myRotate(R);
 		scn->get_shape(moving + 1)->myRotate(glm::transpose(R));
@@ -224,11 +227,26 @@ glm::mat4 get_rotation_matrix(glm::vec3 stationary, glm::vec3 moving,float inter
 	glm::mat4 unit = glm::mat4(1);
 	glm::mat4 R = unit + vx + vx * vx*(1.0f/(1.0f+c));
 	return R;
+}
 
+void Snak::align_cameras()
+{
+	glm::mat4 head_trans = scn->get_shape(head_indx)->GetRot();//this->get_segment_rotation(head_indx + 1);
+	//head_trans *= scn->get_shape(head_indx)->GetRot()
+	glm::vec3 x_axis = glm::normalize(glm::vec3(head_trans*glm::vec4(1, 0, 0, 0)));
+	glm::vec3 y_axis = glm::normalize(glm::vec3(head_trans*glm::vec4(0, 1, 0, 0)));
+	glm::vec3 z_axis = glm::normalize(glm::vec3(head_trans*glm::vec4(0, 0, 1, 0)));
+	glm::vec3 head_pose = get_head_pos();
 
-
-
-
+	// first person camera
+	// pos = head pose, forward -xaxis, up = yaxis
+	Camera * cam = scn->get_camera(FirstPersonCamera);
+	cam->set_camera_movable_params(head_pose+ y_axis, -x_axis, y_axis);
+	cam->Pitch(30.0f);
+	//third person camera
+	// pos = head pose+ constant , forward -zaxis, up yaxis
+	cam = scn->get_camera(ThirdPersonCamera);
+	cam->set_camera_movable_params(head_pose +z_axis*10.0f, -z_axis, y_axis);
 }
 Snak::~Snak()
 {

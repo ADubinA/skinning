@@ -29,6 +29,7 @@ public:
 	float GetNear();
 	float GetFar();
 	float GetWHRelation();
+	void set_camera_movable_params(glm::vec3 pose, glm::vec3 forward, glm::vec3 up);
 protected:
 private:
 	glm::vec3 const default_forward = glm::vec3(0, 0, -1);

@@ -114,3 +114,9 @@ void Camera::RotateZ(float angle)
 {
 	return relation;
 }
+ void Camera::set_camera_movable_params(glm::vec3 pose, glm::vec3 forward, glm::vec3 up)
+ {
+	 this->pos = pose;
+	 this->forward = forward;
+	 this->up = up;
+ }
