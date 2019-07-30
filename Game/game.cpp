@@ -46,21 +46,21 @@ void Game::addSolarSystem()
 	//float planet_size,int texture_index,glm::vec3 starting_pos
 	addPlanet(0.2f,0.2f, shapes.size(),0.3f,sun, glm::vec3 (0,0,-20),-1,8);
 
-	//addPlanet(0.2f, 0.2f, shapes.size(), 0.015f, mercury, glm::vec3(7, 0, 0), planets[8], 7);
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.015f, mercury, glm::vec3(7, 0, 0), planets[8], 7);
 
-	//addPlanet(0.2f, 0.2f, shapes.size(), 0.018, mars, glm::vec3(-8, 0, 0), planets[8], 6);
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.018, mars, glm::vec3(-8, 0, 0), planets[8], 6);
 
-	//addPlanet(0.2f, 0.2f, shapes.size(), 0.02f, earth, glm::vec3(0, 0, 11), planets[8], 5);
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.02f, earth, glm::vec3(0, 0, 11), planets[8], 5);
 
-	//addPlanet(0.2f, 0.2f, shapes.size(), 0.015f, venus, glm::vec3(0, 0, -13), planets[8], 4);
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.015f, venus, glm::vec3(0, 0, -13), planets[8], 4);
 
-	//addPlanet(0.2f, 0.2f, shapes.size(), 0.08f, jupiter, glm::vec3(16, 0, 0), planets[8], 3);
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.08f, jupiter, glm::vec3(16, 0, 0), planets[8], 3);
 
-	//addPlanet(0.2f, 0.2f, shapes.size(), 0.07f, saturn, glm::vec3(0, 0, 18), planets[8], 2);
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.07f, saturn, glm::vec3(0, 0, 18), planets[8], 2);
 
-	//addPlanet(0.2f, 0.2f, shapes.size(), 0.05f, neptune, glm::vec3(-20, 0, 0), planets[8], 1);
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.05f, neptune, glm::vec3(-20, 0, 0), planets[8], 1);
 
-	//addPlanet(0.2f, 0.2f, shapes.size(), 0.04f, uranus, glm::vec3(0, 0, -22), planets[8], 0);
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.04f, uranus, glm::vec3(0, 0, -22), planets[8], 0);
 
 
 
@@ -143,14 +143,14 @@ void Game::Init()
 	shapeTransformation(xScale, 10);
 	shapeTransformation(zScale, 10);
 
-	//addShapeFromFile("../res/objs/sphere.obj", -1, TRIANGLES);
-	//pickedShape = this->shapes.size() - 1;
-	//this->spacse_indx = pickedShape;
-	//shapeTransformation(yScale, 2);
-	//shapeTransformation(xScale, 2);
-	//shapeTransformation(zScale, 2);
-	//shapeTransformation(zGlobalTranslate, -10);
-	//shapes[pickedShape]->SetTexture(galaxy);
+	addShapeFromFile("../res/objs/sphere.obj", -1, TRIANGLES);
+	pickedShape = this->shapes.size() - 1;
+	this->spacse_indx = pickedShape;
+	shapeTransformation(yScale, 2);
+	shapeTransformation(xScale, 2);
+	shapeTransformation(zScale, 2);
+	shapeTransformation(zGlobalTranslate, -10);
+	shapes[pickedShape]->SetTexture(galaxy);
 
 	addSolarSystem();
 
