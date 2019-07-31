@@ -12,7 +12,7 @@ Snak::Snak(int num_of_joints, Scene* scn)
 	this->velocity = glm::vec3 (-1,0,0);
 	this->scn = scn;
 	this->speed = 0.1;
-	this->interpolation_constant = 40.0f;
+	this->interpolation_constant = 15.0f;
 }
 
 void Snak::createSnake()

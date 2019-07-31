@@ -3,6 +3,7 @@
 in vec2 texCoord0;
 in vec3 normal0;
 in vec3 color0;
+in vec3 sunlight_dir;
 
 uniform vec4 lightColor;
 uniform sampler2D sampler;
@@ -14,7 +15,7 @@ uniform mat4 Normal;
 
 void main()
 {
-    vec3 tmp = dot(-lightDirection.xyz, normal0) * color0 ;
-	gl_FragColor = texture2D(sampler, texCoord0) *clamp(vec4(tmp,1.0), 0.0, 1.0);
+    vec3 tmp = dot(sunlight_dir, normal0)* vec3(1.0f,1.0f,1.0f) ;
+	gl_FragColor = 0.5*texture2D(sampler, texCoord0)+texture2D(sampler, texCoord0)*clamp(vec4(tmp,1.0), 0.0, 1.0);
     //gl_FragColor = clamp(vec4(tmp,1),0.0,1.0);
 }
