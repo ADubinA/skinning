@@ -11,7 +11,89 @@ using namespace glm;
 static Uint8 *audioPos;
 static Uint32 audioLen;
 
+glm::mat4 dualquat2mat4(glm::dualquat dualq)
+{
+	// dq[0] dq[1] dq[2] dq[3] are our rotation quaternion elements
+	// dq[4] dq[5] dq[6] dq[7] are our translation quaternion elements (the dual quaternion's imaginary component)
+	float dq[8] = {
 
+		dualq.real.x,
+		dualq.real.y,
+		dualq.real.z,
+		dualq.real.w,
+
+		dualq.dual.x,
+		dualq.dual.y,
+		dualq.dual.z,
+		dualq.dual.w };
+	glm::mat4 out = glm::mat4(1);
+
+	out[0][0] = 1.0 - (2.0 * dq[1] * dq[1]) - (2.0 * dq[2] * dq[2]);
+	out[0][1] = (2.0 * dq[0] * dq[1]) + (2.0 * dq[3] * dq[2]);
+	out[0][2] = (2.0 * dq[0] * dq[2]) - (2.0 * dq[3] * dq[1]);
+	out[0][3] = 0;
+	out[1][0] = (2.0 * dq[0] * dq[1]) - (2.0 * dq[3] * dq[2]);
+	out[1][1] = 1.0 - (2.0 * dq[0] * dq[0]) - (2.0 * dq[2] * dq[2]);
+	out[1][2] = (2.0 * dq[1] * dq[2]) + (2.0 * dq[3] * dq[0]);
+	out[1][3] = 0;
+	out[2][0] = (2.0 * dq[0] * dq[2]) + (2.0 * dq[3] * dq[1]);
+	out[2][1] = (2.0 * dq[1] * dq[2]) - (2.0 * dq[3] * dq[0]);
+	out[2][2] = 1.0 - (2.0 * dq[0] * dq[0]) - (2.0 * dq[1] * dq[1]);
+	out[2][3] = 0;
+	out[3][0] = 2.0 * (-dq[7] * dq[0] + dq[4] * dq[3] - dq[5] * dq[2] + dq[6] * dq[1]);
+	out[3][1] = 2.0 * (-dq[7] * dq[1] + dq[4] * dq[2] + dq[5] * dq[3] - dq[6] * dq[0]);
+	out[3][2] = 2.0 * (-dq[7] * dq[2] - dq[4] * dq[1] + dq[5] * dq[0] + dq[6] * dq[3]);
+	out[3][3] = 1;
+
+	return out;
+}
+bool test_dualquat(glm::mat4 m)
+{
+
+	glm::mat3x4 small_tran = glm::mat3x4(glm::transpose(m));
+	glm::dualquat quatDul = glm::normalize(glm::dualquat_cast(small_tran));
+
+
+	glm::vec4 qrot = glm::vec4(quatDul.real.w,
+		quatDul.real.x,
+		quatDul.real.y,
+		quatDul.real.z);
+
+	glm::vec4 qtran = glm::vec4(quatDul.dual.w,
+		quatDul.dual.x,
+		quatDul.dual.y,
+		quatDul.dual.z);
+
+
+
+	// convert quat to matrix
+	glm::mat4 m2 = dualquat2mat4(quatDul);
+
+	//convert new matrix back to quat
+	small_tran = glm::mat3x4(glm::transpose(m2));
+	quatDul = glm::normalize(glm::dualquat_cast(small_tran));
+
+	if (glm::distance(qrot , glm::vec4(quatDul.real.w, quatDul.real.x, quatDul.real.y, quatDul.real.z))>0.01)
+	{
+		std::cout << qrot.x << ", " << qrot.y << ", " << qrot.z << ", " << qrot.w << std::endl;
+
+		std::cout << quatDul.real.w << ", " << quatDul.real.x << ", " << quatDul.real.y << ", " << quatDul.real.z << std::endl;
+		//int x;
+		//std::cin >> x;
+		return false;
+	}
+
+	if (glm::distance(qtran, glm::vec4(quatDul.dual.w, quatDul.dual.x, quatDul.dual.y, quatDul.dual.z))>0.01)
+	{
+		std::cout << qtran.x << ", " << qtran.y << ", " << qtran.z << ", " << qtran.w << std::endl;
+		std::cout << quatDul.dual.w << ", " << quatDul.dual.x << ", " << quatDul.dual.y << ", " << quatDul.dual.z << std::endl;
+		//int x;
+		//std::cin >> x;
+		return false;
+	}
+
+	return true;
+}
 
 	static void printMat(const mat4 mat)
 {
@@ -184,6 +266,8 @@ static Uint32 audioLen;
 				Update(MV1,P,Normal1 ,i,shaders[shapes[i]->shaderID], shapes[i]->shaderID);
 				shapes[i]->Draw(shaders, textures, false);
 				//shapes[i]->Draw(*shaders[shapes[i]->shader_indx]);
+				if(shapes[i]->mode ==5)
+					bool t = test_dualquat(MV1);
 
 				glm::mat3x4 small_tran = glm::mat3x4(transpose(MV1));
 				glm::dualquat quatDul = glm::dualquat_cast(small_tran);

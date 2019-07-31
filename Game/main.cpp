@@ -1,6 +1,8 @@
 #include "InputManager.h"
 #include "glm\glm.hpp"
 #include "Menu.h"
+#include <glm/gtc/quaternion.hpp>
+#include <iostream>
 
 int main(int argc,char *argv[])
 {
@@ -10,6 +12,8 @@ int main(int argc,char *argv[])
 	const float zNear = 1.0f;
 	const float CAM_ANGLE = 60.0f;
 	const float relation = (float)DISPLAY_WIDTH/(float)DISPLAY_HEIGHT;
+
+
 
 	Game *scn = new Game(glm::vec3(0.0f, 0.0f, 10.0f), CAM_ANGLE, relation, zNear,zFar);
 	
