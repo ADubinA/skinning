@@ -4,11 +4,13 @@ use c to change camera from first to third view
 use esc to show or hide the imgui window
 
 goal of the game is to eat every planet from far to near to sun. 
+press start game to start.
+
 
 what is done?
  - planets have a unique texture, and move around the sun
  - the serpent of death has skinning shader, and will bend like a real snake when moved.
  - the planets have stars around them, if the serpent of death will move too far, you lose!
- - GUI is provided to help the player with figuring out what plante to eat.
+ - GUI is provided to help the player with figuring out what plante to eat, and to display the score gained.
  - sound!
  - The sun will provide light
