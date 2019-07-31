@@ -46,7 +46,7 @@ void Game::addSolarSystem()
 	//float self_rotation_speed, float parent_rotation_speed,int shape_index,
 	//float planet_size,int texture_index,glm::vec3 starting_pos
 	addPlanet(0.2f,0.2f, shapes.size(),0.2f,sun, glm::vec3 (0,0,-20),-1,8);
-
+	this->sun_indx = shapes.size() - 1;
 	addPlanet(0.2f, 0.2f, shapes.size(), 0.015f, mercury, glm::vec3(10, 0, 0), planets[8], 7);
 
 	addPlanet(0.2f, 0.2f, shapes.size(), 0.018, mars, glm::vec3(-13, 0, 0), planets[8], 6);
@@ -180,6 +180,11 @@ void Game::Update(const glm::mat4 &MV, const glm::mat4 &P, const glm::mat4 &Norm
 		//s->SetUniformMat4f("MVP", P*MV);
 		s->SetUniformMat4f("MV", MV);
 		s->SetUniformMat4f("P", P);
+		if (indx == this->sun_indx)
+			s->SetUniform4f("isSun", 1.0f, 1.0f, 1.0f, 1.0f);
+		else
+			s->SetUniform4f("isSun", 0.0f, 0.0f, 0.0f, 0.0f);
+
 		break;
 	case SKINNING_SHADER:
 		s->SetUniformMat4f("MV", MV);

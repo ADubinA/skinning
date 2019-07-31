@@ -14,6 +14,7 @@ uniform mat4 MV;
 uniform mat4 P;
 uniform mat4 Normal;
 
+
 attribute vec3 weights;
 
 uniform ivec3 jointIndex;

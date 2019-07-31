@@ -13,6 +13,7 @@ class Scene : public MovableGLM
 public:
 	bool menu_mode;
 	int spacse_indx;
+	int sun_indx;
 
 	enum axis{xAxis,yAxis,zAxis};
 	enum transformations{xLocalTranslate,yLocalTranslate,zLocalTranslate,xGlobalTranslate,yGlobalTranslate,zGlobalTranslate,
