@@ -10,6 +10,5 @@ what is done?
  - the serpent of death has skinning shader, and will bend like a real snake when moved.
  - the planets have stars around them, if the serpent of death will move too far, you lose!
  - GUI is provided to help the player with figuring out what plante to eat.
- - [sound!]
- - [The sun will provide light]
- - [when the sun is destroyed, no light is emited]
+ - sound!
+ - The sun will provide light

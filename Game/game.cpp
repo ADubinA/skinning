@@ -45,17 +45,17 @@ void Game::addSolarSystem()
 {
 	//float self_rotation_speed, float parent_rotation_speed,int shape_index,
 	//float planet_size,int texture_index,glm::vec3 starting_pos
-	addPlanet(0.2f,0.2f, shapes.size(),0.2f,sun, glm::vec3 (0,0,-20),-1,8);
+	addPlanet(0.1f,0.1f, shapes.size(),0.2f,sun, glm::vec3 (0,0,-20),-1,8);
 	this->sun_indx = shapes.size() - 1;
 	addPlanet(0.2f, 0.2f, shapes.size(), 0.015f, mercury, glm::vec3(10, 0, 0), planets[8], 7);
 
-	addPlanet(0.2f, 0.2f, shapes.size(), 0.018, mars, glm::vec3(-13, 0, 0), planets[8], 6);
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.018, mars, glm::vec3(0, 0, -13), planets[8], 6);
 
 	addPlanet(0.2f, 0.2f, shapes.size(), 0.02f, earth, glm::vec3(0, 0, 17), planets[8], 5);
 
-	addPlanet(0.2f, 0.2f, shapes.size(), 0.015f, venus, glm::vec3(0, 0, -18), planets[8], 4);
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.015f, venus, glm::vec3(-18, 0, 0), planets[8], 4);
 
-	addPlanet(0.2f, 0.2f, shapes.size(), 0.08f, jupiter, glm::vec3(21, 0, 0), planets[8], 3);
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.08f, jupiter, glm::vec3(21, 0,0), planets[8], 3);
 
 	addPlanet(0.2f, 0.2f, shapes.size(), 0.07f, saturn, glm::vec3(0, 0, -22), planets[8], 2);
 
