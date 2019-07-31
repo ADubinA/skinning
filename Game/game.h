@@ -31,6 +31,7 @@ class Game : public Scene
 	void Game::CreateBoundingBoxes(BVH *box_tree, int parent, int level);
 
 public:
+	int isStarted;
 	Snak* snak;
 	Game(void);
 	Game(glm::vec3 position,float angle,float hwRelation,float near, float far);

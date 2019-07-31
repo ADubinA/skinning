@@ -116,5 +116,6 @@ protected:
 	static const int scaleFactor =2;
 	bool isActive;
 	void ScaleAllDirections(int factor);
+	void playTune(char * str);
 };
 

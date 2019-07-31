@@ -24,6 +24,7 @@ Game::Game():Scene(){curve = 0;}
 Game::Game(glm::vec3 position,float angle,float hwRelation,float near, float far) : Scene(position,angle,hwRelation,near,far)
 { 
 	curve = new Bezier1D();
+	this->isStarted = false;
 }
 
 void Game::addShape(int type,int parent,unsigned int mode)
@@ -44,23 +45,23 @@ void Game::addSolarSystem()
 {
 	//float self_rotation_speed, float parent_rotation_speed,int shape_index,
 	//float planet_size,int texture_index,glm::vec3 starting_pos
-	addPlanet(0.2f,0.2f, shapes.size(),0.3f,sun, glm::vec3 (0,0,-20),-1,8);
+	addPlanet(0.2f,0.2f, shapes.size(),0.2f,sun, glm::vec3 (0,0,-20),-1,8);
 
-	addPlanet(0.2f, 0.2f, shapes.size(), 0.015f, mercury, glm::vec3(7, 0, 0), planets[8], 7);
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.015f, mercury, glm::vec3(10, 0, 0), planets[8], 7);
 
-	addPlanet(0.2f, 0.2f, shapes.size(), 0.018, mars, glm::vec3(-8, 0, 0), planets[8], 6);
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.018, mars, glm::vec3(-13, 0, 0), planets[8], 6);
 
-	addPlanet(0.2f, 0.2f, shapes.size(), 0.02f, earth, glm::vec3(0, 0, 11), planets[8], 5);
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.02f, earth, glm::vec3(0, 0, 17), planets[8], 5);
 
-	addPlanet(0.2f, 0.2f, shapes.size(), 0.015f, venus, glm::vec3(0, 0, -13), planets[8], 4);
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.015f, venus, glm::vec3(0, 0, -18), planets[8], 4);
 
-	addPlanet(0.2f, 0.2f, shapes.size(), 0.08f, jupiter, glm::vec3(16, 0, 0), planets[8], 3);
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.08f, jupiter, glm::vec3(21, 0, 0), planets[8], 3);
 
-	addPlanet(0.2f, 0.2f, shapes.size(), 0.07f, saturn, glm::vec3(0, 0, 18), planets[8], 2);
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.07f, saturn, glm::vec3(0, 0, -22), planets[8], 2);
 
-	addPlanet(0.2f, 0.2f, shapes.size(), 0.05f, neptune, glm::vec3(-20, 0, 0), planets[8], 1);
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.05f, neptune, glm::vec3(-24, 0, 0), planets[8], 1);
 
-	addPlanet(0.2f, 0.2f, shapes.size(), 0.04f, uranus, glm::vec3(0, 0, -22), planets[8], 0);
+	addPlanet(0.2f, 0.2f, shapes.size(), 0.04f, uranus, glm::vec3(0, 0, 27), planets[8], 0);
 
 
 
@@ -115,6 +116,7 @@ void Game::CreateBoundingBoxes(BVH * box_tree, int parent, int level)
 
 void Game::Init()
 {
+	playTune("Sounds/Jump.wav");
 	this->AddTexture("../res/textures/metal_tread.jpg");
 	this->AddTexture("../res/textures/earth.jpg");
 	this->AddTexture("../res/textures/jupiter.jpg");
@@ -146,17 +148,17 @@ void Game::Init()
 	addShapeFromFile("../res/objs/sphere.obj", -1, TRIANGLES);
 	pickedShape = this->shapes.size() - 1;
 	this->spacse_indx = pickedShape;
-	shapeTransformation(yScale, 2);
-	shapeTransformation(xScale, 2);
-	shapeTransformation(zScale, 2);
+	shapeTransformation(yScale, 8);
+	shapeTransformation(xScale, 8);
+	shapeTransformation(zScale, 8);
 	shapeTransformation(zGlobalTranslate, -10);
 	shapes[pickedShape]->SetTexture(galaxy);
 
 	addSolarSystem();
-
+	
 	ReadPixel();
 	pickedShape = -1;
-	Activate();
+	//Activate();
 	// add camera for the head (this is first person)
 	cameras.push_back(new Camera(glm::vec3(0.0f, 0.0f, 10.0f)));
 	cameras.push_back(new Camera(snak->get_head_pos()));
@@ -218,8 +220,11 @@ void Game::WhenTranslate()
 
 void Game::Motion()
 {
+
 	collisionDetection();
 	snak->align_cameras();
+	if (glm::distance(this->snak->get_head_pos(), glm::vec3(0, 0, 0)) > 100)
+		this->Deactivate();
 	if(isActive)
 	{
 		int p = pickedShape;

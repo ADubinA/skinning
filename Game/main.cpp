@@ -27,31 +27,48 @@ int main(int argc,char *argv[])
 	scn->Init();
 	
 	display.setScene(scn);
-	Menu* menu = new Menu(&display, scn);
+	Menu* menuScore = new Menu(&display, scn);
+	Menu* menuStart = new Menu(&display, scn);
 	while(!display.closeWindow())
 	{
 			display.Clear(1.0f, 1.0f, 1.0f, 1.0f);
-
-			scn->Draw(0, true);
-			scn->Motion();
+			
+			
 			//scn->Motion(menu->f);
-			if (scn->menu_mode)
+			if (scn->isStarted)
 			{
-				if (!menu->created)
+				scn->Draw(0, true);
+				scn->Motion();
+				
+				if (menuStart->created)
 				{
-					menu->create();
+					menuStart->destroy();
 					init(display);
 				}
-				menu->DrawMenu();
+				if (!menuScore->created)
+				{
+					menuScore->create();
+					init(display);
+				}
+				menuScore->DrawMenuScore();
+
+				
 
 			}
 			else
 			{
-				if (menu->created)
+				/*if (menuScore->created)
 				{
-					menu->destroy();
+					menuScore->destroy();
+					init(display);
+				}*/
+				if (!menuStart->created)
+				{
+					menuStart->create();
 					init(display);
 				}
+				menuStart->DrawMenuStart();
+
 			}
 
 		display.SwapBuffers();
