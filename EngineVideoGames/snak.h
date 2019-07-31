@@ -7,7 +7,7 @@ glm::mat4 get_rotation_matrix(glm::vec3 stationary, glm::vec3 moving,float inter
 class Snak
 #define SNAKE_TEX_INDEX 0
 #define PI 3.14159265358979323846264338327950288
-#define ROTATION_SPEED 5.0f
+#define ROTATION_SPEED 3.0f
 {
 private:
 	

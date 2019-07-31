@@ -266,22 +266,28 @@ bool test_dualquat(glm::mat4 m)
 				Update(MV1,P,Normal1 ,i,shaders[shapes[i]->shaderID], shapes[i]->shaderID);
 				shapes[i]->Draw(shaders, textures, false);
 				//shapes[i]->Draw(*shaders[shapes[i]->shader_indx]);
+				bool t;
 				if(shapes[i]->mode ==5)
-					bool t = test_dualquat(MV1);
+					 t = test_dualquat(MV1);
 
 				glm::mat3x4 small_tran = glm::mat3x4(transpose(MV1));
 				glm::dualquat quatDul = glm::dualquat_cast(small_tran);
 
+				if (t) {
+					Qrot[i] = glm::vec4(quatDul.real.w,
+						quatDul.real.x,
+						quatDul.real.y,
+						quatDul.real.z);
 
-				Qrot[i] = glm::vec4(	quatDul.real.w,
-										quatDul.real.x,
-										quatDul.real.y,
-										quatDul.real.z);
-
-				Qtrans[i] = glm::vec4(	quatDul.dual.w,
-										quatDul.dual.x,
-										quatDul.dual.y,
-										quatDul.dual.z);
+					Qtrans[i] = glm::vec4(quatDul.dual.w,
+						quatDul.dual.x,
+						quatDul.dual.y,
+						quatDul.dual.z);
+				}
+				else {
+					Qrot[i] = Qrot[i - 1];
+					Qtrans[i] = Qtrans[i - 1];
+				}
 				
 
 			}

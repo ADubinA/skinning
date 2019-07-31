@@ -13,7 +13,7 @@ Snak::Snak(int num_of_joints, Scene* scn)
 	this->scn = scn;
 	this->speed = 0.1;
 
-	this->interpolation_constant = 15.0f;
+	this->interpolation_constant = 7.0f;
 
 }
 
